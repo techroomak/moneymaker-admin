@@ -51,6 +51,11 @@ document.getElementById(
 "inactiveUsers"
 );
 
+const onlineUsers =
+document.getElementById(
+"onlineUsers"
+);
+
 const snap =
 await getDocs(
 collection(db,"users")
@@ -71,6 +76,8 @@ let earn = 0;
 let activeCount = 0;
 
 let inactiveCount = 0;
+
+let onlineCount = 0;
 
 snap.forEach((docSnap)=>{
 
@@ -108,6 +115,17 @@ inactiveCount++;
 activeCount++;
 
 }
+const online =
+(Date.now() - lastActive)
+<
+(1 * 60 * 1000);
+
+if(online){
+
+onlineCount++;
+
+}
+
 
 html += `
 
@@ -230,6 +248,8 @@ activeCount;
 inactiveUsers.innerText =
 inactiveCount;
 
+onlineUsers.innerText =
+onlineCount;
 }
 
 loadUsers();
