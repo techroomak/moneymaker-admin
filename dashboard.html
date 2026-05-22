@@ -8,7 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard</title>
+<title>Admin Dashboard</title>
 
 <link rel="stylesheet"
 href="./css/style.css">
@@ -19,17 +19,41 @@ href="./css/style.css">
 
 <div class="admin-layout">
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
 <h2 class="logo">
-Admin Panel
+MoneyMaker Admin
 </h2>
 
 <button class="menu-btn active-btn">
 Dashboard
 </button>
 
+<button class="menu-btn">
+Users
+</button>
+
+<button class="menu-btn">
+Withdraw
+</button>
+
+<button class="menu-btn">
+Tasks
+</button>
+
+<button class="menu-btn">
+Notifications
+</button>
+
+<button class="menu-btn">
+Settings
+</button>
+
 </div>
+
+<!-- MAIN -->
 
 <div class="main-panel">
 
@@ -37,35 +61,103 @@ Dashboard
 Dashboard
 </h1>
 
-<div class="dashboard-cards">
+<!-- DASHBOARD TABLE -->
 
-<div class="dash-card">
+<div class="dashboard-table">
 
-<h3>Total Users</h3>
+<div class="dashboard-head">
+Total Users
+</div>
 
-<p id="totalUsers">
+<div class="dashboard-head">
+Total Coin
+</div>
+
+<div class="dashboard-head">
+Total Withdraw
+</div>
+
+<div class="dashboard-head">
+Pending Withdraw
+</div>
+
+<div class="dashboard-head">
+Total Earn
+</div>
+
+<div class="dashboard-head">
+Total Refer
+</div>
+
+<div class="dashboard-head">
+Active Users
+</div>
+
+<!-- VALUES -->
+
+<div
+id="totalUsers"
+class="dashboard-value">
 0
-</p>
-
 </div>
 
-<div class="dash-card">
-
-<h3>Total Coin</h3>
-
-<p id="totalCoin">
+<div
+id="totalCoin"
+class="dashboard-value">
 0
-</p>
+</div>
 
+<div
+id="totalWithdraw"
+class="dashboard-value">
+0
+</div>
+
+<div
+id="pendingWithdraw"
+class="dashboard-value">
+0
+</div>
+
+<div
+id="totalEarn"
+class="dashboard-value">
+0
+</div>
+
+<div
+id="totalRefer"
+class="dashboard-value">
+0
+</div>
+
+<div
+id="activeUsers"
+class="dashboard-value">
+0
 </div>
 
 </div>
+
+<!-- USER SECTION -->
 
 <div class="table-box">
+
+<div class="table-top">
 
 <h2>
 Users
 </h2>
+
+<input
+id="searchInput"
+class="search-input"
+type="text"
+placeholder="Search UID..."
+oninput="searchUser()"
+>
+
+</div>
 
 <div id="userList">
 
