@@ -93,6 +93,11 @@ Total Refer
 Active Users
 </div>
 
+<div class="dashboard-head">
+Inactive Users
+</div>
+
+
 <!-- VALUES -->
 
 <div
@@ -136,7 +141,10 @@ id="activeUsers"
 class="dashboard-value">
 0
 </div>
-
+<div
+id="inactiveUsers"
+class="dashboard-value">
+0
 </div>
 
 <!-- USER SECTION -->
@@ -159,6 +167,8 @@ oninput="searchUser()"
 
 </div>
 
+<div class="users-scroll">
+
 <div id="userList">
 
 Loading...
@@ -168,6 +178,20 @@ Loading...
 </div>
 
 </div>
+
+<!-- IMAGE PREVIEW -->
+
+<div
+id="imagePreview"
+class="image-preview"
+onclick="closePreview()"
+>
+
+<img
+id="previewImg"
+class="preview-img"
+src=""
+>
 
 </div>
 
