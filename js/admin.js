@@ -173,17 +173,27 @@ class="action-menu"
 >
 
 <button
-class="ban-user"
-onclick="banUser('${data.id}')"
+class="${data.banned ? "unban-user" : "ban-user"}"
+onclick="
+${data.banned
+?
+`unbanUser('${data.id}')`
+:
+`banUser('${data.id}')`
+}
+"
 >
-Ban
+
+${data.banned ? "Unban User" : "Ban User"}
+
 </button>
 
 <button
-class="unban-user"
-onclick="unbanUser('${data.id}')"
+class="${inactive ? "unban-user" : "ban-user"}"
 >
-Unban
+
+${inactive ? "Inactive" : "Active"}
+
 </button>
 
 </div>
