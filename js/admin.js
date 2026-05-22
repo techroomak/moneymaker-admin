@@ -365,3 +365,44 @@ alert("User Unbanned");
 loadUsers();
 
 };
+window.showSection =(sectionId)=>{
+
+const sections =
+document.querySelectorAll(
+".content-section"
+);
+
+sections.forEach((section)=>{
+
+section.classList.remove(
+"active-section"
+);
+
+});
+
+document.getElementById(
+sectionId
+).classList.add(
+"active-section"
+);
+
+/* ACTIVE BUTTON */
+
+const buttons =
+document.querySelectorAll(
+".menu-btn"
+);
+
+buttons.forEach((btn)=>{
+
+btn.classList.remove(
+"active-btn"
+);
+
+});
+
+event.target.classList.add(
+"active-btn"
+);
+
+};
