@@ -23,33 +23,63 @@ href="./css/style.css">
 
 <div class="sidebar">
 
+<div class="sidebar-top">
+
 <h2 class="logo">
-MoneyMaker Admin
+MoneyMaker
 </h2>
 
-<button class="menu-btn active-btn">
+<p class="admin-text">
+Admin Panel
+</p>
+
+</div>
+
+<div class="menu-list">
+
+<button
+class="menu-btn active-btn"
+onclick="showSection('dashboardSection')"
+>
 Dashboard
 </button>
 
-<button class="menu-btn">
+<button
+class="menu-btn"
+onclick="showSection('usersSection')"
+>
 Users
 </button>
 
-<button class="menu-btn">
+<button
+class="menu-btn"
+onclick="showSection('withdrawSection')"
+>
 Withdraw
 </button>
 
-<button class="menu-btn">
+<button
+class="menu-btn"
+onclick="showSection('taskSection')"
+>
 Tasks
 </button>
 
-<button class="menu-btn">
+<button
+class="menu-btn"
+onclick="showSection('notificationSection')"
+>
 Notifications
 </button>
 
-<button class="menu-btn">
+<button
+class="menu-btn"
+onclick="showSection('settingsSection')"
+>
 Settings
 </button>
+
+</div>
 
 </div>
 
@@ -57,105 +87,107 @@ Settings
 
 <div class="main-panel">
 
+<!-- DASHBOARD -->
+
+<section
+id="dashboardSection"
+class="content-section active-section"
+>
+
 <h1 class="page-title">
-Dashboard
+Dashboard Overview
 </h1>
 
-<!-- DASHBOARD TABLE -->
+<div class="stats-grid">
 
-<div class="dashboard-table">
+<div class="stats-card">
 
-<div class="dashboard-head">
+<h3>
 Total Users
+</h3>
+
+<p id="totalUsers">
+0
+</p>
+
 </div>
 
-<div class="dashboard-head">
-Total Coin
-</div>
+<div class="stats-card">
 
-<div class="dashboard-head">
-Total Withdraw
-</div>
-
-<div class="dashboard-head">
-Pending Withdraw
-</div>
-
-<div class="dashboard-head">
-Total Earn
-</div>
-
-<div class="dashboard-head">
-Total Refer
-</div>
-
-<div class="dashboard-head">
+<h3>
 Active Users
+</h3>
+
+<p id="activeUsers">
+0
+</p>
+
 </div>
 
-<div class="dashboard-head">
+<div class="stats-card">
+
+<h3>
 Inactive Users
-</div>
+</h3>
 
-
-<!-- VALUES -->
-
-<div
-id="totalUsers"
-class="dashboard-value">
+<p id="inactiveUsers">
 0
+</p>
+
 </div>
 
-<div
-id="totalCoin"
-class="dashboard-value">
+<div class="stats-card">
+
+<h3>
+Total Coin
+</h3>
+
+<p id="totalCoin">
 0
+</p>
+
 </div>
 
-<div
-id="totalWithdraw"
-class="dashboard-value">
+<div class="stats-card">
+
+<h3>
+Pending Withdraw
+</h3>
+
+<p id="pendingWithdraw">
 0
+</p>
+
 </div>
 
-<div
-id="pendingWithdraw"
-class="dashboard-value">
+<div class="stats-card">
+
+<h3>
+Total Withdraw
+</h3>
+
+<p id="totalWithdraw">
 0
+</p>
+
 </div>
 
-<div
-id="totalEarn"
-class="dashboard-value">
-0
 </div>
 
-<div
-id="totalRefer"
-class="dashboard-value">
-0
-</div>
+</section>
 
-<div
-id="activeUsers"
-class="dashboard-value">
-0
-</div>
-<div
-id="inactiveUsers"
-class="dashboard-value">
-0
-</div>
+<!-- USERS -->
 
-<!-- USER SECTION -->
+<section
+id="usersSection"
+class="content-section"
+>
 
-<div class="table-box">
+<div class="section-top">
 
-<div class="table-top">
-
-<h2>
+<h1 class="page-title">
 Users
-</h2>
+</h1>
 
 <input
 id="searchInput"
@@ -167,7 +199,7 @@ oninput="searchUser()"
 
 </div>
 
-<div class="users-scroll">
+<div class="table-box">
 
 <div id="userList">
 
@@ -177,9 +209,87 @@ Loading...
 
 </div>
 
+</section>
+
+<!-- WITHDRAW -->
+
+<section
+id="withdrawSection"
+class="content-section"
+>
+
+<h1 class="page-title">
+Withdraw Requests
+</h1>
+
+<div class="table-box">
+
+Coming Soon
+
 </div>
 
-<!-- IMAGE PREVIEW -->
+</section>
+
+<!-- TASK -->
+
+<section
+id="taskSection"
+class="content-section"
+>
+
+<h1 class="page-title">
+Tasks
+</h1>
+
+<div class="table-box">
+
+Coming Soon
+
+</div>
+
+</section>
+
+<!-- NOTIFICATION -->
+
+<section
+id="notificationSection"
+class="content-section"
+>
+
+<h1 class="page-title">
+Notifications
+</h1>
+
+<div class="table-box">
+
+Coming Soon
+
+</div>
+
+</section>
+
+<!-- SETTINGS -->
+
+<section
+id="settingsSection"
+class="content-section"
+>
+
+<h1 class="page-title">
+Settings
+</h1>
+
+<div class="table-box">
+
+Coming Soon
+
+</div>
+
+</section>
+
+</div>
+
+</div>
 
 <div
 id="imagePreview"
