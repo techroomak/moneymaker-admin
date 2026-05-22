@@ -205,76 +205,44 @@ gap:15px;
 }
 
 }
-.dashboard-table{
-display:grid;
-grid-template-columns:
-repeat(7,1fr);
-background:#111827;
-border-radius:20px;
-overflow:hidden;
-margin-bottom:25px;
+
+.users-scroll{
+overflow-x:auto;
 }
 
-.dashboard-head{
-background:#7c3aed;
-padding:16px;
-font-size:14px;
-font-weight:700;
-text-align:center;
-border-right:1px solid #ffffff10;
-}
-
-.dashboard-value{
-padding:20px;
-font-size:24px;
-font-weight:700;
-text-align:center;
-background:#0f172a;
-border-right:1px solid #ffffff10;
-}
-
-.table-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.search-input{
-padding:12px;
-border:none;
-border-radius:12px;
-background:#1e293b;
-color:white;
-width:220px;
-outline:none;
+#userList{
+min-width:1100px;
 }
 
 .user-card{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px;
 background:#0f172a;
+padding:15px;
 border-radius:18px;
-margin-bottom:12px;
+margin-bottom:14px;
+min-width:1100px;
 }
 
 .user-left{
 display:flex;
 align-items:center;
 gap:15px;
+width:280px;
 }
 
 .user-photo{
-width:55px;
-height:55px;
+width:60px;
+height:60px;
 border-radius:50%;
 object-fit:cover;
+cursor:pointer;
+border:2px solid #7c3aed;
 }
 
 .user-name{
-font-size:17px;
+font-size:18px;
 font-weight:700;
 }
 
@@ -286,62 +254,88 @@ margin-top:4px;
 
 .user-stats{
 display:flex;
-gap:18px;
-margin-top:6px;
-font-size:13px;
+gap:20px;
+align-items:center;
 }
 
-.user-right{
-display:flex;
-gap:10px;
-}
-
-.action-btn{
-padding:10px 14px;
-border:none;
+.stat-box{
+background:#111827;
+padding:10px 16px;
 border-radius:12px;
+font-size:14px;
+white-space:nowrap;
+}
+
+.user-actions{
+position:relative;
+}
+
+.menu-dot{
+font-size:28px;
+cursor:pointer;
+padding:0 10px;
+}
+
+.action-menu{
+position:absolute;
+top:35px;
+right:0;
+background:#111827;
+border-radius:12px;
+padding:10px;
+display:none;
+flex-direction:column;
+gap:10px;
+min-width:130px;
+z-index:100;
+}
+
+.action-menu button{
+border:none;
+padding:10px;
+border-radius:10px;
 color:white;
 cursor:pointer;
-font-size:13px;
 font-weight:700;
 }
 
-.ban-btn{
+.ban-user{
 background:#ef4444;
 }
 
-.coin-btn{
+.unban-user{
 background:#22c55e;
 }
 
-@media(max-width:1200px){
-
-.dashboard-table{
-grid-template-columns:
-repeat(2,1fr);
+.image-preview{
+position:fixed;
+inset:0;
+background:#000000dd;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
+.preview-img{
+width:300px;
+height:300px;
+border-radius:20px;
+object-fit:cover;
 }
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-.dashboard-table{
-grid-template-columns:1fr;
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+z-index:999;
 }
 
-.table-top{
-flex-direction:column;
-gap:15px;
-}
-
-.search-input{
-width:100%;
-}
-
-.user-card{
-flex-direction:column;
-align-items:flex-start;
-gap:15px;
+.main-panel{
+margin-left:230px;
 }
 
 }
