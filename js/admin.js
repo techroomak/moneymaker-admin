@@ -149,8 +149,11 @@ Refer: ${data.refer || 0}
 Withdraw: ${data.withdraw || 0}
 </div>
 
-<div class="stat-box">
+<div class="stat-box
+${inactive ? "inactive-status" : "active-status"}">
+
 ${inactive ? "Inactive" : "Active"}
+
 </div>
 
 </div>
@@ -257,15 +260,31 @@ text.includes(input)
 /* TOGGLE MENU */
 /* ========================= */
 
-window.toggleMenu =(id)=>{
+wwindow.toggleMenu =(id)=>{
 
-const menu =
+const menus =
+document.querySelectorAll(
+".action-menu"
+);
+
+menus.forEach((menu)=>{
+
+if(menu.id !== `menu-${id}`){
+
+menu.style.display =
+"none";
+
+}
+
+});
+
+const current =
 document.getElementById(
 `menu-${id}`
 );
 
-menu.style.display =
-menu.style.display === "flex"
+current.style.display =
+current.style.display === "flex"
 ?
 "none"
 :
