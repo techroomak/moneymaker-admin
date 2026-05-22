@@ -1,4 +1,4 @@
-import { auth }
+import { auth 
 from "./firebase.js";
 
 import {
