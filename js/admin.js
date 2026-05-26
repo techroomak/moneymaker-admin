@@ -513,7 +513,7 @@ ${data.username || "Unknown"}
 </div>
 
 <div class="withdraw-uid">
-${data.accountName || "No Name"}
+UID: ${data.userid || "Unknown"}
 </div>
 
 </div>
