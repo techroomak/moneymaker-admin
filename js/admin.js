@@ -212,26 +212,23 @@ current.style.display === "flex"
 /* ========================= */
 /* LOAD USERS */
 /* ========================= */
+
 let usersData = [];
+
 onSnapshot(
 collection(db,"users"),
 (snapshot)=>{
 
+usersData = [];
+
 let html = "";
 
 let total = 0;
-
 let coin = 0;
-
 let withdraw = 0;
-
 let active = 0;
-
 let inactive = 0;
-
 let online = 0;
-
-usersData = [];
 
 snapshot.forEach((docSnap)=>{
 
@@ -461,17 +458,52 @@ Edit Coin
 
 });
 
+/* UPDATE DASHBOARD */
+
+userList.innerHTML =
+html;
+
+totalUsers.innerText =
+total;
+
+totalCoin.innerText =
+coin;
+
+totalWithdraw.innerText =
+withdraw;
+
+activeUsers.innerText =
+active;
+
+inactiveUsers.innerText =
+inactive;
+
+onlineUsers.innerText =
+online;
+
+}
+);
+
+/* ========================= */
+/* REALTIME STATUS */
+/* ========================= */
+
 setInterval(()=>{
 
 if(usersData.length === 0) return;
 
 let online = 0;
-
 let active = 0;
-
 let inactive = 0;
 
-usersData.forEach((data)=>{
+document
+.querySelectorAll(".user-card")
+.forEach((card,index)=>{
+
+const data =
+usersData[index];
+
+if(!data) return;
 
 const lastActive =
 data.lastActive || 0;
@@ -484,7 +516,56 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-(15000);
+(2 * 1000);
+
+const statusEl =
+card.children[4];
+
+if(statusEl){
+
+statusEl.className =
+
+data.banned
+?
+"banned-status"
+
+:
+
+isOnline
+?
+"active-status"
+
+:
+
+isInactive
+?
+"inactive-status"
+
+:
+"offline-status";
+
+statusEl.innerText =
+
+data.banned
+?
+"Banned"
+
+:
+
+isOnline
+?
+"Online"
+
+:
+
+isInactive
+?
+"Inactive"
+
+:
+"Offline";
+
+}
 
 if(isOnline){
 
@@ -513,33 +594,7 @@ active;
 inactiveUsers.innerText =
 inactive;
 
-},5000);
-/* UPDATE DASHBOARD */
-
-userList.innerHTML =
-html;
-
-totalUsers.innerText =
-total;
-
-totalCoin.innerText =
-coin;
-
-totalWithdraw.innerText =
-withdraw;
-
-activeUsers.innerText =
-active;
-
-inactiveUsers.innerText =
-inactive;
-
-onlineUsers.innerText =
-online;
-
-}
-);
-
+},1000);
 /* ========================= */
 /* SEARCH */
 /* ========================= */
