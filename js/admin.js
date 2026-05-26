@@ -171,9 +171,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-(Date.now() - lastActive)
-<
-(8 * 1000);
+data.online === true;
 
 if(isInactive){
 
@@ -280,11 +278,6 @@ ${statusText}
 <div class="stat-box">
 
 ${
-isOnline
-?
-"Online Now"
-
-:
 lastActive
 ?
 new Date(lastActive)
