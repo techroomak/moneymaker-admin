@@ -427,3 +427,238 @@ event.target.classList.add(
 );
 
 };
+
+/* ========================= */
+/* LOAD WITHDRAWS */
+/* ========================= */
+
+async function loadWithdraws(){
+
+const withdrawList =
+document.getElementById(
+"withdrawList"
+);
+
+if(!withdrawList) return;
+
+withdrawList.innerHTML = "";
+
+const snap =
+await getDocs(
+collection(db,"withdraws")
+);
+
+let html = "";
+
+let pending = 0;
+
+snap.forEach((docSnap)=>{
+
+const data =
+docSnap.data();
+
+if(data.status === "Pending"){
+
+pending++;
+
+}
+
+html += `
+
+<div class="withdraw-card">
+
+<div class="withdraw-user">
+
+<img
+class="withdraw-photo"
+src="${
+data.photo ||
+'https://telegram.org/img/t_logo.png'
+}"
+>
+
+<div>
+
+<div class="withdraw-name">
+${data.username}
+</div>
+
+<div class="withdraw-uid">
+UID: ${data.userId}
+</div>
+
+</div>
+
+</div>
+
+<div>
+${data.amount} Tk
+</div>
+
+<div>
+${data.coin} Coin
+</div>
+
+<div>
+${data.method}
+</div>
+
+<div>
+${data.accountNumber}
+</div>
+
+<div>
+
+<div class="withdraw-badge
+${
+
+data.status === "Success"
+?
+"success-badge"
+
+:
+
+data.status === "Cancelled"
+?
+"cancel-badge"
+
+:
+
+data.status === "Hold"
+?
+"hold-badge"
+
+:
+
+"pending-badge"
+
+}
+">
+
+${data.status}
+
+</div>
+
+<div class="withdraw-actions">
+
+<button
+class="approve-btn"
+onclick="
+approveWithdraw(
+'${docSnap.id}'
+)
+"
+>
+Approve
+</button>
+
+<button
+class="cancel-btn"
+onclick="
+cancelWithdraw(
+'${docSnap.id}'
+)
+"
+>
+Cancel
+</button>
+
+<button
+class="hold-btn"
+onclick="
+holdWithdraw(
+'${docSnap.id}'
+)
+"
+>
+Hold
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+withdrawList.innerHTML =
+html;
+
+const pendingEl =
+document.getElementById(
+"pendingWithdraw"
+);
+
+if(pendingEl){
+
+pendingEl.innerText =
+pending;
+
+}
+
+}
+
+loadWithdraws();
+
+/* ========================= */
+/* APPROVE */
+/* ========================= */
+
+window.approveWithdraw =
+async(id)=>{
+
+await updateDoc(
+doc(db,"withdraws",id),
+{
+status:"Success"
+}
+);
+
+loadWithdraws();
+
+alert("Withdraw Approved");
+
+};
+
+/* ========================= */
+/* CANCEL */
+/* ========================= */
+
+window.cancelWithdraw =
+async(id)=>{
+
+await updateDoc(
+doc(db,"withdraws",id),
+{
+status:"Cancelled"
+}
+);
+
+loadWithdraws();
+
+alert("Withdraw Cancelled");
+
+};
+
+/* ========================= */
+/* HOLD */
+/* ========================= */
+
+window.holdWithdraw =
+async(id)=>{
+
+await updateDoc(
+doc(db,"withdraws",id),
+{
+status:"Hold"
+}
+);
+
+loadWithdraws();
+
+alert("Withdraw Hold");
+
+};
