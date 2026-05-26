@@ -173,7 +173,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-(2 * 1000);
+(8 * 1000);
 
 if(isInactive){
 
@@ -278,16 +278,31 @@ ${statusText}
 </div>
 
 <div class="stat-box">
+
 ${
+isOnline
+?
+"Online Now"
+
+:
 lastActive
 ?
 new Date(lastActive)
 .toLocaleDateString()
 
++
+
+"\n"
+
++
+
+new Date(lastActive)
+.toLocaleTimeString()
 
 :
 "Never"
 }
+
 </div>
 
 <div class="stat-box">
