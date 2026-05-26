@@ -229,7 +229,7 @@ ${data.username || "Unknown"}
 </div>
 
 <div class="user-uid">
-UID: ${data.Id}
+${docSnap.id}
 </div>
 
 </div>
@@ -506,7 +506,7 @@ ${data.username || "Unknown"}
 </div>
 
 <div class="withdraw-uid">
-UID: ${data.userid || "Unknown"}
+UID: ${data.userId || "Unknown"}
 </div>
 
 </div>
