@@ -348,20 +348,22 @@ font-size:12px;
 #withdrawSection .withdraw-card{
 display:grid;
 grid-template-columns:
-240px
-120px
-120px
-180px
-120px
+200px
+80px
+80px
 140px
-70px;
+90px
+100px
+50px;
 align-items:center;
-gap:15px;
-padding:16px 0;
+gap:8px;
+padding:10px 0;
 border-bottom:1px solid #dbe2ea;
 width:max-content;
 min-width:100%;
+font-size:12px;
 }
+
 .withdraw-user{
 display:flex;
 align-items:center;
