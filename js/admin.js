@@ -229,7 +229,7 @@ ${data.username || "Unknown"}
 </div>
 
 <div class="user-uid">
-UID: ${data.id}
+UID: ${data.userId}
 </div>
 
 </div>
