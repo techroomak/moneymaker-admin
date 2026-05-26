@@ -118,7 +118,7 @@ activeCount++;
 const online =
 (Date.now() - lastActive)
 <
-(1 * 60 * 1000);
+(60 * 1000);
 
 if(online){
 
