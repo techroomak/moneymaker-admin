@@ -215,7 +215,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-(60 * 1000);
+(15 * 1000);
 
 if(isInactive){
 
@@ -271,16 +271,25 @@ ${data.withdraw || 0}
 ${data.refer || 0}
 </div>
 
-<div class="stat-box
+<div class="
 ${
+
+data.banned
+?
+"banned-status"
+
+:
 
 isOnline
 ?
 "active-status"
+
 :
+
 isInactive
 ?
 "inactive-status"
+
 :
 "offline-status"
 
@@ -289,13 +298,22 @@ isInactive
 
 ${
 
+data.banned
+?
+"Banned"
+
+:
+
 isOnline
 ?
 "Online"
+
 :
+
 isInactive
 ?
 "Inactive"
+
 :
 "Offline"
 
@@ -304,7 +322,14 @@ isInactive
 </div>
 
 <div class="stat-box">
-${new Date(lastActive).toLocaleString()}
+${
+lastActive
+?
+new Date(lastActive)
+.toLocaleString()
+:
+"Never"
+}
 </div>
 
 <div class="stat-box">
@@ -321,40 +346,6 @@ ${data.socialDone ? "Done" : "Pending"}
 
 <div class="stat-box">
 ${data.dailyDone ? "Done" : "Pending"}
-</div>
-
-<div class="stat-box
-${
-
-isOnline
-?
-"active-status"
-:
-isInactive
-?
-"inactive-status"
-:
-"offline-status"
-
-}
-">
-
-${
-
-isOnline
-?
-"Online"
-:
-isInactive
-?
-"Inactive"
-:
-"Offline"
-
-}
-
-</div>
-
 </div>
 
 <div class="user-actions">
@@ -385,6 +376,18 @@ ${data.banned
 
 ${data.banned ? "Unban User" : "Ban User"}
 
+</button>
+
+<button
+class="approve-btn"
+onclick="
+editCoin(
+'${data.id}',
+${data.coin || 0}
+)
+"
+>
+Edit Coin
 </button>
 
 </div>
@@ -469,8 +472,6 @@ banned:true
 }
 );
 
-alert("User Banned");
-
 };
 
 /* ========================= */
@@ -487,7 +488,29 @@ banned:false
 }
 );
 
-alert("User Unbanned");
+};
+
+/* ========================= */
+/* EDIT COIN */
+/* ========================= */
+
+window.editCoin =
+async(id,currentCoin)=>{
+
+const value =
+prompt(
+"Enter New Coin",
+currentCoin
+);
+
+if(value === null) return;
+
+await updateDoc(
+doc(db,"users",id),
+{
+coin:Number(value)
+}
+);
 
 };
 
@@ -524,7 +547,10 @@ html += `
 
 <img
 class="withdraw-photo"
-src="https://telegram.org/img/t_logo.png"
+src="${
+data.photo ||
+'https://telegram.org/img/t_logo.png'
+}"
 >
 
 <div>
@@ -557,8 +583,6 @@ ${data.accountNumber}
 ${data.method}
 </div>
 
-<div>
-
 <div class="withdraw-badge
 ${
 
@@ -589,8 +613,6 @@ ${data.status}
 
 </div>
 
-</div>
-
 <div class="user-actions">
 
 <div
@@ -611,7 +633,6 @@ onclick="
 approveWithdraw(
 '${docSnap.id}',
 '${data.userId}',
-${data.coin},
 ${data.amount}
 )
 "
@@ -667,7 +688,7 @@ pending;
 /* ========================= */
 
 window.approveWithdraw =
-async(id,userId,coin,amount)=>{
+async(id,userId,amount)=>{
 
 await updateDoc(
 doc(db,"withdraws",id),
@@ -679,7 +700,8 @@ status:"Success"
 await updateDoc(
 doc(db,"users",String(userId)),
 {
-withdraw:increment(amount)
+withdraw:increment(amount),
+pending:increment(-1)
 }
 );
 
@@ -702,7 +724,8 @@ status:"Cancelled"
 await updateDoc(
 doc(db,"users",String(userId)),
 {
-coin:increment(coin)
+coin:increment(coin),
+pending:increment(-1)
 }
 );
 
