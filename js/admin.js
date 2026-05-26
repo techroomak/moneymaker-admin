@@ -259,18 +259,68 @@ UID: ${data.id}
 
 </div>
 
-<div class="user-stats">
-
 <div class="stat-box">
-Coin: ${data.coin || 0}
+${data.coin || 0}
 </div>
 
 <div class="stat-box">
-Refer: ${data.refer || 0}
+${data.withdraw || 0}
 </div>
 
 <div class="stat-box">
-Withdraw: ${data.withdraw || 0}
+${data.refer || 0}
+</div>
+
+<div class="stat-box
+${
+
+isOnline
+?
+"active-status"
+:
+isInactive
+?
+"inactive-status"
+:
+"offline-status"
+
+}
+">
+
+${
+
+isOnline
+?
+"Online"
+:
+isInactive
+?
+"Inactive"
+:
+"Offline"
+
+}
+
+</div>
+
+<div class="stat-box">
+${new Date(lastActive).toLocaleString()}
+</div>
+
+<div class="stat-box">
+${data.pending || 0}
+</div>
+
+<div class="stat-box">
+${data.totalAds || 0}
+</div>
+
+<div class="stat-box">
+${data.socialDone ? "Done" : "Pending"}
+</div>
+
+<div class="stat-box">
+${data.dailyDone ? "Done" : "Pending"}
 </div>
 
 <div class="stat-box
