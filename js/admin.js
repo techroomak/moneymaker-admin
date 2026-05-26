@@ -222,6 +222,8 @@ ${inactive ? "Inactive" : "Active"}
 
 });
 
+});
+
 userList.innerHTML =
 html;
 
@@ -248,7 +250,9 @@ inactiveCount;
 
 onlineUsers.innerText =
 onlineCount;
+
 }
+);
 
 loadUsers();
 
