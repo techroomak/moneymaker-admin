@@ -284,14 +284,6 @@ lastActive
 new Date(lastActive)
 .toLocaleDateString()
 
-+
-
-"\n"
-
-+
-
-new Date(lastActive)
-.toLocaleTimeString()
 
 :
 "Never"
