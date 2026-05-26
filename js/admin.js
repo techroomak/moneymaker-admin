@@ -222,8 +222,6 @@ ${inactive ? "Inactive" : "Active"}
 
 });
 
-});
-
 userList.innerHTML =
 html;
 
@@ -292,7 +290,7 @@ text.includes(input)
 /* TOGGLE MENU */
 /* ========================= */
 
-wwindow.toggleMenu =(id)=>{
+window.toggleMenu =(id)=>{
 
 const menus =
 document.querySelectorAll(
@@ -455,21 +453,6 @@ let html = "";
 let pending = 0;
 
 snapshot.forEach((docSnap)=>{
-
-const data =
-docSnap.data();
-
-if(data.status === "Pending"){
-
-pending++;
-
-}
-
-let html = "";
-
-let pending = 0;
-
-snap.forEach((docSnap)=>{
 
 const data =
 docSnap.data();
