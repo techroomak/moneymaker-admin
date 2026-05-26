@@ -84,6 +84,69 @@ sectionId
 "active-section"
 );
 
+/* ACTIVE MENU */
+
+const buttons =
+document.querySelectorAll(
+".menu-btn"
+);
+
+buttons.forEach((btn)=>{
+
+btn.classList.remove(
+"active-btn"
+);
+
+});
+
+if(sectionId === "dashboardSection"){
+
+buttons[0].classList.add(
+"active-btn"
+);
+
+}
+
+if(sectionId === "usersSection"){
+
+buttons[1].classList.add(
+"active-btn"
+);
+
+}
+
+if(sectionId === "withdrawSection"){
+
+buttons[2].classList.add(
+"active-btn"
+);
+
+}
+
+if(sectionId === "taskSection"){
+
+buttons[3].classList.add(
+"active-btn"
+);
+
+}
+
+if(sectionId === "notificationSection"){
+
+buttons[4].classList.add(
+"active-btn"
+);
+
+}
+
+if(sectionId === "settingsSection"){
+
+buttons[5].classList.add(
+"active-btn"
+);
+
+}
+
 };
 
 /* ========================= */
