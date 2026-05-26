@@ -327,12 +327,13 @@ border-radius:24px;
 display:grid;
 grid-template-columns:
 200px
-80px
+70px
 80px
 140px
 90px
+140px
 100px
-50px;
+60px;
 gap:8px;
 padding:10px 0;
 font-weight:700;
@@ -349,12 +350,13 @@ font-size:12px;
 display:grid;
 grid-template-columns:
 200px
-80px
+70px
 80px
 140px
 90px
+140px
 100px
-50px;
+60px;
 align-items:center;
 gap:8px;
 padding:10px 0;
