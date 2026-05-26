@@ -83,11 +83,13 @@ Settings
 
 </div>
 
-<!-- MAIN -->
+<!-- MAIN PANEL -->
 
 <div class="main-panel">
 
+<!-- ========================= -->
 <!-- DASHBOARD -->
+<!-- ========================= -->
 
 <section
 id="dashboardSection"
@@ -139,6 +141,18 @@ Inactive Users
 <div class="stats-card">
 
 <h3>
+Online Users
+</h3>
+
+<p id="onlineUsers">
+0
+</p>
+
+</div>
+
+<div class="stats-card">
+
+<h3>
 Total Coin
 </h3>
 
@@ -176,7 +190,9 @@ Total Withdraw
 
 </section>
 
+<!-- ========================= -->
 <!-- USERS -->
+<!-- ========================= -->
 
 <section
 id="usersSection"
@@ -200,29 +216,26 @@ oninput="searchUser()"
 </div>
 
 <div class="table-box">
+
+<!-- HEADER -->
+
 <div class="table-header">
-<div>Profile</div>
-<div>Coin</div>
-<div>Amount</div>
-<div>Number</div>
-<div>Method</div>
-<div>Status</div>
-<div>Action</div>
-</div>
-<div class="table-header">
+
 <div>Profile</div>
 <div>Coin</div>
 <div>Withdraw</div>
 <div>Refer</div>
 <div>Status</div>
-<div>Action</div>
 <div>Last Active</div>
 <div>Pending</div>
 <div>Total Ads</div>
 <div>Social Task</div>
 <div>Daily Task</div>
+<div>Action</div>
 
 </div>
+
+<!-- USERS -->
 
 <div id="userList">
 
@@ -234,19 +247,9 @@ Loading...
 
 </section>
 
-<div class="stats-card">
-
-<h3>
-Online Users
-</h3>
-
-<p id="onlineUsers">
-0
-</p>
-
-</div>
-
+<!-- ========================= -->
 <!-- WITHDRAW -->
+<!-- ========================= -->
 
 <section
 id="withdrawSection"
@@ -263,6 +266,22 @@ Withdraw Requests
 
 <div class="table-box">
 
+<!-- HEADER -->
+
+<div class="table-header">
+
+<div>Profile</div>
+<div>Coin</div>
+<div>Amount</div>
+<div>Number</div>
+<div>Method</div>
+<div>Status</div>
+<div>Action</div>
+
+</div>
+
+<!-- LIST -->
+
 <div id="withdrawList">
 
 Loading...
@@ -273,7 +292,9 @@ Loading...
 
 </section>
 
-<!-- TASK -->
+<!-- ========================= -->
+<!-- TASKS -->
+<!-- ========================= -->
 
 <section
 id="taskSection"
@@ -292,7 +313,9 @@ Coming Soon
 
 </section>
 
-<!-- NOTIFICATION -->
+<!-- ========================= -->
+<!-- NOTIFICATIONS -->
+<!-- ========================= -->
 
 <section
 id="notificationSection"
@@ -311,7 +334,9 @@ Coming Soon
 
 </section>
 
+<!-- ========================= -->
 <!-- SETTINGS -->
+<!-- ========================= -->
 
 <section
 id="settingsSection"
@@ -334,6 +359,10 @@ Coming Soon
 
 </div>
 
+<!-- ========================= -->
+<!-- IMAGE PREVIEW -->
+<!-- ========================= -->
+
 <div
 id="imagePreview"
 class="image-preview"
@@ -352,4 +381,5 @@ src=""
 src="./js/admin.js"></script>
 
 </body>
+
 </html>
