@@ -212,7 +212,7 @@ current.style.display === "flex"
 /* ========================= */
 /* LOAD USERS */
 /* ========================= */
-
+let usersData = [];
 onSnapshot(
 collection(db,"users"),
 (snapshot)=>{
@@ -231,10 +231,17 @@ let inactive = 0;
 
 let online = 0;
 
+usersData = [];
+
 snapshot.forEach((docSnap)=>{
 
 const data =
 docSnap.data();
+
+usersData.push({
+id:docSnap.id,
+...data
+});
 
 total++;
 
@@ -454,6 +461,59 @@ Edit Coin
 
 });
 
+setInterval(()=>{
+
+if(usersData.length === 0) return;
+
+let online = 0;
+
+let active = 0;
+
+let inactive = 0;
+
+usersData.forEach((data)=>{
+
+const lastActive =
+data.lastActive || 0;
+
+const isInactive =
+(Date.now() - lastActive)
+>
+(30 * 60 * 60 * 1000);
+
+const isOnline =
+(Date.now() - lastActive)
+<
+(15000);
+
+if(isOnline){
+
+online++;
+
+}
+
+if(isInactive){
+
+inactive++;
+
+}else{
+
+active++;
+
+}
+
+});
+
+onlineUsers.innerText =
+online;
+
+activeUsers.innerText =
+active;
+
+inactiveUsers.innerText =
+inactive;
+
+},5000);
 /* UPDATE DASHBOARD */
 
 userList.innerHTML =
