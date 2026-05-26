@@ -661,7 +661,8 @@ loadWithdraws();
 
 alert("Withdraw Hold");
 
-});
+}
+);
 
 withdrawList.innerHTML =
 html;
