@@ -170,7 +170,7 @@ grid-template-columns:
 70px;
 align-items:center;
 gap:2px;
-padding:8px 4px;
+padding:0px 4px;
 border-bottom:1px solid #f1f5f9;
 font-size:13px;
 width:max-content;
@@ -335,7 +335,7 @@ grid-template-columns:
 90px
 70px;
 gap:2px;
-padding:7px 4px;
+padding:10px 6px;
 font-weight:700;
 color:#64748b;
 border-bottom:1px solid #dbe2ea;
@@ -360,7 +360,7 @@ grid-template-columns:
 70px;
 align-items:center;
 gap:4px;
-padding:7px 6px;
+padding:10px 6px;
 border-bottom:1px solid #dbe2ea;
 width:max-content;
 min-width:100%;
