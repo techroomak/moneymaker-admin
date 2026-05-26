@@ -324,18 +324,18 @@ border-radius:24px;
 .withdraw-card{
 display:grid;
 grid-template-columns:
-240px
-100px
-100px
-170px
-100px
+220px
 120px
-70px;
+120px
+160px
+120px
+140px
+80px;
 align-items:center;
 gap:10px;
-padding:14px;
-border-bottom:1px solid #e2e8f0;
-font-size:13px;
+padding:14px 0;
+border-bottom:1px solid #dbe2ea;
+min-width:100%;
 }
 
 .withdraw-user{
