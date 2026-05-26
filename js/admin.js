@@ -76,7 +76,7 @@ let inactiveCount = 0;
 
 let onlineCount = 0;
 
-snap.forEach((docSnap)=>{
+snapshot.forEach((docSnap)=>{
 
 const data =
 docSnap.data();
