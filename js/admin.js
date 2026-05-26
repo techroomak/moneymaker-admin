@@ -266,7 +266,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-(15 * 1000);
+(2 * 1000);
 
 if(isInactive){
 
