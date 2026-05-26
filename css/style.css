@@ -125,14 +125,25 @@ display:grid;
 grid-template-columns:
 240px
 80px
-80px
+90px
 70px
 110px
-160px
-80px
-80px
+170px
 90px
-90px;
+90px
+100px
+100px
+70px;
+align-items:center;
+gap:10px;
+padding:14px;
+background:#f8fafc;
+border-radius:14px;
+margin-bottom:10px;
+font-size:12px;
+font-weight:700;
+color:#64748b;
+border-bottom:2px solid #cbd5e1;
 }
 .table-box{
 background:white;
@@ -146,14 +157,20 @@ display:grid;
 grid-template-columns:
 240px
 80px
-80px
+90px
 70px
 110px
-160px
-80px
-80px
+170px
 90px
-90px;
+90px
+100px
+100px
+70px;
+align-items:center;
+gap:10px;
+padding:14px;
+border-bottom:1px solid #e2e8f0;
+font-size:13px;
 }
 .user-left{
 display:flex;
@@ -203,23 +220,25 @@ padding:0 12px;
 
 .action-menu{
 position:absolute;
-top:40px;
+top:35px;
 right:0;
 background:white;
 border-radius:14px;
 padding:10px;
 display:none;
 flex-direction:column;
-gap:10px;
-min-width:150px;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
+gap:8px;
+min-width:170px;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+z-index:999;
 }
 
 .action-menu button{
 border:none;
-padding:12px;
-border-radius:12px;
+padding:10px;
+border-radius:10px;
 cursor:pointer;
+font-size:13px;
 font-weight:700;
 color:white;
 }
@@ -246,8 +265,35 @@ color:white;
 display:none;
 }
 
-.active-section{
-display:block;
+.active-status,
+.inactive-status,
+.offline-status,
+.banned-status{
+
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
+font-weight:700;
+width:max-content;
+color:white;
+text-align:center;
+
+}
+
+.active-status{
+background:#22c55e;
+}
+
+.offline-status{
+background:#f59e0b;
+}
+
+.inactive-status{
+background:#ef4444;
+}
+
+.banned-status{
+background:#111827;
 }
 
 .image-preview{
@@ -364,8 +410,16 @@ background:#ef4444;
 background:#3b82f6;
 }
 
-.offline-status{
-background:#f59e0b;
-color:white;
+.user-actions{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
+.menu-dot{
+font-size:24px;
+cursor:pointer;
+font-weight:700;
+line-height:1;
+}
