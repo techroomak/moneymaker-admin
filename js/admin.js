@@ -529,6 +529,10 @@ ${data.amount || 0} Tk
 </div>
 
 <div>
+${data.accountName || "No Name"}
+</div>
+
+<div>
 ${data.accountNumber || "No Number"}
 </div>
 
