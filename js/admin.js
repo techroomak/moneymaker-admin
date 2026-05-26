@@ -99,7 +99,8 @@ earn +=
 data.dailyEarn || 0;
 
 const lastActive =
-data.lastActive || 0;
+data.lastActive ||
+Date.now();
 
 const inactive =
 (Date.now() - lastActive)
