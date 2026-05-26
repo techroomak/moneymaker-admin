@@ -329,12 +329,13 @@ grid-template-columns:
 170px
 55px
 70px
-100px
 90px
+110px
+80px
 120px
 90px
 70px;
-gap:2px;
+gap:5px;
 padding:10px 6px;
 font-weight:700;
 color:#64748b;
@@ -353,13 +354,14 @@ grid-template-columns:
 170px
 55px
 70px
-100px
 90px
+110px
+80px
 120px
 90px
 70px;
 align-items:center;
-gap:4px;
+gap:5px;
 padding:10px 6px;
 border-bottom:1px solid #dbe2ea;
 width:max-content;
