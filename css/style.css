@@ -120,6 +120,20 @@ outline:none;
 box-shadow:0 4px 12px rgba(0,0,0,.05);
 }
 
+.table-header{
+display:grid;
+grid-template-columns:
+240px
+80px
+80px
+70px
+110px
+160px
+80px
+80px
+90px
+90px;
+
 .table-box{
 background:white;
 padding:20px;
@@ -130,23 +144,16 @@ overflow:auto;
 .user-card{
 display:grid;
 grid-template-columns:
-260px
-90px
-90px
-90px
-120px
-140px
-120px
+240px
+80px
+80px
+70px
 110px
-110px
+160px
+80px
+80px
 90px
-70px;
-align-items:center;
-gap:10px;
-padding:12px 14px;
-border-bottom:1px solid #e2e8f0;
-font-size:13px;
-min-width:100%;
+90px;
 }
 .user-left{
 display:flex;
@@ -362,27 +369,3 @@ background:#f59e0b;
 color:white;
 }
 
-.table-header{
-display:grid;
-grid-template-columns:
-260px
-90px
-90px
-90px
-120px
-140px
-120px
-110px
-110px
-90px
-70px;
-gap:10px;
-padding:12px 14px;
-background:#f8fafc;
-border-radius:14px;
-margin-bottom:10px;
-font-size:12px;
-font-weight:700;
-color:#64748b;
-text-transform:uppercase;
-}
