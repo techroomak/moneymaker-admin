@@ -269,7 +269,6 @@ display:none;
 .inactive-status,
 .offline-status,
 .banned-status{
-
 padding:8px 14px;
 border-radius:30px;
 font-size:12px;
@@ -316,17 +315,18 @@ border-radius:24px;
 .withdraw-card{
 display:grid;
 grid-template-columns:
-220px
+240px
+100px
+100px
+170px
+100px
 120px
-120px
-160px
-140px
-100px;
+70px;
 align-items:center;
-gap:14px;
-padding:16px;
+gap:10px;
+padding:14px;
 border-bottom:1px solid #e2e8f0;
-min-width:1100px;
+font-size:13px;
 }
 
 .withdraw-user{
