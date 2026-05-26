@@ -1,11 +1,9 @@
-import { db }
-from "./firebase.js";
-
 import {
 collection,
 getDocs,
 doc,
-updateDoc
+updateDoc,
+onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -56,10 +54,9 @@ document.getElementById(
 "onlineUsers"
 );
 
-const snap =
-await getDocs(
-collection(db,"users")
-);
+onSnapshot(
+collection(db,"users"),
+(snapshot)=>{
 
 let html = "";
 
@@ -443,10 +440,26 @@ if(!withdrawList) return;
 
 withdrawList.innerHTML = "";
 
-const snap =
-await getDocs(
-collection(db,"withdraws")
-);
+onSnapshot(
+collection(db,"withdraws"),
+(snapshot)=>{
+
+withdrawList.innerHTML = "";
+
+let html = "";
+
+let pending = 0;
+
+snapshot.forEach((docSnap)=>{
+
+const data =
+docSnap.data();
+
+if(data.status === "Pending"){
+
+pending++;
+
+}
 
 let html = "";
 
@@ -661,4 +674,22 @@ loadWithdraws();
 
 alert("Withdraw Hold");
 
-};
+});
+
+withdrawList.innerHTML =
+html;
+
+const pendingEl =
+document.getElementById(
+"pendingWithdraw"
+);
+
+if(pendingEl){
+
+pendingEl.innerText =
+pending;
+
+}
+
+}
+);
