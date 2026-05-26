@@ -307,7 +307,17 @@ ${
 lastActive
 ?
 new Date(lastActive)
-.toLocaleString()
+.toLocaleDateString()
+
++
+
+'\n'
+
++
+
+new Date(lastActive)
+.toLocaleTimeString()
+
 :
 "Never"
 }
