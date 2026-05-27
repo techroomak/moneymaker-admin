@@ -171,9 +171,9 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-(Date.now() - (data.lastActive || 0))
+(Date.now() - lastActive)
 <
-15000;
+10000;
 
 if(isInactive){
 
@@ -713,36 +713,3 @@ status:"Hold"
 
 };
 
-/* LIVE STATUS */
-
-setInterval(()=>{
-
-document
-.querySelectorAll(".user-card")
-.forEach((card)=>{
-
-const lastActive =
-Number(
-card.dataset.lastactive
-);
-
-const statusEl =
-card.querySelector(".live-status");
-
-if(!statusEl) return;
-
-const isOnline =
-(Date.now() - lastActive)
-<
-15000;
-
-statusEl.innerText =
-isOnline
-?
-"Online"
-:
-"Offline";
-
-});
-
-},3000);
