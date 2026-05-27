@@ -312,6 +312,10 @@ ${data.totalAds || 0}
 </div>
 
 <div class="stat-box">
+${data.dailyAds || 0}
+</div>
+
+<div class="stat-box">
 ${data.socialDone ? "Done" : "Pending"}
 </div>
 
