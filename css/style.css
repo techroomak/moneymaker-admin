@@ -146,7 +146,7 @@ margin-bottom:10px;
 font-size:12px;
 font-weight:700;
 color:#64748b;
-border-bottom:1px solid #f1f5f9;
+border-bottom:1px solid #687582;
 }
 .table-box{
 background:white;
@@ -173,7 +173,7 @@ grid-template-columns:
 align-items:center;
 gap:2px;
 padding:0px 4px;
-border-bottom:1px solid #f1f5f9;
+border-bottom:1px solid #687582;
 font-size:13px;
 width:max-content;
 min-width:100%;
