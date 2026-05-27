@@ -171,7 +171,9 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-data.online === true;
+(Date.now() - (data.lastActive || 0))
+<
+15000;
 
 if(isInactive){
 
@@ -318,13 +320,13 @@ ${data.dailyDone ? "Done" : "Pending"}
 
 <div
 class="menu-dot"
-onclick="toggleMenu('${data.id}')"
+onclick="toggleMenu('${docSnap.id}')"
 >
 ⋮
 </div>
 
 <div
-id="menu-${data.id}"
+id="menu-${docSnap.id}"
 class="action-menu"
 >
 
@@ -333,9 +335,9 @@ class="${data.banned ? "unban-user" : "ban-user"}"
 onclick="
 ${data.banned
 ?
-`unbanUser('${data.id}')`
+`unbanUser('${docSnap.id}')`
 :
-`banUser('${data.id}')`
+`banUser('${docSnap.id}')`
 }
 "
 >
@@ -348,7 +350,7 @@ ${data.banned ? "Unban User" : "Ban User"}
 class="approve-btn"
 onclick="
 editCoin(
-'${data.id}',
+'${docSnap.id}',
 ${data.coin || 0}
 )
 "
