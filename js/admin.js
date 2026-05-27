@@ -713,3 +713,38 @@ status:"Hold"
 
 };
 
+setInterval(()=>{
+
+document
+.querySelectorAll(".user-card")
+.forEach((card)=>{
+
+const lastActive =
+Number(
+card.dataset.lastactive
+);
+
+const status =
+card.querySelector(".live-status");
+
+if(!status) return;
+
+const isOnline =
+(Date.now() - lastActive)
+<
+7000;
+
+if(status.innerText !== "Banned"){
+
+status.innerText =
+isOnline
+?
+"Online"
+:
+"Offline";
+
+}
+
+});
+
+},2000);
