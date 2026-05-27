@@ -720,28 +720,71 @@ document
 .forEach((card)=>{
 
 const lastActive =
-Number(
-card.dataset.lastactive
-);
+Number(card.dataset.lastactive);
 
 const status =
 card.querySelector(".live-status");
 
 if(!status) return;
 
+/* BANNED SKIP */
+
+if(
+status.classList.contains("banned-status")
+){
+return;
+}
+
+const isInactive =
+(Date.now() - lastActive)
+>
+(30 * 60 * 60 * 1000);
+
 const isOnline =
 (Date.now() - lastActive)
 <
 7000;
 
-if(status.innerText !== "Banned"){
+/* REMOVE OLD CLASS */
+
+status.classList.remove(
+"active-status",
+"offline-status",
+"inactive-status"
+);
+
+/* APPLY */
+
+if(isInactive){
 
 status.innerText =
-isOnline
-?
-"Online"
-:
+"Inactive";
+
+status.classList.add(
+"inactive-status"
+);
+
+}
+
+else if(isOnline){
+
+status.innerText =
+"Online";
+
+status.classList.add(
+"active-status"
+);
+
+}
+
+else{
+
+status.innerText =
 "Offline";
+
+status.classList.add(
+"offline-status"
+);
 
 }
 
