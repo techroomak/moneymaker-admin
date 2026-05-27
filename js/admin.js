@@ -214,7 +214,10 @@ isInactive
 
 html += `
 
-<div class="user-card">
+<div
+class="user-card"
+data-lastactive="${lastActive}"
+>
 
 <div class="user-left">
 
@@ -250,7 +253,7 @@ ${data.withdraw || 0}
 ${data.refer || 0}
 </div>
 
-<div class="
+<div class="live-status
 ${
 
 data.banned
@@ -709,3 +712,34 @@ status:"Hold"
 );
 
 };
+setInterval(()=>{
+
+document
+.querySelectorAll(".user-card")
+.forEach((card)=>{
+
+const lastActive =
+Number(
+card.dataset.lastactive
+);
+
+const statusEl =
+card.querySelector(".live-status");
+
+if(!statusEl) return;
+
+const isOnline =
+(Date.now() - lastActive)
+<
+15000;
+
+statusEl.innerText =
+isOnline
+?
+"Online"
+:
+"Offline";
+
+});
+
+},3000);
