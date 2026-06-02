@@ -858,6 +858,20 @@ data.ad4Limit || 10;
 document.getElementById("ads").value =
 String(data.ads);
 
+/* ads zone */
+
+document.getElementById("ad1Zone").value =
+data.ad1Zone || "";
+
+document.getElementById("ad2Zone").value =
+data.ad2Zone || "";
+
+document.getElementById("ad3Zone").value =
+data.ad3Zone || "";
+
+document.getElementById("ad4Zone").value =
+data.ad4Zone || "";
+
 /* WITHDRAW */
 
 document.getElementById("minWithdrawCoin").value =
@@ -1003,6 +1017,19 @@ document.getElementById("ad4Limit").value
 
 ads:
 document.getElementById("ads").value === "true",
+/* Ads Zone ID */
+
+ad1Zone:
+document.getElementById("ad1Zone").value,
+
+ad2Zone:
+document.getElementById("ad2Zone").value,
+
+ad3Zone:
+document.getElementById("ad3Zone").value,
+
+ad4Zone:
+document.getElementById("ad4Zone").value,
 
 /* WITHDRAW */
 
