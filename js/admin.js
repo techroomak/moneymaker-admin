@@ -839,6 +839,8 @@ data.registrationBonus || 5;
 document.getElementById("referBonus").value =
 data.referBonus || 10;
 
+document.getElementById("coinRate").value =
+data.coinRate || 10;
 /* ADS */
 
 document.getElementById("ad1Limit").value =
@@ -971,6 +973,10 @@ document.getElementById("ad4Reward").value
 
 registrationBonus:Number(
 document.getElementById("registrationBonus").value
+),
+
+coinRate:Number(
+document.getElementById("coinRate").value
 ),
 
 referBonus:Number(
