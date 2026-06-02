@@ -796,3 +796,64 @@ status.classList.add(
 });
 
 },2000);
+
+/* ========================= */
+/* SETTINGS */
+/* ========================= */
+
+const settingsRef =
+doc(db,"settings","app");
+
+async function loadSettings(){
+
+const snap =
+await getDoc(settingsRef);
+
+const data =
+snap.data();
+
+if(!data) return;
+
+document.getElementById("ad1Reward").value =
+data.ad1Reward || 0;
+
+document.getElementById("ad2Reward").value =
+data.ad2Reward || 0;
+
+document.getElementById("ad3Reward").value =
+data.ad3Reward || 0;
+
+document.getElementById("ad4Reward").value =
+data.ad4Reward || 0;
+
+document.getElementById("ad1Limit").value =
+data.ad1Limit || 25;
+
+document.getElementById("ad2Limit").value =
+data.ad2Limit || 20;
+
+document.getElementById("ad3Limit").value =
+data.ad3Limit || 15;
+
+document.getElementById("ad4Limit").value =
+data.ad4Limit || 10;
+
+document.getElementById("minWithdrawCoin").value =
+data.minWithdrawCoin || 1000;
+
+document.getElementById("minReferForWithdraw").value =
+data.minReferForWithdraw || 5;
+
+document.getElementById("minWithdraw").value =
+data.minWithdraw || 500;
+
+document.getElementById("maxWithdraw").value =
+data.maxWithdraw || 1000;
+
+document.getElementById("notice").value =
+data.notice || "";
+
+}
+
+loadSettings();
+
