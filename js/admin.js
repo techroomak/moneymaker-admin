@@ -857,3 +857,64 @@ data.notice || "";
 
 loadSettings();
 
+window.saveSettings =
+async()=>{
+
+await updateDoc(settingsRef,{
+
+ad1Reward:Number(
+document.getElementById("ad1Reward").value
+),
+
+ad2Reward:Number(
+document.getElementById("ad2Reward").value
+),
+
+ad3Reward:Number(
+document.getElementById("ad3Reward").value
+),
+
+ad4Reward:Number(
+document.getElementById("ad4Reward").value
+),
+
+ad1Limit:Number(
+document.getElementById("ad1Limit").value
+),
+
+ad2Limit:Number(
+document.getElementById("ad2Limit").value
+),
+
+ad3Limit:Number(
+document.getElementById("ad3Limit").value
+),
+
+ad4Limit:Number(
+document.getElementById("ad4Limit").value
+),
+
+minWithdrawCoin:Number(
+document.getElementById("minWithdrawCoin").value
+),
+
+minReferForWithdraw:Number(
+document.getElementById("minReferForWithdraw").value
+),
+
+minWithdraw:Number(
+document.getElementById("minWithdraw").value
+),
+
+maxWithdraw:Number(
+document.getElementById("maxWithdraw").value
+),
+
+notice:
+document.getElementById("notice").value
+
+});
+
+alert("Settings Saved");
+
+};
