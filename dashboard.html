@@ -342,32 +342,81 @@ Loading....
 id="settingsSection"
 class="content-section">
 
-<h2>App Settings</h2>
+<h1 class="page-title">
+⚙️ App Settings
+</h1>
 
-<input id="ad1Reward" placeholder="Ad1 Reward">
-<input id="ad2Reward" placeholder="Ad2 Reward">
-<input id="ad3Reward" placeholder="Ad3 Reward">
-<input id="ad4Reward" placeholder="Ad4 Reward">
+<div class="settings-grid">
 
-<input id="ad1Limit" placeholder="Ad1 Limit">
-<input id="ad2Limit" placeholder="Ad2 Limit">
-<input id="ad3Limit" placeholder="Ad3 Limit">
-<input id="ad4Limit" placeholder="Ad4 Limit">
+<div class="settings-card">
+<h3>🎁 Ad Rewards</h3>
 
-<input id="minWithdrawCoin" placeholder="Min Withdraw Coin">
-<input id="minReferForWithdraw" placeholder="Min Refer">
+<label>Ad 1 Reward</label>
+<input id="ad1Reward" class="setting-input">
 
-<input id="minWithdraw" placeholder="Min Withdraw">
-<input id="maxWithdraw" placeholder="Max Withdraw">
+<label>Ad 2 Reward</label>
+<input id="ad2Reward" class="setting-input">
 
-<textarea id="notice"></textarea>
+<label>Ad 3 Reward</label>
+<input id="ad3Reward" class="setting-input">
 
-<button onclick="saveSettings()">
-Save Settings
+<label>Ad 4 Reward</label>
+<input id="ad4Reward" class="setting-input">
+</div>
+
+<div class="settings-card">
+<h3>📺 Ad Limits</h3>
+
+<label>Ad 1 Limit</label>
+<input id="ad1Limit" class="setting-input">
+
+<label>Ad 2 Limit</label>
+<input id="ad2Limit" class="setting-input">
+
+<label>Ad 3 Limit</label>
+<input id="ad3Limit" class="setting-input">
+
+<label>Ad 4 Limit</label>
+<input id="ad4Limit" class="setting-input">
+</div>
+
+<div class="settings-card">
+<h3>💰 Withdraw</h3>
+
+<label>Min Coin</label>
+<input id="minWithdrawCoin" class="setting-input">
+
+<label>Min Refer</label>
+<input id="minReferForWithdraw" class="setting-input">
+
+<label>Min Withdraw</label>
+<input id="minWithdraw" class="setting-input">
+
+<label>Max Withdraw</label>
+<input id="maxWithdraw" class="setting-input">
+</div>
+
+<div class="settings-card">
+<h3>📢 Notice</h3>
+
+<textarea
+id="notice"
+class="setting-textarea">
+</textarea>
+
+<button
+class="save-settings-btn"
+onclick="saveSettings()">
+
+💾 Save Settings
+
 </button>
 
-</section>
+</div>
 
+</div>
+
+</section>
 <!-- ========================= -->
 <!-- IMAGE PREVIEW -->
 <!-- ========================= -->
