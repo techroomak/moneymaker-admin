@@ -858,6 +858,36 @@ data.maxWithdraw || 1000;
 document.getElementById("notice").value =
 data.notice || "";
 
+document.getElementById("registrationBonus").value =
+data.registrationBonus || 5;
+
+document.getElementById("referBonus").value =
+data.referBonus || 10;
+
+document.getElementById("rechargeMin").value =
+data.rechargeMin || 20;
+
+document.getElementById("rechargeMax").value =
+data.rechargeMax || 100;
+
+document.getElementById("dailyWithdrawLimit").value =
+data.dailyWithdrawLimit || 3;
+
+document.getElementById("ads").value =
+String(data.ads);
+
+document.getElementById("withdraw").value =
+String(data.withdraw);
+
+document.getElementById("maintenance").value =
+String(data.maintenance);
+
+document.getElementById("dailyTask").value =
+String(data.dailyTask);
+
+document.getElementById("socialTask").value =
+String(data.socialTask);
+
 }
 
 loadSettings();
@@ -951,6 +981,41 @@ notice:
 document.getElementById("notice").value
 
 });
+
+registrationBonus:Number(
+document.getElementById("registrationBonus").value
+),
+
+referBonus:Number(
+document.getElementById("referBonus").value
+),
+
+rechargeMin:Number(
+document.getElementById("rechargeMin").value
+),
+
+rechargeMax:Number(
+document.getElementById("rechargeMax").value
+),
+
+dailyWithdrawLimit:Number(
+document.getElementById("dailyWithdrawLimit").value
+),
+
+ads:
+document.getElementById("ads").value === "true",
+
+withdraw:
+document.getElementById("withdraw").value === "true",
+
+maintenance:
+document.getElementById("maintenance").value === "true",
+
+dailyTask:
+document.getElementById("dailyTask").value === "true",
+
+socialTask:
+document.getElementById("socialTask").value === "true",
 
 saveBtn.innerHTML =
 "✅ Saved";
