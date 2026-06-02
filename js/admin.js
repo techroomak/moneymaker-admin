@@ -804,6 +804,11 @@ status.classList.add(
 const settingsRef =
 doc(db,"settings","app");
 
+const saveBtn =
+document.getElementById(
+"saveSettingsBtn"
+);
+
 async function loadSettings(){
 
 const snap =
@@ -857,8 +862,40 @@ data.notice || "";
 
 loadSettings();
 
+/* CHANGE DETECT */
+
+document
+.querySelectorAll(
+"#settingsSection input, #settingsSection textarea"
+)
+.forEach((field)=>{
+
+field.addEventListener("input",()=>{
+
+saveBtn.disabled = false;
+
+saveBtn.classList.remove(
+"disabled-save"
+);
+
+saveBtn.classList.add(
+"active-save"
+);
+
+saveBtn.innerHTML =
+"💾 Save Changes";
+
+});
+
+});
+
+/* SAVE */
+
 window.saveSettings =
 async()=>{
+
+saveBtn.innerHTML =
+"⏳ Saving...";
 
 await updateDoc(settingsRef,{
 
@@ -915,9 +952,9 @@ document.getElementById("notice").value
 
 });
 
-alert("Settings Saved");
+saveBtn.innerHTML =
+"✅ Saved";
 
-};
 saveBtn.disabled = true;
 
 saveBtn.classList.remove(
@@ -927,3 +964,12 @@ saveBtn.classList.remove(
 saveBtn.classList.add(
 "disabled-save"
 );
+
+setTimeout(()=>{
+
+saveBtn.innerHTML =
+"💾 Save Settings";
+
+},2000);
+
+};
