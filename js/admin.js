@@ -918,3 +918,12 @@ document.getElementById("notice").value
 alert("Settings Saved");
 
 };
+saveBtn.disabled = true;
+
+saveBtn.classList.remove(
+"active-save"
+);
+
+saveBtn.classList.add(
+"disabled-save"
+);
