@@ -814,10 +814,12 @@ async function loadSettings(){
 const snap =
 await getDoc(settingsRef);
 
+if(!snap.exists()) return;
+
 const data =
 snap.data();
 
-if(!data) return;
+/* REWARDS */
 
 document.getElementById("ad1Reward").value =
 data.ad1Reward || 0;
@@ -831,6 +833,14 @@ data.ad3Reward || 0;
 document.getElementById("ad4Reward").value =
 data.ad4Reward || 0;
 
+document.getElementById("registrationBonus").value =
+data.registrationBonus || 5;
+
+document.getElementById("referBonus").value =
+data.referBonus || 10;
+
+/* ADS */
+
 document.getElementById("ad1Limit").value =
 data.ad1Limit || 25;
 
@@ -842,6 +852,11 @@ data.ad3Limit || 15;
 
 document.getElementById("ad4Limit").value =
 data.ad4Limit || 10;
+
+document.getElementById("ads").value =
+String(data.ads);
+
+/* WITHDRAW */
 
 document.getElementById("minWithdrawCoin").value =
 data.minWithdrawCoin || 1000;
@@ -855,15 +870,6 @@ data.minWithdraw || 500;
 document.getElementById("maxWithdraw").value =
 data.maxWithdraw || 1000;
 
-document.getElementById("notice").value =
-data.notice || "";
-
-document.getElementById("registrationBonus").value =
-data.registrationBonus || 5;
-
-document.getElementById("referBonus").value =
-data.referBonus || 10;
-
 document.getElementById("rechargeMin").value =
 data.rechargeMin || 20;
 
@@ -873,11 +879,10 @@ data.rechargeMax || 100;
 document.getElementById("dailyWithdrawLimit").value =
 data.dailyWithdrawLimit || 3;
 
-document.getElementById("ads").value =
-String(data.ads);
-
 document.getElementById("withdraw").value =
 String(data.withdraw);
+
+/* SYSTEM */
 
 document.getElementById("maintenance").value =
 String(data.maintenance);
@@ -888,19 +893,32 @@ String(data.dailyTask);
 document.getElementById("socialTask").value =
 String(data.socialTask);
 
+/* NOTICE */
+
+document.getElementById("notice").value =
+data.notice || "";
+
 }
 
 loadSettings();
 
+/* ========================= */
 /* CHANGE DETECT */
+/* ========================= */
 
 document
 .querySelectorAll(
-"#settingsSection input, #settingsSection textarea"
+"#settingsSection input, #settingsSection textarea, #settingsSection select"
 )
 .forEach((field)=>{
 
-field.addEventListener("input",()=>{
+field.addEventListener("input",enableSave);
+
+field.addEventListener("change",enableSave);
+
+});
+
+function enableSave(){
 
 saveBtn.disabled = false;
 
@@ -915,19 +933,25 @@ saveBtn.classList.add(
 saveBtn.innerHTML =
 "💾 Save Changes";
 
-});
+}
 
-});
-
-/* SAVE */
+/* ========================= */
+/* SAVE SETTINGS */
+/* ========================= */
 
 window.saveSettings =
 async()=>{
 
+try{
+
 saveBtn.innerHTML =
 "⏳ Saving...";
 
+saveBtn.disabled = true;
+
 await updateDoc(settingsRef,{
+
+/* REWARDS */
 
 ad1Reward:Number(
 document.getElementById("ad1Reward").value
@@ -945,6 +969,16 @@ ad4Reward:Number(
 document.getElementById("ad4Reward").value
 ),
 
+registrationBonus:Number(
+document.getElementById("registrationBonus").value
+),
+
+referBonus:Number(
+document.getElementById("referBonus").value
+),
+
+/* ADS */
+
 ad1Limit:Number(
 document.getElementById("ad1Limit").value
 ),
@@ -960,6 +994,11 @@ document.getElementById("ad3Limit").value
 ad4Limit:Number(
 document.getElementById("ad4Limit").value
 ),
+
+ads:
+document.getElementById("ads").value === "true",
+
+/* WITHDRAW */
 
 minWithdrawCoin:Number(
 document.getElementById("minWithdrawCoin").value
@@ -977,19 +1016,6 @@ maxWithdraw:Number(
 document.getElementById("maxWithdraw").value
 ),
 
-notice:
-document.getElementById("notice").value
-
-});
-
-registrationBonus:Number(
-document.getElementById("registrationBonus").value
-),
-
-referBonus:Number(
-document.getElementById("referBonus").value
-),
-
 rechargeMin:Number(
 document.getElementById("rechargeMin").value
 ),
@@ -1002,11 +1028,10 @@ dailyWithdrawLimit:Number(
 document.getElementById("dailyWithdrawLimit").value
 ),
 
-ads:
-document.getElementById("ads").value === "true",
-
 withdraw:
 document.getElementById("withdraw").value === "true",
+
+/* SYSTEM */
 
 maintenance:
 document.getElementById("maintenance").value === "true",
@@ -1017,10 +1042,15 @@ document.getElementById("dailyTask").value === "true",
 socialTask:
 document.getElementById("socialTask").value === "true",
 
+/* NOTICE */
+
+notice:
+document.getElementById("notice").value
+
+});
+
 saveBtn.innerHTML =
 "✅ Saved";
-
-saveBtn.disabled = true;
 
 saveBtn.classList.remove(
 "active-save"
@@ -1036,5 +1066,16 @@ saveBtn.innerHTML =
 "💾 Save Settings";
 
 },2000);
+
+}catch(err){
+
+console.error(err);
+
+saveBtn.disabled = false;
+
+saveBtn.innerHTML =
+"❌ Error";
+
+}
 
 };
