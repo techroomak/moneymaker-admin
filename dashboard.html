@@ -311,98 +311,37 @@ Task Management
 
 <div class="settings-card task-card">
 
-<h3>📅 Daily Tasks</h3>
+<h3>📅 Website Visit Task</h3>
 
 <div class="task-list">
 
 <div class="task-row">
+
 <span id="dailyTask1Name">
-Task 1 </span>
-<label class="switch">
-<input
-type="checkbox"
-id="dailyTask1Enabled" checked >
-<span class="slider"></span>
-</label>
-<button onclick="editDailyTask(1)">🖊️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask2Name">
-Task 2
+Website Visit Task
 </span>
+
 <label class="switch">
 <input
 type="checkbox"
-id="dailyTask2Enabled"
+id="dailyTask1Enabled"
 checked
 >
 <span class="slider"></span>
 </label>
-<button onclick="editDailyTask(2)">🖊️</button>
+
+<button
+onclick="editDailyTask(1)"
+>
+🖊️
+</button>
+
 </div>
 
-<div class="task-row">
-<span id="dailyTask3Name">
-Task 3
-</span>
-<label class="switch">
-<input
-type="checkbox"
-id="dailyTask3Enabled"
-checked
->
-<span class="slider"></span>
-</label>
-<button onclick="editDailyTask(3)">🖊️</button>
 </div>
 
-<div class="task-row">
-<span id="dailyTask4Name">
-Task 4
-</span>
-<label class="switch">
-<input
-type="checkbox"
-id="dailyTask4Enabled"
-checked
->
-<span class="slider"></span>
-</label>
-<button onclick="editDailyTask(4)">🖊️</button>
 </div>
 
-<div class="task-row">
-<span id="dailyTask5Name">
-Task 5
-</span>
-<label class="switch">
-<input
-type="checkbox"
-id="dailyTask5Enabled"
-checked
->
-<span class="slider"></span>
-</label>
-<button onclick="editDailyTask(5)">🖊️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask6Name">
-Task 6
-</span>
-<label class="switch">
-<input
-type="checkbox"
-id="dailyTask6Enabled"
-checked
->
-<span class="slider"></span>
-</label>
-<button onclick="editDailyTask(6)">🖊️</button>
-</div>
-</div>
-</div>
 
 <!-- Social Task Card -->
 
@@ -727,44 +666,44 @@ class="setting-input"
 type="text"
 />
 
-<label>Link 1</label>
+<!-- DAILY TASK ONLY -->
+
+<div id="dailyTaskFields">
+
+<label>Daily Limit</label>
 <input
-id="taskLink1"
+id="taskDailyLimit"
 class="setting-input"
-type="text"
-placeholder="https://"
+type="number"
+value="1"
 />
+
+<label>Link 1</label>
+<input id="taskLink1" class="setting-input" type="text">
 
 <label>Link 2</label>
-<input
-id="taskLink2"
-class="setting-input"
-type="text"
-placeholder="https://"
-/>
+<input id="taskLink2" class="setting-input" type="text">
 
 <label>Link 3</label>
-<input
-id="taskLink3"
-class="setting-input"
-type="text"
-placeholder="https://"
-/>
+<input id="taskLink3" class="setting-input" type="text">
 
 <label>Link 4</label>
-<input
-id="taskLink4"
-class="setting-input"
-type="text"
-placeholder="https://"
-/>
+<input id="taskLink4" class="setting-input" type="text">
 
 <label>Link 5</label>
+<input id="taskLink5" class="setting-input" type="text">
+
+</div>
+
+<!-- SOCIAL TASK ONLY -->
+
+<div id="socialTaskFields">
+
+<label>Task Link</label>
 <input
-id="taskLink5"
+id="taskLink"
 class="setting-input"
 type="text"
-placeholder="https://"
 />
 
 <label>Logo URL</label>
@@ -773,6 +712,8 @@ id="taskLogo"
 class="setting-input"
 type="text"
 />
+
+</div>
 
 <label>Reward</label>
 <input
@@ -794,7 +735,7 @@ disabled
 onclick="closeTaskModal()"
 class="close-task-btn"
 >
- ❌ Close
+❌ Close
 </button>
 
 </div>
