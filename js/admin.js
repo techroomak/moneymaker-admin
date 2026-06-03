@@ -1168,6 +1168,20 @@ saveBtn.innerHTML =
 let currentTaskType = "";
 let currentTaskId = 0;
 
+const taskSaveBtn =
+document.getElementById(
+"saveTaskBtn"
+);
+
+function enableTaskSave(){
+
+taskSaveBtn.disabled = false;
+
+taskSaveBtn.innerHTML =
+"💾 Save Task";
+
+}
+
 window.editDailyTask = (id)=>{
 
 currentTaskType = "daily";
@@ -1196,6 +1210,17 @@ task.reward || 0;
 
 document.getElementById("taskLogo").value =
 "";
+
+document
+.querySelectorAll(
+"#taskModal input"
+)
+.forEach((input)=>{
+
+input.oninput =
+enableTaskSave;
+
+});
 
 };
 
@@ -1227,6 +1252,35 @@ task.reward || 0;
 
 document.getElementById("taskLogo").value =
 task.logo || "";
+
+document
+.querySelectorAll(
+"#taskModal input"
+)
+.forEach((input)=>{
+
+input.oninput =
+enableTaskSave;
+
+});
+
+};
+
+window.saveTaskModal = ()=>{
+
+closeTaskModal();
+
+taskSaveBtn.disabled = true;
+
+taskSaveBtn.innerHTML =
+"✅ Saved";
+
+setTimeout(()=>{
+
+taskSaveBtn.innerHTML =
+"💾 Save Task";
+
+},1500);
 
 };
 
