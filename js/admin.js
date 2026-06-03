@@ -916,6 +916,45 @@ data.notice || "";
 
 }
 
+/* task edit */
+for(let i=1;i<=6;i++){
+
+const dTask =
+dailyTasks[`task${i}`];
+
+if(
+dTask &&
+document.getElementById(
+`dailyTask${i}Name`
+)
+){
+
+document.getElementById(
+`dailyTask${i}Name`
+).innerText =
+dTask.name || `Task ${i}`;
+
+}
+
+const sTask =
+socialTasks[`task${i}`];
+
+if(
+sTask &&
+document.getElementById(
+`socialTask${i}Name`
+)
+){
+
+document.getElementById(
+`socialTask${i}Name`
+).innerText =
+sTask.name || `Social ${i}`;
+
+}
+
+}
+
 loadSettings();
 
 /* ========================= */
