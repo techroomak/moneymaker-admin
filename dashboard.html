@@ -302,12 +302,133 @@ class="content-section"
 >
 
 <h1 class="page-title">
-Tasks
+Task Management
 </h1>
 
-<div class="table-box">
+<div class="settings-grid">
 
-Coming Soon
+<!-- Daily Task Card -->
+
+<div class="settings-card task-card">
+
+<h3>📅 Daily Tasks</h3>
+
+<div class="task-list">
+
+<div class="task-row">
+<span id="dailyTask1Name">
+Task 1 </span>
+<select id="dailyTask1Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(1)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="dailyTask2Name">
+Task 2
+</span>
+<select id="dailyTask2Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(2)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="dailyTask3Name">
+Task 3
+</span>
+<select id="dailyTask3Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(3)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="dailyTask4Name">
+Task 4
+</span>
+<select id="dailyTask4Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(4)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="dailyTask5Name">
+Task 5
+</span>
+<select id="dailyTask5Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(5)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="dailyTask6Name">
+Task 6
+</span>
+<select id="dailyTask6Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editDailyTask(6)">✏️</button>
+</div>
+</div>
+</div>
+
+<!-- Social Task Card -->
+
+<div class="settings-card task-card">
+<span id="socialTask3Name">
+Telegram Channel
+</span>
+<select id="socialTask3Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(3)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="socialTask4Name">
+Telegram Channel
+</span>
+<select id="socialTask4Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(4)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="socialTask5Name">
+Telegram Channel
+</span>
+<select id="socialTask5Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(5)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="socialTask6Name">
+Telegram Channel
+</span>
+<select id="socialTask6Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(6)">✏️</button>
+</div>
+</div>
+</div>
 
 </div>
 
@@ -421,153 +542,6 @@ id="ad4Zone"
 class="setting-input"
 placeholder="11035690"
 />
-</div>
-
-<div class="settings-card task-card">
-
-<h3>📅 Daily Tasks</h3>
-
-<div class="task-list">
-
-<div class="task-row">
-<span id="dailyTask1Name">
-Task 1 </span>
-<select id="dailyTask1Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(1)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask2Name">
-Task 2
-</span>
-<select id="dailyTask2Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(2)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask3Name">
-Task 3
-</span>
-<select id="dailyTask3Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(3)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask4Name">
-Task 4
-</span>
-<select id="dailyTask4Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(4)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask5Name">
-Task 5
-</span>
-<select id="dailyTask5Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(5)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="dailyTask6Name">
-Task 6
-</span>
-<select id="dailyTask6Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editDailyTask(6)">✏️</button>
-</div>
-</div>
-</div>
-
-<div class="settings-card task-card">
-
-<h3>🌐 Social Tasks</h3>
-
-<div class="task-list">
-
-<div class="task-row">
-<span id="socialTask1Name">
-Telegram Channel
-</span>
-<select id="socialTask1Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(1)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="socialTask2Name">
-Social 2
-</span>
-<select id="socialTask2Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(2)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="socialTask3Name">
-Telegram Channel
-</span>
-<select id="socialTask3Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(3)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="socialTask4Name">
-Telegram Channel
-</span>
-<select id="socialTask4Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(4)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="socialTask5Name">
-Telegram Channel
-</span>
-<select id="socialTask5Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(5)">✏️</button>
-</div>
-
-<div class="task-row">
-<span id="socialTask6Name">
-Telegram Channel
-</span>
-<select id="socialTask6Enabled">
-<option value="true">ON</option>
-<option value="false">OFF</option>
-</select>
-<button onclick="editSocialTask(6)">✏️</button>
-</div>
-</div>
 </div>
 
 <div class="settings-card">
