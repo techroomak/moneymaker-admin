@@ -724,9 +724,67 @@ src=""
 
 </div>
 
+<!-- ========================= -->
+<!-- TASK EDIT MODAL -->
+<!-- ========================= -->
+
+<div id="taskModal" class="task-modal">
+
+<div class="task-modal-content">
+
+<h3 id="taskModalTitle">
+Edit Task
+</h3>
+
+<label>Task Name</label>
+<input
+id="taskName"
+class="setting-input"
+type="text"
+/>
+
+<label>Task Link</label>
+<input
+id="taskLink"
+class="setting-input"
+type="text"
+/>
+
+<label>Logo URL</label>
+<input
+id="taskLogo"
+class="setting-input"
+type="text"
+/>
+
+<label>Reward</label>
+<input
+id="taskReward"
+class="setting-input"
+type="number"
+/>
+
+<button
+id="saveTaskBtn"
+class="save-task-btn"
+>
+💾 Save Task
+</button>
+
+<button
+onclick="closeTaskModal()"
+class="close-task-btn"
+>
+❌ Close
+</button>
+
+</div>
+
+</div>
+
+
 <script type="module"
 src="./js/admin.js"></script>
 
 </body>
-
 </html>
