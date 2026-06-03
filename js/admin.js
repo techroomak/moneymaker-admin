@@ -1196,6 +1196,14 @@ document.getElementById(
 ).innerText =
 `Daily Task ${id}`;
 
+document.getElementById(
+"dailyTaskFields"
+).style.display = "block";
+
+document.getElementById(
+"socialTaskFields"
+).style.display = "none";
+
 const task =
 dailyTasks[`task${id}`] || {};
 
@@ -1226,6 +1234,11 @@ document.getElementById(
 "taskLink5"
 ).value =
 task.links?.[4] || "";
+
+document.getElementById(
+"taskDailyLimit"
+).value =
+task.dailyLimit || 1;
 
 document.getElementById("taskReward").value =
 task.reward || 0;
@@ -1260,6 +1273,14 @@ document.getElementById(
 ).innerText =
 `Social Task ${id}`;
 
+document.getElementById(
+"dailyTaskFields"
+).style.display = "none";
+
+document.getElementById(
+"socialTaskFields"
+).style.display = "block";
+
 const task =
 socialTasks[`task${id}`] || {};
 
@@ -1293,20 +1314,52 @@ window.saveTaskModal = ()=>{
 if(currentTaskType==="daily"){
 
 dailyTasks[`task${currentTaskId}`]={
-name:
-document.getElementById("taskName").value,
 
-link:
-document.getElementById("taskLink").value,
+name:
+document.getElementById(
+"taskName"
+).value,
 
 reward:Number(
-document.getElementById("taskReward").value
+document.getElementById(
+"taskReward"
+).value
 ),
+
+dailyLimit:Number(
+document.getElementById(
+"taskDailyLimit"
+).value
+),
+
+links:[
+
+document.getElementById(
+"taskLink1"
+).value,
+
+document.getElementById(
+"taskLink2"
+).value,
+
+document.getElementById(
+"taskLink3"
+).value,
+
+document.getElementById(
+"taskLink4"
+).value,
+
+document.getElementById(
+"taskLink5"
+).value
+
+].filter(Boolean),
 
 enabled:
 document.getElementById(
 `dailyTask${currentTaskId}Enabled`
-).checked,
+).checked
 
 };
 
