@@ -765,3 +765,9 @@ border-radius:10px;
 cursor:pointer;
 font-weight:600;
 }
+.task-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(350px,450px));
+gap:20px;
+align-items:start;
+}
