@@ -934,15 +934,28 @@ dailyTasks[`task${i}`];
 
 if(
 dTask &&
-document.getElementById(
-`dailyTask${i}Name`
-)
+document.getElementById(`dailyTask${i}Name`)
 ){
 
 document.getElementById(
 `dailyTask${i}Name`
 ).innerText =
 dTask.name || `Task ${i}`;
+
+}
+
+const sTask =
+socialTasks[`task${i}`];
+
+if(
+sTask &&
+document.getElementById(`socialTask${i}Name`)
+){
+
+document.getElementById(
+`socialTask${i}Name`
+).innerText =
+sTask.name || `Social ${i}`;
 
 }
 
@@ -1129,7 +1142,7 @@ document.getElementById("socialTask").value === "true",
 /* NOTICE */
 
 notice:
-document.getElementById("notice").value
+document.getElementById("notice").value,
 dailyTasks,
 socialTasks,
 });
