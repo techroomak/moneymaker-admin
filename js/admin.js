@@ -1391,6 +1391,19 @@ version:
 oldTask.version || 1
 };
 
+if(
+document.getElementById(
+`socialTask${currentTaskId}Name`
+)
+){
+document.getElementById(
+`socialTask${currentTaskId}Name`
+).innerText =
+document.getElementById(
+"taskName"
+).value;
+}
+
 }
 
 taskSaveBtn.disabled = true;
@@ -1399,8 +1412,6 @@ taskSaveBtn.innerHTML =
 "✅ Saved";
 
 enableSave();
-
-loadSettings();
 
 document.getElementById(
 "taskModal"
