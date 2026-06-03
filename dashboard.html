@@ -385,9 +385,31 @@ Task 6
 <!-- Social Task Card -->
 
 <div class="settings-card task-card">
-<span id="socialTask3Name">
-Telegram Channel
-</span>
+
+<h3>🌐 Social Tasks</h3>
+
+<div class="task-list">
+
+<div class="task-row">
+<span id="socialTask1Name">Telegram Channel</span>
+<select id="socialTask1Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(1)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="socialTask2Name">Telegram Group</span>
+<select id="socialTask2Enabled">
+<option value="true">ON</option>
+<option value="false">OFF</option>
+</select>
+<button onclick="editSocialTask(2)">✏️</button>
+</div>
+
+<div class="task-row">
+<span id="socialTask3Name">Facebook Page</span>
 <select id="socialTask3Enabled">
 <option value="true">ON</option>
 <option value="false">OFF</option>
@@ -396,9 +418,7 @@ Telegram Channel
 </div>
 
 <div class="task-row">
-<span id="socialTask4Name">
-Telegram Channel
-</span>
+<span id="socialTask4Name">Facebook Group</span>
 <select id="socialTask4Enabled">
 <option value="true">ON</option>
 <option value="false">OFF</option>
@@ -407,9 +427,7 @@ Telegram Channel
 </div>
 
 <div class="task-row">
-<span id="socialTask5Name">
-Telegram Channel
-</span>
+<span id="socialTask5Name">YouTube Channel</span>
 <select id="socialTask5Enabled">
 <option value="true">ON</option>
 <option value="false">OFF</option>
@@ -418,18 +436,17 @@ Telegram Channel
 </div>
 
 <div class="task-row">
-<span id="socialTask6Name">
-Telegram Channel
-</span>
+<span id="socialTask6Name">Website</span>
 <select id="socialTask6Enabled">
 <option value="true">ON</option>
 <option value="false">OFF</option>
 </select>
 <button onclick="editSocialTask(6)">✏️</button>
 </div>
-</div>
+
 </div>
 
+</div>
 </div>
 
 </section>
@@ -684,12 +701,17 @@ id="taskReward"
 class="setting-input"
 type="number"
 />
-
+<button
+onclick="closeTaskModal()"
+class="save-task-btn"
+>
+💾 Save Task
+</button>
 <button
 onclick="closeTaskModal()"
 class="close-task-btn"
 >
- ✅ Done
+ ❌ Close
 </button>
 
 </div>
