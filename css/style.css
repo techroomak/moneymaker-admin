@@ -696,10 +696,11 @@ border-color:#c7d2fe;
 
 .task-row span{
 flex:1;
-font-weight:600;
+font-weight:550;
 overflow:hidden;
 text-overflow:ellipsis;
 white-space:nowrap;
+font-size: 12px;
 }
 
 .task-row select{
