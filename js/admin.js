@@ -1012,6 +1012,9 @@ saveBtn.disabled = true;
 
 await updateDoc(settingsRef,{
 
+dailyTasks,
+socialTasks,
+
 /* REWARDS */
 
 ad1Reward:Number(
@@ -1124,8 +1127,7 @@ document.getElementById("socialTask").value === "true",
 
 notice:
 document.getElementById("notice").value,
-dailyTasks,
-socialTasks,
+
 });
 
 
