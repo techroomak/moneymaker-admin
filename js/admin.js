@@ -798,6 +798,13 @@ status.classList.add(
 },2000);
 
 /* ========================= */
+/* TASK DATA */
+/* ========================= */
+
+let dailyTasks = {};
+let socialTasks = {};
+
+/* ========================= */
 /* SETTINGS */
 /* ========================= */
 
@@ -819,6 +826,11 @@ if(!snap.exists()) return;
 const data =
 snap.data();
 
+dailyTasks =
+data.dailyTasks || {};
+
+socialTasks =
+data.socialTasks || {};
 /* REWARDS */
 
 document.getElementById("ad1Reward").value =
@@ -914,8 +926,6 @@ String(data.socialTask);
 document.getElementById("notice").value =
 data.notice || "";
 
-}
-
 /* task edit */
 for(let i=1;i<=6;i++){
 
@@ -933,6 +943,8 @@ document.getElementById(
 `dailyTask${i}Name`
 ).innerText =
 dTask.name || `Task ${i}`;
+
+}
 
 }
 
@@ -1118,8 +1130,11 @@ document.getElementById("socialTask").value === "true",
 
 notice:
 document.getElementById("notice").value
-
+dailyTasks,
+socialTasks,
 });
+
+
 
 saveBtn.innerHTML =
 "✅ Saved";
@@ -1173,6 +1188,21 @@ document.getElementById(
 ).innerText =
 `Daily Task ${id}`;
 
+const task =
+dailyTasks[`task${id}`] || {};
+
+document.getElementById("taskName").value =
+task.name || "";
+
+document.getElementById("taskLink").value =
+task.link || "";
+
+document.getElementById("taskReward").value =
+task.reward || 0;
+
+document.getElementById("taskLogo").value =
+"";
+
 };
 
 window.editSocialTask = (id)=>{
@@ -1189,12 +1219,80 @@ document.getElementById(
 ).innerText =
 `Social Task ${id}`;
 
+const task =
+socialTasks[`task${id}`] || {};
+
+document.getElementById("taskName").value =
+task.name || "";
+
+document.getElementById("taskLink").value =
+task.link || "";
+
+document.getElementById("taskReward").value =
+task.reward || 0;
+
+document.getElementById("taskLogo").value =
+task.logo || "";
+
 };
 
 window.closeTaskModal = ()=>{
 
+if(currentTaskType==="daily"){
+
+dailyTasks[`task${currentTaskId}`]={
+name:
+document.getElementById("taskName").value,
+
+link:
+document.getElementById("taskLink").value,
+
+reward:Number(
+document.getElementById("taskReward").value
+),
+
+enabled:
+document.getElementById(
+`dailyTask${currentTaskId}Enabled`
+).value==="true"
+};
+
+}else{
+
+const oldTask =
+socialTasks[`task${currentTaskId}`] || {};
+
+socialTasks[`task${currentTaskId}`]={
+name:
+document.getElementById("taskName").value,
+
+link:
+document.getElementById("taskLink").value,
+
+logo:
+document.getElementById("taskLogo").value,
+
+reward:Number(
+document.getElementById("taskReward").value
+),
+
+enabled:
+document.getElementById(
+`socialTask${currentTaskId}Enabled`
+).value==="true",
+
+version:
+oldTask.version || 1
+};
+
+}
+
 document.getElementById(
 "taskModal"
-).style.display = "none";
+).style.display="none";
+
+enableSave();
+
 loadSettings();
+
 };
