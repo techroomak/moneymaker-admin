@@ -1284,7 +1284,8 @@ document.getElementById("taskReward").value
 enabled:
 document.getElementById(
 `dailyTask${currentTaskId}Enabled`
-).value==="true"
+).checked,
+
 };
 
 }else{
@@ -1309,7 +1310,7 @@ document.getElementById("taskReward").value
 enabled:
 document.getElementById(
 `socialTask${currentTaskId}Enabled`
-).value==="true",
+).checked,
 
 version:
 oldTask.version || 1
