@@ -958,26 +958,7 @@ document.getElementById(
 sTask.name || `Social ${i}`;
 
 }
-
 }
-
-const sTask =
-socialTasks[`task${i}`];
-
-if(
-sTask &&
-document.getElementById(
-`socialTask${i}Name`
-)
-){
-
-document.getElementById(
-`socialTask${i}Name`
-).innerText =
-sTask.name || `Social ${i}`;
-
-}
-
 }
 
 loadSettings();
