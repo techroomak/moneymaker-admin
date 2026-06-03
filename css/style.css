@@ -771,3 +771,7 @@ grid-template-columns:repeat(2,minmax(350px,450px));
 gap:20px;
 align-items:start;
 }
+.save-task-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
