@@ -556,18 +556,7 @@ height:320px;
 overflow-y:auto;
 }
 
-.task-card{
-max-height:320px;
-overflow-y:auto;
-}
 
-.task-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:8px;
-gap:8px;
-}
 
 .task-row button{
 cursor:pointer;
