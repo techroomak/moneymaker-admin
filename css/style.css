@@ -680,9 +680,8 @@ cursor:pointer;
 
 .task-card{
 height:auto;
-min-height:320px;
-overflow:hidden;
 border-radius:18px;
+padding:16px;
 }
 .task-list{
 display:flex;
@@ -774,7 +773,7 @@ font-weight:600;
 }
 .task-grid{
 display:grid;
-grid-template-columns:repeat(2,minmax(350px,450px));
+grid-template-columns:repeat(2,minmax(450px,1fr));
 gap:20px;
 align-items:start;
 }
