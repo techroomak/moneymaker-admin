@@ -1196,5 +1196,5 @@ window.closeTaskModal = ()=>{
 document.getElementById(
 "taskModal"
 ).style.display = "none";
-
+loadSettings();
 };
