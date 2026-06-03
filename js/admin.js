@@ -1112,3 +1112,50 @@ saveBtn.innerHTML =
 }
 
 };
+
+/* ========================= */
+/* TASK MODAL */
+/* ========================= */
+
+let currentTaskType = "";
+let currentTaskId = 0;
+
+window.editDailyTask = (id)=>{
+
+currentTaskType = "daily";
+currentTaskId = id;
+
+document.getElementById(
+"taskModal"
+).style.display = "flex";
+
+document.getElementById(
+"taskModalTitle"
+).innerText =
+`Daily Task ${id}`;
+
+};
+
+window.editSocialTask = (id)=>{
+
+currentTaskType = "social";
+currentTaskId = id;
+
+document.getElementById(
+"taskModal"
+).style.display = "flex";
+
+document.getElementById(
+"taskModalTitle"
+).innerText =
+`Social Task ${id}`;
+
+};
+
+window.closeTaskModal = ()=>{
+
+document.getElementById(
+"taskModal"
+).style.display = "none";
+
+};
