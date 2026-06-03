@@ -1268,19 +1268,63 @@ enableTaskSave;
 
 window.saveTaskModal = ()=>{
 
-closeTaskModal();
+if(currentTaskType==="daily"){
+
+dailyTasks[`task${currentTaskId}`]={
+name:
+document.getElementById("taskName").value,
+
+link:
+document.getElementById("taskLink").value,
+
+reward:Number(
+document.getElementById("taskReward").value
+),
+
+enabled:
+document.getElementById(
+`dailyTask${currentTaskId}Enabled`
+).value==="true"
+};
+
+}else{
+
+const oldTask =
+socialTasks[`task${currentTaskId}`] || {};
+
+socialTasks[`task${currentTaskId}`]={
+name:
+document.getElementById("taskName").value,
+
+link:
+document.getElementById("taskLink").value,
+
+logo:
+document.getElementById("taskLogo").value,
+
+reward:Number(
+document.getElementById("taskReward").value
+),
+
+enabled:
+document.getElementById(
+`socialTask${currentTaskId}Enabled`
+).value==="true",
+
+version:
+oldTask.version || 1
+};
+
+}
 
 taskSaveBtn.disabled = true;
 
 taskSaveBtn.innerHTML =
 "✅ Saved";
 
-setTimeout(()=>{
+enableSave();
 
-taskSaveBtn.innerHTML =
-"💾 Save Task";
-
-},1500);
+loadSettings();
 
 };
 
