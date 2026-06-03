@@ -1202,8 +1202,30 @@ dailyTasks[`task${id}`] || {};
 document.getElementById("taskName").value =
 task.name || "";
 
-document.getElementById("taskLink").value =
-task.link || "";
+document.getElementById(
+"taskLink1"
+).value =
+task.links?.[0] || "";
+
+document.getElementById(
+"taskLink2"
+).value =
+task.links?.[1] || "";
+
+document.getElementById(
+"taskLink3"
+).value =
+task.links?.[2] || "";
+
+document.getElementById(
+"taskLink4"
+).value =
+task.links?.[3] || "";
+
+document.getElementById(
+"taskLink5"
+).value =
+task.links?.[4] || "";
 
 document.getElementById("taskReward").value =
 task.reward || 0;
