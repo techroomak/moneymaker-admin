@@ -962,6 +962,44 @@ sTask.name || `Social ${i}`;
 }
 
 loadSettings();
+/* auto save task */
+document
+.querySelectorAll(
+'[id^="dailyTask"][id$="Enabled"],[id^="socialTask"][id$="Enabled"]'
+)
+.forEach(el=>{
+
+el.addEventListener("change", async()=>{
+
+const id =
+el.id.match(/\d+/)?.[0];
+
+if(!id) return;
+
+if(el.id.startsWith("daily")){
+
+dailyTasks[`task${id}`] = {
+...(dailyTasks[`task${id}`] || {}),
+enabled: el.checked
+};
+
+}else{
+
+socialTasks[`task${id}`] = {
+...(socialTasks[`task${id}`] || {}),
+enabled: el.checked
+};
+
+}
+
+await updateDoc(settingsRef,{
+dailyTasks,
+socialTasks
+});
+
+});
+
+});
 
 /* ========================= */
 /* CHANGE DETECT */
