@@ -933,6 +933,17 @@ const dTask =
 dailyTasks[`task${i}`];
 
 if(
+document.getElementById(
+`dailyTask${i}Enabled`
+)
+){
+document.getElementById(
+`dailyTask${i}Enabled`
+).checked =
+dTask?.enabled ?? true;
+}
+
+if(
 dTask &&
 document.getElementById(`dailyTask${i}Name`)
 ){
@@ -946,6 +957,17 @@ dTask.name || `Task ${i}`;
 
 const sTask =
 socialTasks[`task${i}`];
+
+if(
+document.getElementById(
+`socialTask${i}Enabled`
+)
+){
+document.getElementById(
+`socialTask${i}Enabled`
+).checked =
+sTask?.enabled ?? true;
+}
 
 if(
 sTask &&
@@ -962,6 +984,7 @@ sTask.name || `Social ${i}`;
 }
 
 loadSettings();
+
 /* auto save task */
 document
 .querySelectorAll(
