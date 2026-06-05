@@ -1448,7 +1448,7 @@ taskSaveBtn.innerHTML =
 "❌ Error";
 
 }
-
+};
 window.closeTaskModal = ()=>{
 
 document.getElementById(
