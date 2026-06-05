@@ -1309,7 +1309,7 @@ enableTaskSave;
 
 };
 
-window.saveTaskModal = ()=>{
+window.saveTaskModal = async()=>{
 
 if(currentTaskType==="daily"){
 
@@ -1363,6 +1363,19 @@ document.getElementById(
 
 };
 
+if(
+document.getElementById(
+`dailyTask${currentTaskId}Name`
+)
+){
+document.getElementById(
+`dailyTask${currentTaskId}Name`
+).innerText =
+document.getElementById(
+"taskName"
+).value;
+}
+
 }else{
 
 const oldTask =
@@ -1411,13 +1424,30 @@ taskSaveBtn.disabled = true;
 taskSaveBtn.innerHTML =
 "✅ Saved";
 
-enableSave();
+try{
+
+await updateDoc(settingsRef,{
+dailyTasks,
+socialTasks
+});
+
+taskSaveBtn.disabled = true;
+
+taskSaveBtn.innerHTML =
+"✅ Saved";
 
 document.getElementById(
 "taskModal"
 ).style.display = "none";
 
-};
+}catch(err){
+
+console.error(err);
+
+taskSaveBtn.innerHTML =
+"❌ Error";
+
+}
 
 window.closeTaskModal = ()=>{
 
