@@ -1357,6 +1357,21 @@ task.reward || 0;
 document.getElementById("taskLogo").value =
 task.logo || "";
 
+document.getElementById(
+"taskType"
+).value =
+task.type || "timer";
+
+document.getElementById(
+"taskChatId"
+).value =
+task.chatId || "";
+
+document.getElementById(
+"taskWait"
+).value =
+task.wait || 60;
+  
 document
 .querySelectorAll(
 "#taskModal input"
@@ -1440,9 +1455,8 @@ document.getElementById(
 }else{
 
 const oldTask =
-socialTasks[`task${currentTaskId}`] || {};
-
 socialTasks[`task${currentTaskId}`]={
+
 name:
 document.getElementById("taskName").value,
 
@@ -1456,10 +1470,22 @@ reward:Number(
 document.getElementById("taskReward").value
 ),
 
+type:
+document.getElementById("taskType").value,
+
+chatId:
+document.getElementById("taskChatId").value,
+
+wait:Number(
+document.getElementById("taskWait").value
+),
+
 enabled:
 document.getElementById(
 `socialTask${currentTaskId}Enabled`
-).checked,
+).checked
+
+};
 
 version:
 oldTask.version || 1
