@@ -1520,8 +1520,6 @@ document.getElementById(
 ).value;
 }
 
-}
-
 taskSaveBtn.disabled = true;
 
 taskSaveBtn.innerHTML =
