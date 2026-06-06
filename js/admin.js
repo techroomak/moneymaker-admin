@@ -1455,6 +1455,8 @@ document.getElementById(
 }else{
 
 const oldTask =
+socialTasks[`task${currentTaskId}`] || {};
+
 socialTasks[`task${currentTaskId}`]={
 
 name:
@@ -1483,13 +1485,27 @@ document.getElementById("taskWait").value
 enabled:
 document.getElementById(
 `socialTask${currentTaskId}Enabled`
-).checked
-
-};
+).checked,
 
 version:
 oldTask.version || 1
+
 };
+
+if(
+document.getElementById(
+`socialTask${currentTaskId}Name`
+)
+){
+document.getElementById(
+`socialTask${currentTaskId}Name`
+).innerText =
+document.getElementById(
+"taskName"
+).value;
+}
+
+}
 
 if(
 document.getElementById(
