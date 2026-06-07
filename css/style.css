@@ -154,6 +154,7 @@ padding:20px;
 border-radius:22px;
 box-shadow:0 4px 20px rgba(0,0,0,.06);
 overflow:auto;
+height:510px;
 }
 .user-card{
 display:grid;
