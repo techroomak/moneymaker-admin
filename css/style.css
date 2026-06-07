@@ -125,14 +125,14 @@ display:grid;
 width:max-content;
 min-width:100%;
 grid-template-columns:
-220px
+193px
 70px
 70px
-70px
+74px
 100px
-150px
+115px
 70px
-80px
+74px
 80px
 90px
 90px
@@ -141,7 +141,7 @@ align-items:center;
 gap:2px;
 padding:10px 4px;
 background:#f8fafc;
-border-radius:14px;
+border-radius:10px;
 margin-bottom:10px;
 font-size:12px;
 font-weight:700;
@@ -158,18 +158,18 @@ overflow:auto;
 .user-card{
 display:grid;
 grid-template-columns:
-220px
-70px
-70px
-70px
-100px
-150px
-70px
-80px
-80px
+200px
+90px
+58px
+39px
+120px
+128px
+60px
+86px
+64px
 90px
 90px
-60px;
+34px;
 align-items:center;
 gap:2px;
 padding:0px 4px;
