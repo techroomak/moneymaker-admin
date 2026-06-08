@@ -217,7 +217,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-7000;
+10000;
 
 if(isInactive){
 
@@ -360,11 +360,11 @@ ${data.dailyAds || 0}
 </div>
 
 <div class="stat-box">
-${data.socialDone ? "Done" : "Pending"}
+${(data.claimedSocialTasks || []).length}/6 
 </div>
 
 <div class="stat-box">
-${data.dailyDone ? "Done" : "Pending"}
+${data.dailyTaskProgress?.task1 || 0}/5 
 </div>
 
 <div class="user-actions">
@@ -793,7 +793,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-1000;
+10000;
 
 /* REMOVE OLD CLASS */
 
@@ -840,7 +840,7 @@ status.classList.add(
 
 });
 
-},2000);
+},10000);
 
 /* ========================= */
 /* TASK DATA */
