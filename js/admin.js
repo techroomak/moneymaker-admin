@@ -161,8 +161,6 @@ let online = 0;
 let totalAdsCount = 0;
 let totalEarnCount = 0;
 
-const users = [];
-
 const userDocs = [];
 
 snapshot.forEach((docSnap)=>{
@@ -193,8 +191,6 @@ if(!aOnline && bOnline) return 1;
 
 if(!aInactive && bInactive) return -1;
 if(aInactive && !bInactive) return 1;
-
-return bLast - aLast;
 
 });
   
