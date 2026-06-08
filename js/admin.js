@@ -40,6 +40,12 @@ document.getElementById("inactiveUsers");
 const onlineUsers =
 document.getElementById("onlineUsers");
 
+const lifeTimeAds =
+document.getElementById("lifeTimeAds");
+
+const lifeTimeCoins =
+document.getElementById("lifeTimeCoins");
+
 /* SECTION */
 
 window.showSection =(sectionId)=>{
@@ -151,6 +157,8 @@ let withdraw = 0;
 let active = 0;
 let inactive = 0;
 let online = 0;
+let totalAdsCount = 0;
+let totalEarnCount = 0;
 
 snapshot.forEach((docSnap)=>{
 
@@ -160,7 +168,8 @@ docSnap.data();
 total++;
 
 coin += data.coin || 0;
-
+totalAdsCount += data.totalAds || 0;
+totalEarnCount += data.totalEarn || 0;
 withdraw += data.withdraw || 0;
 
 const lastActive =
@@ -389,6 +398,8 @@ activeUsers.innerText = active;
 inactiveUsers.innerText = inactive;
 
 onlineUsers.innerText = online;
+lifeTimeAds.innerText = totalAdsCount;
+lifeTimeCoins.innerText = totalEarnCount;
 
 }
 );
