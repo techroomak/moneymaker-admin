@@ -69,11 +69,14 @@ overflow:auto;
 }
 
 .page-title{
-font-size:34px;
-font-weight:800;
-margin-bottom:0;
-color:#111827;
-line-height:1;
+font-size: 34px;
+font-weight: 800;
+padding: 10px;
+margin-bottom: 15px;
+color: #ffffff;
+line-height: 1;
+background: #111827;
+border-radius: 5px;
 }
 
 .stats-grid{
@@ -114,7 +117,7 @@ top:0;
 z-index:50;
 margin-bottom:0;
 border-radius:22px 22px 0 0;
-background:#e2e8f0;
+background:#111827;
 }
 .search-input{
 width:280px;
