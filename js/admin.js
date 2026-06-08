@@ -89,6 +89,17 @@ if(sectionId==="withdrawSection"){
 document.querySelectorAll(".menu-btn")[2].classList.add("active-btn");
 }
 
+if(sectionId==="tasksSection"){
+document.querySelectorAll(".menu-btn")[3].classList.add("active-btn");
+}
+
+if(sectionId==="notificationsSection"){
+document.querySelectorAll(".menu-btn")[4].classList.add("active-btn");
+}
+
+if(sectionId==="settingsSection"){
+document.querySelectorAll(".menu-btn")[5].classList.add("active-btn");
+}  
 };
 
 /* IMAGE */
