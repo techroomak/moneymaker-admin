@@ -192,6 +192,9 @@ if(!aOnline && bOnline) return 1;
 if(!aInactive && bInactive) return -1;
 if(aInactive && !bInactive) return 1;
 
+if(!aOnline && !bOnline && !aInactive && !bInactive){
+return bLast - aLast;
+}
 });
   
 userDocs.forEach((docSnap)=>{
