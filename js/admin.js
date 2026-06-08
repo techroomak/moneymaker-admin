@@ -163,6 +163,41 @@ let totalEarnCount = 0;
 
 const users = [];
 
+const userDocs = [];
+
+snapshot.forEach((docSnap)=>{
+userDocs.push(docSnap);
+});
+
+userDocs.sort((a,b)=>{
+
+const aLast = a.data().lastActive || 0;
+const bLast = b.data().lastActive || 0;
+
+const aInactive =
+(Date.now() - aLast) >
+(30 * 60 * 60 * 1000);
+
+const bInactive =
+(Date.now() - bLast) >
+(30 * 60 * 60 * 1000);
+
+const aOnline =
+(Date.now() - aLast) < 10000;
+
+const bOnline =
+(Date.now() - bLast) < 10000;
+
+if(aOnline && !bOnline) return -1;
+if(!aOnline && bOnline) return 1;
+
+if(!aInactive && bInactive) return -1;
+if(aInactive && !bInactive) return 1;
+
+return bLast - aLast;
+
+});
+  
 snapshot.forEach((docSnap)=>{
 
 users.push({
@@ -172,7 +207,7 @@ data: docSnap.data()
 
 });
   
-snapshot.forEach((docSnap)=>{
+userDocs.forEach((docSnap)=>{
 
 const data =
 docSnap.data();
