@@ -109,11 +109,11 @@ justify-content:space-between;
 align-items:center;
 height:70px;
 padding:0 18px;
-margin-bottom:10px;
 position:sticky;
 top:0;
 z-index:50;
-border-radius:14px;
+margin-bottom:0;
+border-radius:22px 22px 0 0;
 background:#e2e8f0;
 }
 .search-input{
@@ -163,7 +163,7 @@ z-index:40;
 .table-box{
 background:white;
 padding:0 20px 20px 20px;
-border-radius:22px;
+border-radius:0 0 22px 22px;
 box-shadow:0 4px 20px rgba(0,0,0,.06);
 overflow:auto;
 height:510px;
@@ -185,12 +185,12 @@ grid-template-columns:
 34px;
 align-items:center;
 gap:2px;
-padding:6px 4px;
+min-height:42px;
+padding:2px 4px;
 border-bottom:1px solid #b3b3b3;
 font-size:13px;
 width:max-content;
-min-width:100%;
-min-height:48px;  
+min-width:100%; 
 }
 
 .user-left{
@@ -224,13 +224,17 @@ border-bottom:none;
 }
 
 .stat-box{
-font-size:13px;
 font-weight:600;
 color:#111827;
-line-height:1.2;
+line-height:1;
 white-space:pre-line;
-overflow:hidden;
 text-overflow:ellipsis;
+display:flex;
+flex-direction:column;
+justify-content:center;
+max-height:32px;
+overflow:hidden;
+font-size:12px;
 }
 
 .user-actions{
