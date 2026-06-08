@@ -7,7 +7,8 @@ doc,
 updateDoc,
 onSnapshot,
 increment,
-getDoc
+getDoc,
+getDocs
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -1566,5 +1567,40 @@ window.closeTaskModal = ()=>{
 document.getElementById(
 "taskModal"
 ).style.display = "none";
+
+};
+
+
+window.fixTotalEarn = async()=>{
+
+if(
+!confirm(
+"Set Total Earn = Current Coin for all users?"
+)
+) return;
+
+const snap =
+await getDocs(
+collection(db,"users")
+);
+
+let updated = 0;
+
+for(const userDoc of snap.docs){
+
+const data = userDoc.data();
+
+await updateDoc(
+doc(db,"users",userDoc.id),
+{
+totalEarn:data.coin || 0
+}
+);
+
+updated++;
+
+}
+
+alert(`${updated} users updated`);
 
 };
