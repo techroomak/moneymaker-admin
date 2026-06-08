@@ -161,6 +161,17 @@ let online = 0;
 let totalAdsCount = 0;
 let totalEarnCount = 0;
 
+const users = [];
+
+snapshot.forEach((docSnap)=>{
+
+users.push({
+id: docSnap.id,
+data: docSnap.data()
+});
+
+});
+  
 snapshot.forEach((docSnap)=>{
 
 const data =
