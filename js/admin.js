@@ -89,11 +89,11 @@ if(sectionId==="withdrawSection"){
 document.querySelectorAll(".menu-btn")[2].classList.add("active-btn");
 }
 
-if(sectionId==="tasksSection"){
+if(sectionId==="taskSection"){
 document.querySelectorAll(".menu-btn")[3].classList.add("active-btn");
 }
 
-if(sectionId==="notificationsSection"){
+if(sectionId==="notificationSection"){
 document.querySelectorAll(".menu-btn")[4].classList.add("active-btn");
 }
 
