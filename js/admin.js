@@ -793,7 +793,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-7000;
+1000;
 
 /* REMOVE OLD CLASS */
 
@@ -840,7 +840,7 @@ status.classList.add(
 
 });
 
-},2000);
+},10000);
 
 /* ========================= */
 /* TASK DATA */
