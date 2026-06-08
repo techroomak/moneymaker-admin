@@ -162,7 +162,7 @@ z-index:40;
 }
 .table-box{
 background:white;
-padding:20px;
+padding:0 20px 20px 20px;
 border-radius:22px;
 box-shadow:0 4px 20px rgba(0,0,0,.06);
 overflow:auto;
@@ -185,11 +185,12 @@ grid-template-columns:
 34px;
 align-items:center;
 gap:2px;
-padding:0px 4px;
+padding:6px 4px;
 border-bottom:1px solid #b3b3b3;
 font-size:13px;
 width:max-content;
 min-width:100%;
+min-height:48px;  
 }
 
 .user-left{
@@ -226,8 +227,10 @@ border-bottom:none;
 font-size:13px;
 font-weight:600;
 color:#111827;
-line-height:1.4;
-white-space:pre-line;
+line-height:1.2;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
 
 .user-actions{
