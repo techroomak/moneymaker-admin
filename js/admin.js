@@ -217,7 +217,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-10000;
+7000;
 
 if(isInactive){
 
@@ -840,7 +840,7 @@ status.classList.add(
 
 });
 
-},10000);
+},2000);
 
 /* ========================= */
 /* TASK DATA */
