@@ -228,7 +228,7 @@ font-size:13px;
 font-weight:600;
 color:#111827;
 line-height:1.2;
-white-space:nowrap;
+white-space:pre-line;
 overflow:hidden;
 text-overflow:ellipsis;
 }
