@@ -198,15 +198,6 @@ return bLast - aLast;
 
 });
   
-snapshot.forEach((docSnap)=>{
-
-users.push({
-id: docSnap.id,
-data: docSnap.data()
-});
-
-});
-  
 userDocs.forEach((docSnap)=>{
 
 const data =
