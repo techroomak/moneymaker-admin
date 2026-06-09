@@ -952,10 +952,10 @@ document.getElementById("minReferForWithdraw").value =
 data.minReferForWithdraw || 5;
 
 document.getElementById("minWithdraw").value =
-data.minWithdraw || 500;
+data.cashoutMin || 0;
 
 document.getElementById("maxWithdraw").value =
-data.maxWithdraw || 1000;
+data.cashoutMax || 1000;
 
 document.getElementById("rechargeMin").value =
 data.rechargeMin || 20;
@@ -1206,11 +1206,11 @@ minReferForWithdraw:Number(
 document.getElementById("minReferForWithdraw").value
 ),
 
-minWithdraw:Number(
+cashoutMin:Number(
 document.getElementById("minWithdraw").value
 ),
 
-maxWithdraw:Number(
+cashoutMax:Number(
 document.getElementById("maxWithdraw").value
 ),
 
