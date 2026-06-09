@@ -439,11 +439,11 @@ color:black;
 }
 
 .cancel-badge{
-background:#ef4444;
-color:black;
+background:#ff0000;
+color:white;
 padding:6px 6px;
 border-radius:5px;
-font-size:10px;
+font-size:11px;
 font-weight:500;
 }
 
