@@ -749,7 +749,7 @@ async(id,userId,coin)=>{
 await updateDoc(
 doc(db,"withdraws",id),
 {
-status:"Cancel"
+status:"Cancelled"
 }
 );
 
