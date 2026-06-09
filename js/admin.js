@@ -630,7 +630,7 @@ data.status === "Success"
 
 :
 
-data.status === "Cancelled"
+data.status === "Cancel"
 ?
 "cancel-badge"
 
