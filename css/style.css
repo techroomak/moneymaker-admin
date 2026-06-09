@@ -354,6 +354,10 @@ border-radius:24px;
 
 /* WITHDRAW TABLE */
 
+#withdrawSection
+{
+width: fit-content;
+}
 #withdrawSection .table-header{
 display: grid;
     grid-template-columns: 160px 54px 70px 112px 97px 77px 136px 87px 52px;
