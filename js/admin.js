@@ -630,7 +630,7 @@ data.status === "Success"
 
 :
 
-data.status === "Cancel"
+data.status === "Cancelled"
 ?
 "cancel-badge"
 
@@ -749,7 +749,7 @@ async(id,userId,coin)=>{
 await updateDoc(
 doc(db,"withdraws",id),
 {
-status:"Cancelled"
+status:"Cancel"
 }
 );
 
