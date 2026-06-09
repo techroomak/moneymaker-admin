@@ -355,28 +355,19 @@ border-radius:24px;
 /* WITHDRAW TABLE */
 
 #withdrawSection .table-header{
-display:grid;
-grid-template-columns:
-170px
-55px
-70px
-90px
-110px
-80px
-120px
-90px
-70px;
-gap:5px;
-padding:10px 6px;
-font-weight:700;
-color:#64748b;
-border-bottom:1px solid #dbe2ea;
-width:max-content;
-min-width:100%;
-background:#f8fafc;
-border-radius:14px;
-font-size:12px;
-align-items:center;
+display: grid;
+    grid-template-columns: 160px 54px 70px 112px 97px 77px 136px 87px 52px;
+    gap: 5px;
+    padding: 5px 10px;
+    font-weight: 700;
+    color: #004008;
+    border-bottom: 1px solid #dbe2ea;
+    width: max-content;
+    min-width: 0%;
+    background: #f8fafc;
+    border-radius: 2px;
+    font-size: 12px;
+    align-items: center;
 }
 
 #withdrawSection .withdraw-card{
