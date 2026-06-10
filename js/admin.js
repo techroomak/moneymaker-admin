@@ -8,7 +8,10 @@ updateDoc,
 onSnapshot,
 increment,
 getDoc,
-getDocs
+getDocs,
+addDoc,
+query,
+where
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -46,6 +49,9 @@ document.getElementById("lifeTimeAds");
 
 const lifeTimeCoins =
 document.getElementById("lifeTimeCoins");
+
+const logsList =
+document.getElementById("logsList");
 
 /* SECTION */
 
@@ -99,7 +105,11 @@ document.querySelectorAll(".menu-btn")[4].classList.add("active-btn");
 
 if(sectionId==="settingsSection"){
 document.querySelectorAll(".menu-btn")[5].classList.add("active-btn");
-}  
+}
+
+if(sectionId==="logsSection"){
+document.querySelectorAll(".menu-btn")[6].classList.add("active-btn");
+}
 };
 
 /* IMAGE */
@@ -1623,3 +1633,42 @@ document.getElementById(
 ).style.display = "none";
 
 };
+
+onSnapshot(
+collection(db,"logs"),
+(snapshot)=>{
+
+if(!logsList) return;
+
+let html = "";
+
+snapshot.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+html += `
+
+<div class="withdraw-card">
+
+<div>
+<b>${data.username}</b>
+</div>
+
+<div>
+UID: ${data.userId}
+</div>
+
+<div>
+${data.reason}
+</div>
+
+</div>
+
+`;
+
+});
+
+logsList.innerHTML =
+html || "No Logs";
+
+});
