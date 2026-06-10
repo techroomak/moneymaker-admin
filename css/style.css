@@ -360,7 +360,16 @@ width: fit-content;
 }
 #withdrawSection .table-header{
 display: grid;
-    grid-template-columns: 160px 54px 70px 112px 97px 77px 136px 87px 52px;
+    grid-template-columns: 
+    160px 
+    54px 
+    70px 
+    66px 
+    82px 
+    65px 
+    96px 
+    64px 
+    49px;
     gap: 5px;
     padding: 5px 10px;
     font-weight: 700;
@@ -379,12 +388,12 @@ display:grid;
 grid-template-columns:
 170px
 55px
-70px
-90px
-110px
+50px
+73px
 80px
-120px
-90px
+77px
+86px
+55px
 70px;
 align-items:center;
 gap:5px;
