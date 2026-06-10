@@ -1646,6 +1646,17 @@ snapshot.forEach((docSnap)=>{
 
 const data = docSnap.data();
 
+const matchedHtml =
+(data.matchedAccounts || [])
+.map(acc => `
+<div style="margin-left:10px;">
+• ${acc.username}
+<br>
+UID: ${acc.userId}
+</div>
+`)
+.join("");
+
 html += `
 
 <div class="withdraw-card">
@@ -1658,12 +1669,22 @@ ${data.username}
 UID: ${data.userId}
 </div>
 
-<div style="margin-top:8px;">
+<div style="margin-top:8px;color:#ef4444;font-weight:600;">
 ${data.reason}
 </div>
 
-<div style="margin-top:8px;color:#64748b;font-size:12px;">
-Accounts: ${data.accountCount || 1}
+<div style="margin-top:10px;">
+<b>Matched Accounts (${data.accountCount || 1})</b>
+</div>
+
+<div style="margin-top:5px;">
+${matchedHtml}
+</div>
+
+<div style="margin-top:10px;color:#64748b;font-size:12px;">
+${data.createdAt
+? new Date(data.createdAt).toLocaleString()
+: ""}
 </div>
 
 </div>
