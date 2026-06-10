@@ -1649,8 +1649,8 @@ const data = docSnap.data();
 const matchedHtml =
 (data.matchedAccounts || [])
 .map(acc => `
-<div style="margin-left:10px;">
-• ${acc.username}
+<div class="log-match">
+${acc.username}
 <br>
 UID: ${acc.userId}
 </div>
