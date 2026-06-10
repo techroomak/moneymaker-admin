@@ -1650,22 +1650,25 @@ html += `
 
 <div class="withdraw-card">
 
-<div>
-<b>${data.username}</b>
+<div class="withdraw-name">
+${data.username}
 </div>
 
-<div>
+<div class="withdraw-uid">
 UID: ${data.userId}
 </div>
 
-<div>
+<div style="margin-top:8px;">
 ${data.reason}
+</div>
+
+<div style="margin-top:8px;color:#64748b;font-size:12px;">
+Accounts: ${data.accountCount || 1}
 </div>
 
 </div>
 
 `;
-
 });
 
 logsList.innerHTML =
