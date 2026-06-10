@@ -1547,8 +1547,15 @@ document.getElementById(
 ).checked,
 
 version:
-oldTask.version || 1
-
+(
+oldTask.link !== document.getElementById("taskLink").value
+||
+oldTask.chatId !== document.getElementById("taskChatId").value
+)
+?
+(oldTask.version || 1) + 1
+:
+(oldTask.version || 1)
 };
 
 if(
