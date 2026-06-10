@@ -1666,8 +1666,6 @@ ${data.username}
 </span>
 </div>
 
-<div>${data.userId}</div>
-
 <div>${data.accountCount || 1}</div>
 
 <div>${data.reason}</div>
@@ -1675,9 +1673,17 @@ ${data.username}
 <div>${matchedHtml}</div>
 
 <div>
-${data.createdAt
-? new Date(data.createdAt).toLocaleString()
-: ""}
+${
+data.createdAt
+?
+new Date(data.createdAt).toLocaleDateString()
++
+"<br>"
++
+new Date(data.createdAt).toLocaleTimeString()
+:
+""
+}
 </div>
 
 </div>
