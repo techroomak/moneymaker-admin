@@ -850,14 +850,37 @@ transform:translateX(24px);
 
 /* LOGS */
 
-.logs-header,
-.log-row{
+.logs-header{
+display:grid;
 grid-template-columns:
-220px
+140px
+120px
 80px
 180px
 260px
 180px;
+padding:12px;
+font-weight:700;
+background:#111827;
+color:#fff;
+border-radius:10px 10px 0 0;
+position:sticky;
+top:0;
+z-index:5;
+}
+
+.log-row{
+display:grid;
+grid-template-columns:
+140px
+120px
+80px
+180px
+260px
+180px;
+padding:12px;
+align-items:start;
+border-bottom:1px solid #e5e7eb;
 }
 
 .log-row:nth-child(even){
