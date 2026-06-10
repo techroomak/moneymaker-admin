@@ -1659,29 +1659,19 @@ UID: ${acc.userId}
 
 html += `
 
-<div class="withdraw-card">
+<div class="log-row">
 
-<div class="withdraw-name">
-${data.username}
-</div>
+<div>${data.username}</div>
 
-<div class="withdraw-uid">
-UID: ${data.userId}
-</div>
+<div>${data.userId}</div>
 
-<div style="margin-top:8px;color:#ef4444;font-weight:600;">
-${data.reason}
-</div>
+<div>${data.accountCount || 1}</div>
 
-<div style="margin-top:10px;">
-<b>Matched Accounts (${data.accountCount || 1})</b>
-</div>
+<div>${data.reason}</div>
 
-<div style="margin-top:5px;">
-${matchedHtml}
-</div>
+<div>${matchedHtml}</div>
 
-<div style="margin-top:10px;color:#64748b;font-size:12px;">
+<div>
 ${data.createdAt
 ? new Date(data.createdAt).toLocaleString()
 : ""}
