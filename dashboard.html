@@ -76,8 +76,16 @@ Notifications
 onclick="showSection('settingsSection')">
 ⚙️ Settings
 </button>
+
+ <button
+class="menu-btn"
+onclick="showSection('logsSection')"
+>
+User Logs
+</button> 
 </div>
 
+  
 </div>
 
 <!-- MAIN PANEL -->
@@ -627,6 +635,21 @@ class="setting-textarea">
 
 </div>
 
+ <div
+id="logsSection"
+class="content-section"
+>
+
+<h2>
+Logs
+</h2>
+
+<div id="logsList">
+Loading...
+</div>
+
+</div> 
+  
 </div>
 
 <div class="settings-save-wrap">
