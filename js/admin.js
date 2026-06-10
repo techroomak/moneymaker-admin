@@ -1650,9 +1650,7 @@ const matchedHtml =
 (data.matchedAccounts || [])
 .map(acc => `
 <div class="log-match">
-${acc.username}
-<br>
-UID: ${acc.userId}
+${acc.username} (${acc.userId})
 </div>
 `)
 .join("");
@@ -1661,7 +1659,12 @@ html += `
 
 <div class="log-row">
 
-<div>${data.username}</div>
+<div>
+${data.username}
+<span style="color:#64748b;">
+(${data.userId})
+</span>
+</div>
 
 <div>${data.userId}</div>
 
