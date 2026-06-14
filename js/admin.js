@@ -726,15 +726,13 @@ Hold
 
 </div>
 
+</div>
 <div style="
 font-size:11px;
 word-break:break-all;
 ">
 ${docSnap.id}
 </div>
-
-</div>
-
 </div>
 
 `;
