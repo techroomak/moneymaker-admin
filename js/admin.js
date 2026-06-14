@@ -726,6 +726,13 @@ Hold
 
 </div>
 
+<div style="
+font-size:11px;
+word-break:break-all;
+">
+${docSnap.id}
+</div>
+
 </div>
 
 </div>
@@ -1698,12 +1705,13 @@ new Date(data.createdAt).toLocaleTimeString()
 }
 </div>
 
+<div style="
+font-size:11px;
+word-break:break-all;
+">
+${docSnap.id}
+</div>
+
 </div>
 
 `;
-});
-
-logsList.innerHTML =
-html || "No Logs";
-
-});
