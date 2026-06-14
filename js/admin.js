@@ -1715,3 +1715,9 @@ ${docSnap.id}
 </div>
 
 `;
+});
+
+logsList.innerHTML =
+html || "No Logs";
+
+});
