@@ -360,27 +360,28 @@ width: fit-content;
 }
 #withdrawSection .table-header{
 display: grid;
-    grid-template-columns: 
-    160px 
-    54px 
-    70px 
-    66px 
-    82px 
-    65px 
-    96px 
-    64px 
-    49px;
-    gap: 5px;
-    padding: 5px 10px;
-    font-weight: 700;
-    color: #004008;
-    border-bottom: 1px solid #dbe2ea;
-    width: max-content;
-    min-width: 0%;
-    background: #f8fafc;
-    border-radius: 2px;
-    font-size: 12px;
-    align-items: center;
+grid-template-columns:
+170px
+55px
+50px
+73px
+80px
+77px
+86px
+55px
+70px
+180px;
+gap: 5px;
+padding: 5px 10px;
+font-weight: 700;
+color: #004008;
+border-bottom: 1px solid #dbe2ea;
+width: max-content;
+min-width: 0%;
+background: #f8fafc;
+border-radius: 2px;
+font-size: 12px;
+align-items: center;
 }
 
 #withdrawSection .withdraw-card{
