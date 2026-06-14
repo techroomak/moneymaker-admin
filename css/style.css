@@ -394,7 +394,8 @@ grid-template-columns:
 77px
 86px
 55px
-70px;
+70px
+180px;
 align-items:center;
 gap:5px;
 padding:10px 6px;
@@ -862,12 +863,12 @@ transform:translateX(24px);
 .logs-header{
 display:grid;
 grid-template-columns:
-120px
-160px
-90px
-160px
+180px
+80px
+170px
 220px
-130px;
+130px
+220px;
 padding:12px;
 font-weight:700;
 background:#111827;
@@ -881,12 +882,12 @@ z-index:5;
 .log-row{
 display:grid;
 grid-template-columns:
-120px
-160px
-90px
-160px
+180px
+80px
+170px
 220px
-130px;
+130px
+220px;
 padding:12px;
 align-items:start;
 border-bottom:1px solid #e5e7eb;
