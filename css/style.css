@@ -862,11 +862,12 @@ transform:translateX(24px);
 .logs-header{
 display:grid;
 grid-template-columns:
-157px
-182px
-143px
-209px
-128px;
+120px
+160px
+90px
+160px
+220px
+130px;
 padding:12px;
 font-weight:700;
 background:#111827;
@@ -880,11 +881,12 @@ z-index:5;
 .log-row{
 display:grid;
 grid-template-columns:
-182px
-111px
-204px
-187px
-132px;
+120px
+160px
+90px
+160px
+220px
+130px;
 padding:12px;
 align-items:start;
 border-bottom:1px solid #e5e7eb;
