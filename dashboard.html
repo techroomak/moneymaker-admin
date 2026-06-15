@@ -468,9 +468,48 @@ class="content-section"
 Notifications
 </h1>
 
-<div class="table-box">
+<div class="table-box notification-box">
 
-Loading....
+<input
+id="notifyTitle"
+class="setting-input"
+placeholder="Notification Subject"
+/>
+
+<textarea
+id="notifyMessage"
+class="setting-textarea"
+placeholder="Message, comma দিলে নতুন লাইনে দেখাবে"
+></textarea>
+
+<input
+id="notifyUserId"
+class="setting-input"
+placeholder="User ID (ফাঁকা = All Users)"
+/>
+
+<select
+id="notifyExpire"
+class="setting-input"
+>
+<option value="1">1 Hour</option>
+<option value="6">6 Hour</option>
+<option value="12">12 Hour</option>
+<option value="24">24 Hour</option>
+<option value="48">48 Hour</option>
+<option value="72">72 Hour</option>
+</select>
+
+<button
+class="save-settings-btn"
+onclick="sendNotification()"
+>
+Send Notification
+</button>
+
+<div id="notificationList">
+Loading...
+</div>
 
 </div>
 
