@@ -1844,22 +1844,18 @@ collection(db,"notifications"),
 title,
 message,
 target:
-userId
-?
-"user"
-:
-"all",
+userId ? "user" : "all",
 
-userId:
-userId || "",
+userId:userId || "",
 
-createdAt:
-Date.now(),
+createdAt:Date.now(),
 
 expireAt:
-Date.now()
-+
-(hours * 60 * 60 * 1000)
+Date.now() +
+(hours * 60 * 60 * 1000),
+
+createdBy:"Admin",
+status:"active"
 }
 );
 
