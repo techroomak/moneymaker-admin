@@ -1,49 +1,38 @@
+import { auth }
+from "./firebase.js";
+
 import {
-auth,
 signInWithEmailAndPassword,
 setPersistence,
 browserSessionPersistence
 }
-from "./firebase.js";
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-await setPersistence(
-auth,
-browserSessionPersistence
-);
-
-import {
-signInWithEmailAndPassword
-}
 
 window.loginAdmin =
 async()=>{
 
 const email =
-document.getElementById(
-"email"
-).value;
+document.getElementById("email").value;
 
 const password =
-document.getElementById(
-"password"
-).value;
+document.getElementById("password").value;
 
 const status =
-document.getElementById(
-"loginStatus"
-);
+document.getElementById("loginStatus");
 
 if(!email || !password){
 
-status.innerText =
-"Fill all fields";
-
+status.innerText = "ইনপুট গুলো পূরণ করুন";
 return;
 
 }
 
 try{
+
+await setPersistence(
+auth,
+browserSessionPersistence
+);
 
 await signInWithEmailAndPassword(
 auth,
@@ -51,11 +40,8 @@ email,
 password
 );
 
-status.style.color =
-"#22c55e";
-
-status.innerText =
-"Login Success";
+status.style.color = "#22c55e";
+status.innerText = "Login Success";
 
 setTimeout(()=>{
 
@@ -68,6 +54,8 @@ window.location.href =
 
 status.innerText =
 "Invalid Email or Password";
+
+console.error(error);
 
 }
 
