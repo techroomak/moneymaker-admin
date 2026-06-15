@@ -2,6 +2,7 @@ import { db }
 from "./firebase.js";
 
 import {
+auth,
 collection,
 doc,
 updateDoc,
@@ -12,9 +13,22 @@ getDocs,
 addDoc,
 query,
 where,
-deleteDoc
+deleteDoc,
+onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+from "./firebase.js";
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href =
+"index.html";
+
+}
+
+});
 
 /* ELEMENTS */
 
