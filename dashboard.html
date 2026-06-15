@@ -468,8 +468,9 @@ class="content-section"
 Notifications
 </h1>
 
+ 
 <div class="table-box notification-box">
-
+<div class="notification-form">
 <input
 id="notifyTitle"
 class="setting-input"
@@ -479,13 +480,13 @@ placeholder="Notification Subject"
 <textarea
 id="notifyMessage"
 class="setting-textarea"
-placeholder="Message, comma দিলে নতুন লাইনে দেখাবে"
+placeholder="Message, comma ব্যবহার করুন লাইন ব্রেক করতে।"
 ></textarea>
 
 <input
 id="notifyUserId"
 class="setting-input"
-placeholder="User ID (ফাঁকা = All Users)"
+placeholder="User ID (Blank = All Users)"
 />
 
 <select
@@ -506,9 +507,10 @@ onclick="sendNotification()"
 >
 Send Notification
 </button>
-
+</div>
+<div class="notification-form">
 <div id="notificationList">
-Loading...
+Empty....
 </div>
 
 </div>
