@@ -185,37 +185,10 @@ let totalEarnCount = 0;
 
 const userDocs = [];
 
-const logs = [];
-
 snapshot.forEach((docSnap)=>{
-logs.push(docSnap);
-});
-
-logs.sort((a,b)=>
-(b.data().createdAt || 0)
--
-(a.data().createdAt || 0)
-);
-
-logs.forEach((docSnap)=>{
-const data = docSnap.data();
-
-if(
-Date.now() -
-(data.createdAt || 0)
->
-(48 * 60 * 60 * 1000)
-){
-
-deleteDoc(
-doc(db,"logs",docSnap.id)
-);
-
-return;
-}
 userDocs.push(docSnap);
 });
-
+  
 userDocs.sort((a,b)=>{
 
 const aLast = a.data().lastActive || 0;
@@ -1679,6 +1652,8 @@ document.getElementById(
 
 };
 
+/* Logs Section */
+
 onSnapshot(
 collection(db,"logs"),
 (snapshot)=>{
@@ -1703,6 +1678,20 @@ logs.forEach((docSnap)=>{
 
 const data = docSnap.data();
 
+if(
+Date.now() -
+(data.createdAt || 0)
+>
+(48 * 60 * 60 * 1000)
+){
+
+deleteDoc(
+doc(db,"logs",docSnap.id)
+);
+
+return;
+}
+  
 const matchedHtml =
 
 data.error
