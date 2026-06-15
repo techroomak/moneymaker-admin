@@ -1906,7 +1906,7 @@ return;
 }
 
 html += `
-<div class="log-row">
+<div class="notification-admin-card">
 
 <div>${data.title}</div>
 
