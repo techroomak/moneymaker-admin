@@ -945,6 +945,49 @@ opacity:.9;
 /* NOTIFICATION SECTION */
 /* ========================= */
 
+.notification-admin-card{
+background:#ffffff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+transition:.25s;
+}
+
+.notification-admin-card:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.notification-delete-btn{
+background:#ef4444;
+color:#fff;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:12px;
+font-weight:600;
+transition:.2s;
+}
+
+.notification-delete-btn:hover{
+background:#dc2626;
+transform:scale(1.05);
+}
+
+.notification-box .save-settings-btn{
+transition:.2s;
+}
+
+.notification-box .save-settings-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(124,58,237,.35);
+}
+
 .notification-box{
 display:grid;
 grid-template-columns: 380px 1fr;
