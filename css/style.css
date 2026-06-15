@@ -940,3 +940,75 @@ font-weight:600;
 .delete-log-btn:hover{
 opacity:.9;
 }
+
+/* ========================= */
+/* NOTIFICATION SECTION */
+/* ========================= */
+
+.notification-box{
+display:flex;
+flex-direction:column;
+gap:12px;
+padding:15px;
+}
+
+.notification-box .setting-input,
+.notification-box .setting-textarea{
+width:100%;
+}
+
+.notification-box .save-settings-btn{
+width:220px;
+align-self:flex-start;
+}
+
+#notificationList{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:10px;
+}
+
+.notification-admin-card{
+background:#ffffff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.notification-admin-left{
+flex:1;
+}
+
+.notification-admin-title{
+font-size:14px;
+font-weight:700;
+color:#111827;
+margin-bottom:4px;
+}
+
+.notification-admin-info{
+font-size:12px;
+color:#64748b;
+}
+
+.notification-admin-actions{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.notification-delete-btn{
+background:#ef4444;
+color:#fff;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:12px;
+font-weight:600;
+}
