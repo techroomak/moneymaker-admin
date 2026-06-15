@@ -1,5 +1,16 @@
-import { auth }
+import {
+auth,
+signInWithEmailAndPassword,
+setPersistence,
+browserSessionPersistence
+}
 from "./firebase.js";
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+await setPersistence(
+auth,
+browserSessionPersistence
+);
 
 import {
 signInWithEmailAndPassword
