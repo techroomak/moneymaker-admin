@@ -28,17 +28,6 @@ if(!user){
 window.location.href =
 "index.html";
 
-}
-
-});
-
-onAuthStateChanged(auth,(user)=>{
-
-if(!user){
-
-window.location.href =
-"index.html";
-
 return;
 
 }
