@@ -32,6 +32,22 @@ window.location.href =
 
 });
 
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href =
+"index.html";
+
+return;
+
+}
+
+document.body.style.display =
+"block";
+
+});
+
 /* ELEMENTS */
 
 const userList =
