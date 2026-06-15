@@ -1687,7 +1687,19 @@ if(!logsList) return;
 
 let html = "";
 
+const logs = [];
+
 snapshot.forEach((docSnap)=>{
+logs.push(docSnap);
+});
+
+logs.sort((a,b)=>
+(b.data().createdAt || 0)
+-
+(a.data().createdAt || 0)
+);
+
+logs.forEach((docSnap)=>{
 
 const data = docSnap.data();
 
