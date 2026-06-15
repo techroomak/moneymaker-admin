@@ -1789,3 +1789,164 @@ doc(db,"logs",id)
 );
 
 };
+
+
+/* notification delete */
+
+window.deleteNotification =
+async(id)=>{
+
+await deleteDoc(
+doc(
+db,
+"notifications",
+id
+)
+);
+
+};
+
+/* NOTIFICATION */
+
+window.sendNotification =
+async()=>{
+
+const title =
+document.getElementById(
+"notifyTitle"
+).value.trim();
+
+const message =
+document.getElementById(
+"notifyMessage"
+).value.trim();
+
+const userId =
+document.getElementById(
+"notifyUserId"
+).value.trim();
+
+const hours =
+Number(
+document.getElementById(
+"notifyExpire"
+).value
+);
+
+if(!title || !message){
+alert("Fill All Fields");
+return;
+}
+
+await addDoc(
+collection(db,"notifications"),
+{
+title,
+message,
+target:
+userId
+?
+"user"
+:
+"all",
+
+userId:
+userId || "",
+
+createdAt:
+Date.now(),
+
+expireAt:
+Date.now()
++
+(hours * 60 * 60 * 1000)
+}
+);
+
+alert("Notification Sent");
+}; 
+
+const notificationList =
+document.getElementById(
+"notificationList"
+);
+
+onSnapshot(
+collection(db,"notifications"),
+(snapshot)=>{
+
+let html = "";
+
+const docs = [];
+
+snapshot.forEach((docSnap)=>{
+docs.push(docSnap);
+});
+
+docs.sort((a,b)=>
+(b.data().createdAt || 0)
+-
+(a.data().createdAt || 0)
+);
+
+docs.forEach((docSnap)=>{
+
+const data = docSnap.data();
+
+if(
+Date.now() >
+(data.expireAt || 0)
+){
+
+deleteDoc(
+doc(
+db,
+"notifications",
+docSnap.id
+)
+);
+
+return;
+}
+
+html += `
+<div class="log-row">
+
+<div>${data.title}</div>
+
+<div>
+${data.target === "all"
+?
+"All Users"
+:
+data.userId
+}
+</div>
+
+<div>
+${new Date(
+data.createdAt
+).toLocaleString()}
+</div>
+
+<div>
+<button
+class="delete-log-btn"
+onclick="
+deleteNotification(
+'${docSnap.id}'
+)
+"
+>
+Delete
+</button>
+</div>
+
+</div>
+`;
+});
+
+notificationList.innerHTML =
+html || "No Notifications";
+
+});
