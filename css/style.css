@@ -866,12 +866,12 @@ display:grid;
 width:max-content;
 min-width:100%;
 grid-template-columns:
-180px
-80px
-220px
-280px
-140px
-240px;
+160px
+120px
+210px
+246px
+110px
+122px;
 padding:12px;
 font-weight:700;
 background:#111827;
@@ -887,12 +887,12 @@ width:max-content;
 min-width:100%;
 grid-template-columns:
 180px
-80px
-170px
-320px
-130px
-220px
-90px;
+79px
+150px
+315px
+90px
+136px
+98px;
 padding:12px;
 align-items:center;
 border-bottom:1px solid #e5e7eb;
