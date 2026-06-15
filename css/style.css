@@ -1013,3 +1013,10 @@ cursor:pointer;
 font-size:12px;
 font-weight:600;
 }
+.notification-form{
+display:flex;
+flex-direction:column;
+gap:10px;
+position:sticky;
+top:0;
+}
