@@ -11,7 +11,8 @@ getDoc,
 getDocs,
 addDoc,
 query,
-where
+where,
+deleteDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -184,7 +185,34 @@ let totalEarnCount = 0;
 
 const userDocs = [];
 
+const logs = [];
+
 snapshot.forEach((docSnap)=>{
+logs.push(docSnap);
+});
+
+logs.sort((a,b)=>
+(b.data().createdAt || 0)
+-
+(a.data().createdAt || 0)
+);
+
+logs.forEach((docSnap)=>{
+const data = docSnap.data();
+
+if(
+Date.now() -
+(data.createdAt || 0)
+>
+(48 * 60 * 60 * 1000)
+){
+
+deleteDoc(
+doc(db,"logs",docSnap.id)
+);
+
+return;
+}
 userDocs.push(docSnap);
 });
 
@@ -1664,6 +1692,17 @@ snapshot.forEach((docSnap)=>{
 const data = docSnap.data();
 
 const matchedHtml =
+
+data.error
+
+?
+
+`<div class="log-match">
+${data.error}
+</div>`
+
+:
+
 (data.matchedAccounts || [])
 .map(acc => `
 <div class="log-match">
@@ -1710,6 +1749,17 @@ word-break:break-all;
 ${docSnap.id}
 </div>
 
+<button
+class="delete-log-btn"
+onclick="
+deleteLog(
+'${docSnap.id}'
+)
+"
+>
+Delete 🗑️
+</button>
+
 </div>
 
 `;
@@ -1719,3 +1769,22 @@ logsList.innerHTML =
 html || "No Logs";
 
 });
+
+/* Delete Logs */
+
+window.deleteLog =
+async(id)=>{
+
+if(
+!confirm(
+"Delete This Log?"
+)
+){
+return;
+}
+
+await deleteDoc(
+doc(db,"logs",id)
+);
+
+};
