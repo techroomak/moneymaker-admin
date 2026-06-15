@@ -21,12 +21,15 @@ onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+document.body.style.display = "none";
+
 onAuthStateChanged(auth,(user)=>{
 
 if(!user){
 
-window.location.href =
-"index.html";
+window.location.replace(
+"index.html"
+);
 
 return;
 
