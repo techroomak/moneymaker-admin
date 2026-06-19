@@ -856,7 +856,9 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-card.dataset.online === "true";
+(Date.now() - lastActive)
+<
+(1 * 60 * 1000);
 
 /* REMOVE OLD CLASS */
 
