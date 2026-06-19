@@ -264,7 +264,9 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-data.online === true;
+(Date.now() - lastActive)
+<
+10000;
 
 if(isInactive){
 
@@ -857,8 +859,7 @@ const isInactive =
 const isOnline =
 (Date.now() - lastActive)
 <
-(1 * 60 * 1000);
-
+10000;
 /* REMOVE OLD CLASS */
 
 status.classList.remove(
