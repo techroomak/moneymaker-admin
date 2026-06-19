@@ -264,9 +264,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-(Date.now() - lastActive)
-<
-10000;
+data.online === true;
 
 if(isInactive){
 
@@ -842,7 +840,7 @@ const status =
 card.querySelector(".live-status");
 
 if(!status) return;
-
+  
 /* BANNED SKIP */
 
 if(
@@ -857,9 +855,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-(Date.now() - lastActive)
-<
-10000;
+data.online === true;
 
 /* REMOVE OLD CLASS */
 
