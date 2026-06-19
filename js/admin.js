@@ -264,7 +264,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-card.dataset.online === "true";
+data.online === true;
 
 if(isInactive){
 
@@ -856,7 +856,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-data.online === true;
+card.dataset.online === "true";
 
 /* REMOVE OLD CLASS */
 
