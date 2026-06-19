@@ -308,7 +308,6 @@ html += `
 <div
 class="user-card"
 data-lastactive="${lastActive}"
-data-online="${data.online === true}"
 >
 
 <div class="user-left">
