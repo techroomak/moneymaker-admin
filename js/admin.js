@@ -264,7 +264,7 @@ const isInactive =
 (30 * 60 * 60 * 1000);
 
 const isOnline =
-data.online === true;
+card.dataset.online === "true";
 
 if(isInactive){
 
@@ -308,6 +308,7 @@ html += `
 <div
 class="user-card"
 data-lastactive="${lastActive}"
+data-online="${data.online === true}"
 >
 
 <div class="user-left">
