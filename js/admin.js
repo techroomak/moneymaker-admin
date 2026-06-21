@@ -257,19 +257,20 @@ totalAdsCount += data.totalAds || 0;
 totalEarnCount += data.totalEarn || 0;
 withdraw += data.withdraw || 0;
 
+const now = new Date();
+
 const today =
-new Date().toISOString().slice(0,10);
+`${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
 
 if(data.dailyEarnDate === today){
 
 totalDailyAds += data.dailyAds || 0;
 
-}else{
+if(data.dailyEarnDate === today){
 
-totalYesterdayAds += data.dailyAds || 0;
+totalDailyAds += data.dailyAds || 0;
 
 }
-
 totalYesterdayAds += data.yesterdayAds || 0;
   
 const lastActive =
