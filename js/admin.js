@@ -69,8 +69,8 @@ document.getElementById("inactiveUsers");
 const onlineUsers =
 document.getElementById("onlineUsers");
 
-const lifeTimeAds =
-document.getElementById("lifeTimeAds");
+const totalAds =
+document.getElementById("totalAds");
 
 const lifeTimeCoins =
 document.getElementById("lifeTimeCoins");
@@ -496,7 +496,7 @@ activeUsers.innerText = active;
 inactiveUsers.innerText = inactive;
 
 onlineUsers.innerText = online;
-lifeTimeAds.innerText = totalAdsCount;
+totalAds.innerText = totalAdsCount;
 lifeTimeCoins.innerText = totalEarnCount;
 
 const todayAds =
