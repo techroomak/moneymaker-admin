@@ -264,13 +264,10 @@ const today =
 
 if(data.dailyEarnDate === today){
 
-totalDailyAds += data.dailyAds || 0;
-
-if(data.dailyEarnDate === today){
-
-totalDailyAds += data.dailyAds || 0;
+    totalDailyAds += data.dailyAds || 0;
 
 }
+
 totalYesterdayAds += data.yesterdayAds || 0;
   
 const lastActive =
