@@ -256,9 +256,22 @@ coin += data.coin || 0;
 totalAdsCount += data.totalAds || 0;
 totalEarnCount += data.totalEarn || 0;
 withdraw += data.withdraw || 0;
-totalDailyAds += data.dailyAds || 0;
-totalYesterdayAds += data.yesterdayAds || 0;
 
+const today =
+new Date().toISOString().slice(0,10);
+
+if(data.dailyEarnDate === today){
+
+totalDailyAds += data.dailyAds || 0;
+
+}else{
+
+totalYesterdayAds += data.dailyAds || 0;
+
+}
+
+totalYesterdayAds += data.yesterdayAds || 0;
+  
 const lastActive =
 data.lastActive || 0;
 
