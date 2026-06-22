@@ -497,10 +497,28 @@ lifeTimeCoins.innerText = totalEarnCount;
 const todayAds =
 document.getElementById("todayAds");
 
+const yesterdayAds =
+document.getElementById("yesterdayAds");
+  
 if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
 
+getDoc(doc(db,"settings","app"))
+.then((snap)=>{
+
+const settings =
+snap.data() || {};
+
+if(yesterdayAds){
+
+yesterdayAds.innerText =
+settings.yesterdayAds || 0;
+
+}
+
+});
+  
 if(yesterdayAds){
 yesterdayAds.innerText = totalDailyAds;
 }
