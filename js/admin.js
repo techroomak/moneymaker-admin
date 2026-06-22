@@ -1790,7 +1790,7 @@ ${data.username}
 
 <div>${data.accountCount || 1}</div>
 
-<div>${data.reason}</div>
+<div>${data.type || data.reason || "-"}</div>
 
 <div>${matchedHtml}</div>
 
