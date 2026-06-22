@@ -503,6 +503,13 @@ document.getElementById("yesterdayAds");
 if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
+  
+updateDoc(
+doc(db,"settings","app"),
+{
+yesterdayAdsCurrent: totalDailyAds
+}
+).catch(()=>{});
 
 getDoc(doc(db,"settings","app"))
 .then((snap)=>{
