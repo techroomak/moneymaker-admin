@@ -207,7 +207,6 @@ let online = 0;
 let totalAdsCount = 0;
 let totalEarnCount = 0;
 let totalDailyAds = 0;
-let totalYesterdayAds = 0;
 
 const userDocs = [];
 
@@ -265,8 +264,6 @@ if(data.dailyEarnDate === today){
     totalDailyAds += data.dailyAds || 0;
 
 }
-
-totalYesterdayAds += data.yesterdayAds || 0;
   
 const lastActive =
 data.lastActive || 0;
@@ -504,11 +501,8 @@ if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
 
-const yesterdayAds =
-document.getElementById("yesterdayAds");
-
 if(yesterdayAds){
-yesterdayAds.innerText = totalYesterdayAds;
+yesterdayAds.innerText = totalDailyAds;
 }
 }
 );
