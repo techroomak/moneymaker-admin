@@ -519,9 +519,6 @@ settings.yesterdayAds || 0;
 
 });
   
-if(yesterdayAds){
-yesterdayAds.innerText = totalDailyAds;
-}
 }
 );
 
