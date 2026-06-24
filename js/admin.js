@@ -1872,3 +1872,71 @@ notificationList.innerHTML =
 html || "No Notifications";
 
 });
+
+/* logs */
+
+onSnapshot(
+collection(db,"logs"),
+(snapshot)=>{
+
+if(!logsList) return;
+
+let html = "";
+
+const logs = [];
+
+snapshot.forEach((docSnap)=>{
+logs.push({
+id:docSnap.id,
+...docSnap.data()
+});
+});
+
+logs.sort(
+(a,b)=>(b.time||0)-(a.time||0)
+);
+
+logs.forEach((data)=>{
+
+html += `
+<div class="log-row">
+
+<div>${data.user || `${data.username} (${data.userId})`}</div>
+
+<div>${data.accounts || "-"}</div>
+
+<div>${data.reason || "-"}</div>
+
+<div style="white-space:pre-line">
+${data.error || "-"}
+</div>
+
+<div>${data.docId || "-"}</div>
+
+<div>
+${new Date(data.time).toLocaleString()}
+</div>
+
+<button
+onclick="deleteLog('${data.id}')"
+>
+Delete
+</button>
+
+</div>
+`;
+
+});
+
+logsList.innerHTML =
+html || "No Logs";
+
+}); 
+
+window.deleteLog = async(id)=>{
+
+await deleteDoc(
+doc(db,"logs",id)
+);
+
+};
