@@ -900,6 +900,12 @@ align-items:center;
 border-bottom:1px solid #e5e7eb;
 }
 
+.log-row > div{
+padding:0 6px;
+word-break:break-word;
+font-size:12px;
+}
+
 .log-row:nth-child(even){
 background:#f8fafc;
 }
@@ -921,21 +927,24 @@ background:#eef2ff;
 }
 
 .log-match{
-line-height:1.5;
-font-size:13px;
+line-height:1.4;
+font-size:12px;
+white-space:pre-line;
+word-break:break-word;
+max-height:120px;
+overflow:auto;
 }
 
 .delete-log-btn{
-margin-left:auto;
-display:block;
 background:#ef4444;
 color:#fff;
 border:none;
-padding:6px 12px;
+padding:8px 12px;
 border-radius:8px;
 cursor:pointer;
 font-size:12px;
 font-weight:600;
+width:90px;
 }
 
 .delete-log-btn:hover{
