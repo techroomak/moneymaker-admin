@@ -1923,6 +1923,7 @@ ${data.docId || data.id || "-"}
 </div>
 
 <button
+class="delete-log-btn"
 onclick="deleteLog('${data.id}')"
 >
 Delete
