@@ -527,7 +527,7 @@ if(
 settings.lastAdsResetDate !== todayDate
 ){
 
-await updateDoc(
+updateDoc(
 settingsRef,
 {
 yesterdayAds:
@@ -536,7 +536,7 @@ settings.yesterdayAdsCurrent || 0,
 lastAdsResetDate:
 todayDate
 }
-);
+).catch(()=>{});
 
 }
 
