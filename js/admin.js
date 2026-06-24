@@ -507,7 +507,7 @@ todayAds.innerText = totalDailyAds;
 if(yesterdayAds){
 yesterdayAds.innerText = "0";
 }
-
+});
 /* SEARCH */
 
 window.searchUser =()=>{
