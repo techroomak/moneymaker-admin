@@ -534,7 +534,10 @@ yesterdayAds:
 settings.yesterdayAdsCurrent || 0,
 
 lastAdsResetDate:
-todayDate
+todayDate,
+
+yesterdayAdsCurrent:
+totalDailyAds
 }
 ).catch(()=>{});
 
