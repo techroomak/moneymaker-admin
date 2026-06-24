@@ -1911,10 +1911,15 @@ html += `
 ${data.error || "-"}
 </div>
 
-<div>${data.docId || "-"}</div>
+<div>
+${data.time
+? new Date(data.time).toLocaleString()
+: "-"
+}
+</div>
 
 <div>
-${new Date(data.time).toLocaleString()}
+${data.docId || data.id || "-"}
 </div>
 
 <button
