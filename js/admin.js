@@ -556,6 +556,21 @@ data.yesterdayAds || 0;
 });
 
 }
+getDoc(settingsRef)
+.then((snap)=>{
+
+const data = snap.data() || {};
+
+if(yesterdayAds){
+
+yesterdayAds.innerText =
+data.yesterdayAds || 0;
+
+}
+
+})
+.catch(()=>{});  
+  
 });
 /* SEARCH */
 
