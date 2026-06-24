@@ -514,7 +514,7 @@ yesterdayAdsCurrent: totalDailyAds
 const settingsRef =
 doc(db,"settings","app");
 
-await updateDoc(
+updateDoc(
 settingsRef,
 {
 yesterdayAdsCurrent: totalDailyAds
