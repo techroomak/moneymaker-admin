@@ -1907,7 +1907,7 @@ html += `
 
 <div>${data.reason || "-"}</div>
 
-<div style="white-space:pre-line">
+<div class="log-match">
 ${data.error || "-"}
 </div>
 
