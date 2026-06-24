@@ -504,10 +504,51 @@ if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
 
-if(yesterdayAds){
-yesterdayAds.innerText = "0";
+const todayDate =
+new Date().toISOString().slice(0,10);
+
+if(lastSavedDate !== todayDate){
+
+lastSavedDate = todayDate;
+
+getDoc(settingsRef)
+.then((snap)=>{
+
+const data =
+snap.data() || {};
+
+const savedDate =
+data.lastAdsDate || "";
+
+if(savedDate !== todayDate){
+
+updateDoc(
+settingsRef,
+{
+yesterdayAds:
+data.todayAds || 0,
+
+todayAds:
+totalDailyAds,
+
+lastAdsDate:
+todayDate
 }
+).catch(()=>{});
+
+}
+
+if(yesterdayAds){
+
+yesterdayAds.innerText =
+data.yesterdayAds || 0;
+
+}
+
 });
+
+}
+
 /* SEARCH */
 
 window.searchUser =()=>{
@@ -941,7 +982,7 @@ let socialTasks = {};
 
 const settingsRef =
 doc(db,"settings","app");
-
+let lastSavedDate = "";
 const saveBtn =
 document.getElementById(
 "saveSettingsBtn"
