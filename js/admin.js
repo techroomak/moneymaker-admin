@@ -548,7 +548,7 @@ data.yesterdayAds || 0;
 });
 
 }
-
+});
 /* SEARCH */
 
 window.searchUser =()=>{
