@@ -503,19 +503,38 @@ document.getElementById("yesterdayAds");
 if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
-  
-updateDoc(
-doc(db,"settings","app"),
-{
-yesterdayAdsCurrent: totalDailyAds
-}
-).catch(()=>{});
 
-getDoc(doc(db,"settings","app"))
-.then((snap)=>{
+const settingsRef =
+doc(db,"settings","app");
+
+getDoc(settingsRef)
+.then(async(snap)=>{
 
 const settings =
 snap.data() || {};
+
+const todayDate =
+new Date().toISOString().slice(0,10);
+
+if(
+settings.lastAdsResetDate !== todayDate
+){
+
+await updateDoc(
+settingsRef,
+{
+yesterdayAds:
+settings.yesterdayAdsCurrent || 0,
+
+yesterdayAdsCurrent:
+totalDailyAds,
+
+lastAdsResetDate:
+todayDate
+}
+);
+
+}
 
 if(yesterdayAds){
 
@@ -524,10 +543,8 @@ settings.yesterdayAds || 0;
 
 }
 
-});
-  
-}
-);
+})
+.catch(()=>{});
 
 /* SEARCH */
 
