@@ -1050,3 +1050,72 @@ transform:scale(.97);
 .notification-admin-info{
 white-space:nowrap;
 }
+
+/* State card color */
+.stats-grid .stats-card:nth-child(1){
+background:linear-gradient(135deg,#3b82f6,#1d4ed8);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(2){
+background:linear-gradient(135deg,#22c55e,#15803d);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(3){
+background:linear-gradient(135deg,#ef4444,#b91c1c);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(4){
+background:linear-gradient(135deg,#06b6d4,#0e7490);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(5){
+background:linear-gradient(135deg,#f59e0b,#d97706);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(6){
+background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(7){
+background:linear-gradient(135deg,#14b8a6,#0f766e);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(8){
+background:linear-gradient(135deg,#6366f1,#4338ca);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(9){
+background:linear-gradient(135deg,#ec4899,#be185d);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(10){
+background:linear-gradient(135deg,#84cc16,#4d7c0f);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(11){
+background:linear-gradient(135deg,#f97316,#c2410c);
+color:#fff;
+}
+
+.stats-grid .stats-card:nth-child(12){
+background:linear-gradient(135deg,#64748b,#334155);
+color:#fff;
+} 
+
+.stats-card h3{
+color:rgba(255,255,255,.85);
+}
+
+.stats-card p{
+color:#fff;
+}
