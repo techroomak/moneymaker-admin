@@ -504,54 +504,9 @@ if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
 
-const settingsRef =
-doc(db,"settings","app");
-
-updateDoc(
-settingsRef,
-{
-yesterdayAdsCurrent: totalDailyAds
-}
-).catch(()=>{});
-  
-getDoc(settingsRef)
-.then((snap)=>{
-
-const settings =
-snap.data() || {};
-
-const todayDate =
-new Date().toISOString().slice(0,10);
-
-if(
-settings.lastAdsResetDate !== todayDate
-){
-
-updateDoc(
-settingsRef,
-{
-yesterdayAds:
-settings.yesterdayAdsCurrent || 0,
-
-lastAdsResetDate:
-todayDate,
-
-yesterdayAdsCurrent:
-totalDailyAds
-}
-).catch(()=>{});
-
-}
-
 if(yesterdayAds){
-
-yesterdayAds.innerText =
-settings.yesterdayAds || 0;
-
+yesterdayAds.innerText = "0";
 }
-
-})
-.catch(()=>{});
 
 /* SEARCH */
 
