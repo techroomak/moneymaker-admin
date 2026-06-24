@@ -1933,25 +1933,6 @@ html || "No Logs";
 
 }); 
 
-logs.forEach((data)=>{
-
-if(
-Date.now() >
-(data.autoDeleteAt || 0)
-){
-
-deleteDoc(
-doc(db,"logs",data.id)
-);
-
-return;
-
-}
-
-html += `
-...
-`;
-});
 
 window.deleteLog = async(id)=>{
 
