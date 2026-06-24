@@ -507,6 +507,13 @@ todayAds.innerText = totalDailyAds;
 const settingsRef =
 doc(db,"settings","app");
 
+await updateDoc(
+settingsRef,
+{
+yesterdayAdsCurrent: totalDailyAds
+}
+).catch(()=>{});
+
 getDoc(settingsRef)
 .then(async(snap)=>{
 
@@ -525,9 +532,6 @@ settingsRef,
 {
 yesterdayAds:
 settings.yesterdayAdsCurrent || 0,
-
-yesterdayAdsCurrent:
-totalDailyAds,
 
 lastAdsResetDate:
 todayDate
