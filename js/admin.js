@@ -78,6 +78,10 @@ document.getElementById("lifeTimeCoins");
 const logsList =
 document.getElementById("logsList");
 
+const settingsRef =
+doc(db,"settings","app");
+let lastSavedDate = "";
+
 /* SECTION */
 
 window.showSection =(sectionId)=>{
@@ -520,6 +524,13 @@ snap.data() || {};
 const savedDate =
 data.lastAdsDate || "";
 
+updateDoc(
+settingsRef,
+{
+todayAds: totalDailyAds
+}
+).catch(()=>{});
+
 if(savedDate !== todayDate){
 
 updateDoc(
@@ -527,9 +538,6 @@ settingsRef,
 {
 yesterdayAds:
 data.todayAds || 0,
-
-todayAds:
-totalDailyAds,
 
 lastAdsDate:
 todayDate
@@ -980,9 +988,6 @@ let socialTasks = {};
 /* SETTINGS */
 /* ========================= */
 
-const settingsRef =
-doc(db,"settings","app");
-let lastSavedDate = "";
 const saveBtn =
 document.getElementById(
 "saveSettingsBtn"
