@@ -1901,25 +1901,28 @@ logs.forEach((data)=>{
 html += `
 <div class="log-row">
 
-<div>${data.user || `${data.username} (${data.userId})`}</div>
+<div class="log-user">
+${data.user || `${data.username} (${data.userId})`}
+</div>
 
-<div>${data.accounts || "-"}</div>
+<div class="log-accounts">
+${data.accounts || "-"}
+</div>
 
-<div>${data.reason || "-"}</div>
+<div class="log-reason">
+${data.reason || "-"}
+</div>
 
 <div class="log-match">
 ${data.error || "-"}
 </div>
 
-<div>
-${data.time
-? new Date(data.time).toLocaleString()
-: "-"
-}
+<div class="log-time">
+${data.time ? new Date(data.time).toLocaleString() : "-"}
 </div>
 
-<div>
-${data.docId || data.id || "-"}
+<div class="log-docid">
+${data.docId || "-"}
 </div>
 
 <button
