@@ -73,7 +73,9 @@ flex:1;
 padding:10px;
 overflow:auto;
 }
-
+h1.page-title.users {
+  min-width: auto;
+}
 .page-title{
 font-size: 25px;
 font-weight: 700;
