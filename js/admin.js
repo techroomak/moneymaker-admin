@@ -504,6 +504,13 @@ if(todayAds){
 todayAds.innerText = totalDailyAds;
 }
 
+await updateDoc(
+settingsRef,
+{
+yesterdayAdsCurrent: totalDailyAds
+}
+).catch(()=>{});
+
 const settingsRef =
 doc(db,"settings","app");
 
