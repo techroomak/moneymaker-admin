@@ -428,7 +428,30 @@ ${(data.claimedSocialTasks || []).length}/6
 </div>
 
 <div class="stat-box">
-${data.dailyTaskProgress?.task1 || 0}/5 
+${data.dailyTaskProgress?.task1 || 0}/5
+</div>
+
+<div class="stat-box">
+
+${
+data.joinDate
+?
+new Date(data.joinDate)
+.toLocaleDateString()
+
++
+
+"\n"
+
++
+
+new Date(data.joinDate)
+.toLocaleTimeString()
+
+:
+"Never"
+}
+
 </div>
 
 <div class="user-actions">
