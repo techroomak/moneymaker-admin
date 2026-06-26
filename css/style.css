@@ -157,7 +157,7 @@ grid-template-columns:
 75px
 75px
 75px
-50px;
+60px;
 align-items:center;
 gap:2px;
 padding:10px 4px;
@@ -193,8 +193,9 @@ grid-template-columns:
 58px
 73px
 75px
-45px
-55px;
+52px
+70px
+70px;
 align-items:center;
 gap:2px;
 min-height:42px;
