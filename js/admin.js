@@ -211,6 +211,7 @@ let online = 0;
 let totalAdsCount = 0;
 let totalEarnCount = 0;
 let totalDailyAds = 0;
+let joinDate =0;
 
 const userDocs = [];
 
