@@ -377,6 +377,40 @@ onclick="editDailyTask(1)"
 
 </div>
 
+<!-- ========================= -->
+<!-- GAME TASK CARD -->
+<!-- ========================= -->
+
+<div class="settings-card task-card">
+
+<h3>🎮 Game Tasks</h3>
+
+<div
+id="gameTaskList"
+class="task-list"
+>
+
+<div class="task-row">
+
+<span>
+Loading...
+</span>
+
+</div>
+
+</div>
+
+<button
+class="save-settings-btn"
+style="margin-top:12px;"
+onclick="openGameModal()"
+>
+
+➕ Add New Game
+
+</button>
+
+</div>
 
 <!-- Social Task Card -->
 
@@ -807,6 +841,173 @@ value="1"
 
 </div>
 
+
+<!-- ========================= -->
+<!-- GAME MODAL -->
+<!-- ========================= -->
+
+<div
+id="gameModal"
+class="task-modal"
+>
+
+<div class="task-modal-content">
+
+<h3 id="gameModalTitle">
+
+Add Game
+
+</h3>
+
+<label>
+Game Name
+</label>
+
+<input
+id="gameName"
+class="setting-input"
+type="text"
+>
+
+<label>
+Logo URL
+</label>
+
+<input
+id="gameLogo"
+class="setting-input"
+type="text"
+>
+
+<label>
+Banner URL
+</label>
+
+<input
+id="gameBanner"
+class="setting-input"
+type="text"
+>
+
+<label>
+Description
+</label>
+
+<textarea
+id="gameDescription"
+class="setting-textarea"
+></textarea>
+
+<label>
+Game URL
+</label>
+
+<input
+id="gameUrl"
+class="setting-input"
+type="text"
+>
+
+<label>
+Reward
+</label>
+
+<input
+id="gameReward"
+class="setting-input"
+type="number"
+>
+
+<label>
+Daily Limit
+</label>
+
+<input
+id="gameDailyLimit"
+class="setting-input"
+type="number"
+>
+
+<label>
+Sort Order
+</label>
+
+<input
+id="gameSort"
+class="setting-input"
+type="number"
+value="1"
+>
+
+<label>
+Featured
+</label>
+
+<select
+id="gameFeatured"
+class="setting-input"
+>
+
+<option value="false">
+
+No
+
+</option>
+
+<option value="true">
+
+Yes
+
+</option>
+
+</select>
+
+<label>
+Enabled
+</label>
+
+<select
+id="gameEnabled"
+class="setting-input"
+>
+
+<option value="true">
+
+ON
+
+</option>
+
+<option value="false">
+
+OFF
+
+</option>
+
+</select>
+
+<button
+id="saveGameBtn"
+class="save-task-btn"
+onclick="saveGame()"
+>
+
+💾 Save Game
+
+</button>
+
+<button
+class="close-task-btn"
+onclick="closeGameModal()"
+>
+
+❌ Close
+
+</button>
+
+</div>
+
+</div>
+ 
 <!-- SOCIAL TASK ONLY -->
 
 <div id="socialTaskFields">
