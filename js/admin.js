@@ -1201,6 +1201,328 @@ sTask.name || `Social ${i}`;
 
 loadSettings();
 
+/* ========================= */
+/* GAME TASK SYSTEM */
+/* ========================= */
+
+let games = {};
+let editingGameId = null;
+
+const gameListEl =
+document.getElementById("gameTaskList");
+
+const gameModal =
+document.getElementById("gameModal");
+
+window.openGameModal = (id=null)=>{
+
+editingGameId = id;
+
+document.getElementById("gameModal").style.display="flex";
+
+if(!id){
+
+document.getElementById("gameModalTitle").innerText="Add Game";
+
+document.getElementById("gameName").value="";
+document.getElementById("gameLogo").value="";
+document.getElementById("gameBanner").value="";
+document.getElementById("gameDescription").value="";
+document.getElementById("gameUrl").value="";
+document.getElementById("gameReward").value=100;
+document.getElementById("gameDailyLimit").value=5;
+document.getElementById("gameSort").value=1;
+document.getElementById("gameFeatured").value="false";
+document.getElementById("gameEnabled").value="true";
+
+return;
+
+}
+
+const g=games[id];
+
+document.getElementById("gameModalTitle").innerText="Edit Game";
+
+document.getElementById("gameName").value=g.name;
+document.getElementById("gameLogo").value=g.logo;
+document.getElementById("gameBanner").value=g.banner;
+document.getElementById("gameDescription").value=g.description;
+document.getElementById("gameUrl").value=g.url;
+document.getElementById("gameReward").value=g.reward;
+document.getElementById("gameDailyLimit").value=g.dailyLimit;
+document.getElementById("gameSort").value=g.sort;
+document.getElementById("gameFeatured").value=String(g.featured);
+document.getElementById("gameEnabled").value=String(g.enabled);
+
+};
+
+window.closeGameModal=()=>{
+
+gameModal.style.display="none";
+
+};
+
+/* ========================= */
+/* LOAD GAME LIST */
+/* ========================= */
+
+onSnapshot(
+
+collection(db,"games"),
+
+(snapshot)=>{
+
+games={};
+
+let html="";
+
+const arr=[];
+
+snapshot.forEach(docSnap=>{
+
+arr.push({
+
+id:docSnap.id,
+
+...docSnap.data()
+
+});
+
+});
+
+arr.sort((a,b)=>
+
+(a.sort||0)-(b.sort||0)
+
+);
+
+arr.forEach(game=>{
+
+games[game.id]=game;
+
+html+=`
+
+<div class="task-row">
+
+<span>
+
+${game.name}
+
+</span>
+
+<label class="switch">
+
+<input
+
+type="checkbox"
+
+${game.enabled ? "checked":""}
+
+onchange="toggleGame('${game.id}',this.checked)"
+
+>
+
+<span class="slider"></span>
+
+</label>
+
+<button
+
+onclick="openGameModal('${game.id}')"
+
+>
+
+🖊️
+
+</button>
+
+<button
+
+onclick="deleteGame('${game.id}')"
+
+style="color:#ef4444"
+
+>
+
+🗑️
+
+</button>
+
+</div>
+
+`;
+
+});
+
+if(html===""){
+
+html=`
+
+<div class="task-row">
+
+<span>
+
+No Game Added
+
+</span>
+
+</div>
+
+`;
+
+}
+
+gameListEl.innerHTML=html;
+
+});
+
+/* ========================= */
+/* ENABLE / DISABLE */
+/* ========================= */
+
+window.toggleGame=
+
+async(id,value)=>{
+
+await updateDoc(
+
+doc(db,"games",id),
+
+{
+
+enabled:value
+
+}
+
+);
+
+};
+
+/* ========================= */
+/* DELETE GAME */
+/* ========================= */
+
+window.deleteGame=
+
+async(id)=>{
+
+if(
+
+!confirm(
+
+"Delete this game?"
+
+)
+
+){
+
+return;
+
+}
+
+await deleteDoc(
+
+doc(db,"games",id)
+
+);
+
+};
+
+/* ========================= */
+/* SAVE GAME */
+/* ========================= */
+
+window.saveGame = async()=>{
+
+const data={
+
+name:
+document.getElementById("gameName").value.trim(),
+
+logo:
+document.getElementById("gameLogo").value.trim(),
+
+banner:
+document.getElementById("gameBanner").value.trim(),
+
+description:
+document.getElementById("gameDescription").value.trim(),
+
+url:
+document.getElementById("gameUrl").value.trim(),
+
+reward:Number(
+document.getElementById("gameReward").value
+),
+
+dailyLimit:Number(
+document.getElementById("gameDailyLimit").value
+),
+
+sort:Number(
+document.getElementById("gameSort").value
+),
+
+featured:
+document.getElementById("gameFeatured").value==="true",
+
+enabled:
+document.getElementById("gameEnabled").value==="true"
+
+};
+
+/* Required */
+
+if(
+
+!data.name ||
+
+!data.logo ||
+
+!data.banner ||
+
+!data.url
+
+){
+
+alert("Please fill all required fields.");
+
+return;
+
+}
+
+/* Edit */
+
+if(editingGameId){
+
+await updateDoc(
+
+doc(db,"games",editingGameId),
+
+data
+
+);
+
+}
+
+/* Add */
+
+else{
+
+await addDoc(
+
+collection(db,"games"),
+
+data
+
+);
+
+}
+
+closeGameModal();
+
+};
+
 /* auto save task */
 document
 .querySelectorAll(
