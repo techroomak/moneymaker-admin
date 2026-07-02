@@ -377,6 +377,41 @@ onclick="editDailyTask(1)"
 
 </div>
 
+<!-- ========================= -->
+<!-- GAME TASK CARD -->
+<!-- ========================= -->
+
+<div class="settings-card task-card">
+
+<h3>🎮 Game Tasks</h3>
+
+<div
+id="gameTaskList"
+class="task-list"
+>
+
+<div class="task-row">
+
+<span>
+Loading...
+</span>
+
+</div>
+
+</div>
+
+<button
+class="save-settings-btn"
+style="margin-top:12px;"
+onclick="openGameModal()"
+>
+
+➕ Add New Game
+
+</button>
+
+</div>
+ 
 <!-- Social Task Card -->
 
 <div class="settings-card task-card">
@@ -464,41 +499,6 @@ checked
 </div>
 
 </div>
-
-</div>
-
- <!-- ========================= -->
-<!-- GAME TASK CARD -->
-<!-- ========================= -->
-
-<div class="settings-card task-card">
-
-<h3>🎮 Game Tasks</h3>
-
-<div
-id="gameTaskList"
-class="task-list"
->
-
-<div class="task-row">
-
-<span>
-Loading...
-</span>
-
-</div>
-
-</div>
-
-<button
-class="save-settings-btn"
-style="margin-top:12px;"
-onclick="openGameModal()"
->
-
-➕ Add New Game
-
-</button>
 
 </div>
  
@@ -842,6 +842,85 @@ value="1"
 
 </div>
 
+<!-- SOCIAL TASK ONLY -->
+
+<div id="socialTaskFields">
+
+<label>Task Link</label>
+<input
+id="taskLink"
+class="setting-input"
+type="text"
+/>
+
+<label>Logo URL</label>
+<input
+id="taskLogo"
+class="setting-input"
+type="text"
+/>
+
+<label>Task Type</label>
+
+<select
+id="taskType"
+class="setting-input"
+>
+<option value="telegram">
+Telegram Verify
+</option>
+
+<option value="timer">
+Timer Reward
+</option>
+</select>
+
+<label>Chat ID</label>
+
+<input
+id="taskChatId"
+class="setting-input"
+type="text"
+placeholder="@techroom_ak"
+/>
+
+<label>Wait Time (Seconds)</label>
+
+<input
+id="taskWait"
+class="setting-input"
+type="number"
+value="60"
+/>
+ 
+</div>
+
+<label>Reward</label>
+<input
+id="taskReward"
+class="setting-input"
+type="number"
+/>
+
+<button
+id="saveTaskBtn"
+onclick="saveTaskModal()"
+class="save-task-btn"
+disabled
+>
+💾 Save Task
+</button>
+
+<button
+onclick="closeTaskModal()"
+class="close-task-btn"
+>
+❌ Close
+</button>
+ 
+</div>
+
+</div>
 
 <!-- ========================= -->
 <!-- GAME MODAL -->
@@ -1008,87 +1087,6 @@ onclick="closeGameModal()"
 </div>
 
 </div>
- 
-<!-- SOCIAL TASK ONLY -->
-
-<div id="socialTaskFields">
-
-<label>Task Link</label>
-<input
-id="taskLink"
-class="setting-input"
-type="text"
-/>
-
-<label>Logo URL</label>
-<input
-id="taskLogo"
-class="setting-input"
-type="text"
-/>
-
-<label>Task Type</label>
-
-<select
-id="taskType"
-class="setting-input"
->
-<option value="telegram">
-Telegram Verify
-</option>
-
-<option value="timer">
-Timer Reward
-</option>
-</select>
-
-<label>Chat ID</label>
-
-<input
-id="taskChatId"
-class="setting-input"
-type="text"
-placeholder="@techroom_ak"
-/>
-
-<label>Wait Time (Seconds)</label>
-
-<input
-id="taskWait"
-class="setting-input"
-type="number"
-value="60"
-/>
- 
-</div>
-
-<label>Reward</label>
-<input
-id="taskReward"
-class="setting-input"
-type="number"
-/>
-
-<button
-id="saveTaskBtn"
-onclick="saveTaskModal()"
-class="save-task-btn"
-disabled
->
-💾 Save Task
-</button>
-
-<button
-onclick="closeTaskModal()"
-class="close-task-btn"
->
-❌ Close
-</button>
- 
-</div>
-
-</div>
-
 
 <script type="module"
 src="./js/admin.js"></script>
