@@ -692,11 +692,8 @@ font-size:14px;
 }
 
 #gameModal .setting-textarea{
-
-min-height:120px;
-
+min-height:60px;
 resize:vertical;
-
 }
 .save-settings-btn{
 margin-top:10px;
