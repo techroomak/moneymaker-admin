@@ -613,7 +613,13 @@ cursor:pointer;
 padding:8px 10px;
 
 }
+#gameModal .task-modal-content{
 
+max-height:90vh;
+
+overflow-y:auto;
+
+}
 #gameTaskList button{
 
 width:36px;
