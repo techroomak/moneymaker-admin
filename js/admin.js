@@ -1479,13 +1479,27 @@ if(
 
 !data.logo ||
 
-!data.banner ||
-
 !data.url
 
 ){
 
-alert("Please fill all required fields.");
+alert("Game Name, Logo and Game URL are required.");
+
+return;
+
+}
+
+/* Featured হলে Banner লাগবে */
+
+if(
+
+data.featured &&
+
+!data.banner
+
+){
+
+alert("Featured Game requires Banner.");
 
 return;
 
