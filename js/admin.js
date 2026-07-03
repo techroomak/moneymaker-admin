@@ -1467,7 +1467,11 @@ featured:
 document.getElementById("gameFeatured").value==="true",
 
 enabled:
-document.getElementById("gameEnabled").value==="true"
+document.getElementById("gameEnabled").value==="true",
+
+players: editingGameId
+? (games[editingGameId]?.players || 0)
+: 0,
 
 };
 
