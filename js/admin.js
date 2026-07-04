@@ -2358,12 +2358,14 @@ doc(db,"logs",id)
 };
 
 
-/* migration */
+/* ========================= */
+/* GAME SYSTEM RESET MIGRATION */
+/* ========================= */
 
 window.migrateGameSystem = async()=>{
 
 if(!confirm(
-"Run Game Migration?"
+"⚠️ Reset Game System for ALL Users?\n\nOnly gamesUnlocked & gamesUnlockedAt will be kept."
 )){
 return;
 }
@@ -2371,177 +2373,116 @@ return;
 const usersSnap =
 await getDocs(collection(db,"users"));
 
-let fixedUsers = 0;
+const totalUsers = usersSnap.size;
 
-for(const userDoc of usersSnap){
+let success = 0;
+let failed = 0;
+let completed = 0;
+
+for(const userDoc of usersSnap.docs){
+
+try{
 
 const d = userDoc.data();
 
 const update = {};
 
-// ---------- TYPE FIX ----------
+/* ---------- KEEP ---------- */
 
-if(
-typeof d.gameDailyCount !== "object" ||
-d.gameDailyCount===null
-){
-update.gameDailyCount = {};
-}
-
-if(
-typeof d.gameRewarded !== "object" ||
-d.gameRewarded===null
-){
-update.gameRewarded = {};
-}
-
-if(
-typeof d.gameRewards !== "object" ||
-d.gameRewards===null
-){
-update.gameRewards = {};
-}
-
-if(
-typeof d.gamePopup !== "object" ||
-d.gamePopup===null
-){
-update.gamePopup = {};
-}
-
-// ---------- DEFAULT ----------
-
-if(
-typeof d.gamesUnlocked!=="boolean"
-){
+if(typeof d.gamesUnlocked !== "boolean"){
 
 update.gamesUnlocked =
 d.gameUnlocked || false;
 
 }
 
-if(
-typeof d.gamesUnlockedAt!=="number"
-){
+if(typeof d.gamesUnlockedAt !== "number"){
 
 update.gamesUnlockedAt = 0;
 
 }
 
-if(
-typeof d.gamePlayed!=="number"
-){
+/* ---------- DELETE ALL OLD GAME ENGINE ---------- */
 
-update.gamePlayed = 0;
+update.gameUnlocked = deleteField();
 
-}
+update.gameCoin = deleteField();
 
-if(
-typeof d.gameDate!=="string"
-){
+update.gameReward = deleteField();
 
-update.gameDate = "";
+update.gameRewards = deleteField();
 
-}
+update.gameRewarded = deleteField();
 
-// ---------- DELETE OLD ENGINE ----------
+update.gameDailyCount = deleteField();
 
-update.gameUnlocked =
-deleteField();
+update.gamePopup = deleteField();
 
-update.gameCoin =
-deleteField();
+update.gamePlayed = deleteField();
 
-update.gameReward =
-deleteField();
+update.gameDate = deleteField();
 
-update.playCoin =
-deleteField();
+update.playCoin = deleteField();
 
-update.pendingGameCoin =
-deleteField();
+update.pendingGameCoin = deleteField();
 
-update.pendingGamePlayed =
-deleteField();
+update.pendingGamePlayed = deleteField();
 
-update.pendingGameRewards =
-deleteField();
+update.pendingGameRewards = deleteField();
 
-update.lastGameDate =
-deleteField();
+update.lastGameDate = deleteField();
 
-update.todayGamePlayed =
-deleteField();
+update.todayGamePlayed = deleteField();
 
-update.totalGamePlayed =
-deleteField();
+update.totalGamePlayed = deleteField();
 
-if(
-Object.keys(update).length
-){
+await updateDoc(userDoc.ref,update);
 
-await updateDoc(
-userDoc.ref,
-update
+success++;
+
+}catch(err){
+
+console.error(
+"Migration Error:",
+userDoc.id,
+err
 );
 
-fixedUsers++;
+failed++;
 
 }
 
+completed++;
+
+console.log(
+
+`Migration : ${completed}/${totalUsers}`
+
+);
+
 }
 
-// ---------- GAME COLLECTION ----------
+/* ---------- GAME COLLECTION ---------- */
 
 const gamesSnap =
-await getDocs(
-collection(db,"games")
-);
+await getDocs(collection(db,"games"));
 
 let fixedGames = 0;
 
-for(const gameDoc of gamesSnap){
+for(const gameDoc of gamesSnap.docs){
 
 const g =
 gameDoc.data();
 
 const update = {};
 
-if(
-typeof g.players!=="number"
-){
+if(typeof g.players !== "number"){
 
 update.players = 0;
 
 }
 
-if(
-typeof g.reward!=="number"
-){
-
-update.reward = 0;
-
-}
-
-if(
-typeof g.dailyLimit!=="number"
-){
-
-update.dailyLimit = 1;
-
-}
-
-if(
-typeof g.sort!=="number"
-){
-
-update.sort = 1;
-
-}
-
-if(
-Object.keys(update).length
-){
+if(Object.keys(update).length){
 
 await updateDoc(
 gameDoc.ref,
@@ -2556,13 +2497,15 @@ fixedGames++;
 
 alert(
 
-`Migration Complete
+`✅ Game Migration Complete
 
-Users : ${fixedUsers}
+Total Users : ${totalUsers}
 
-Games : ${fixedGames}
+Success : ${success}
 
-`
+Failed : ${failed}
+
+Games Fixed : ${fixedGames}`
 
 );
 
