@@ -12,6 +12,8 @@ getDocs,
 addDoc,
 query,
 where,
+writeBatch,
+deleteField,
 deleteDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -2352,5 +2354,174 @@ window.deleteLog = async(id)=>{
 await deleteDoc(
 doc(db,"logs",id)
 );
+
+};
+
+
+window.migrateUsers = async()=>{
+
+if(!confirm("Run User Migration?")) return;
+
+const snap = await getDocs(collection(db,"users"));
+
+let fixed = 0;
+
+for(const d of snap.docs){
+
+const data = d.data();
+
+const update = {};
+
+
+// ---------- GAME ----------
+
+if(typeof data.gameDailyCount !== "object" || data.gameDailyCount===null){
+
+update.gameDailyCount = {};
+
+}
+
+if(typeof data.gameRewarded !== "object" || data.gameRewarded===null){
+
+update.gameRewarded = {};
+
+}
+
+if(typeof data.gamePopup !== "object" || data.gamePopup===null){
+
+update.gamePopup = {};
+
+}
+
+if(typeof data.gameRewards !== "object" || data.gameRewards===null){
+
+update.gameRewards = {};
+
+}
+
+if(typeof data.gamesUnlocked !== "boolean"){
+
+update.gamesUnlocked = false;
+
+}
+
+if(typeof data.gameUnlocked !== "boolean"){
+
+update.gameUnlocked = false;
+
+}
+
+if(typeof data.gamePlayed !== "number"){
+
+update.gamePlayed = 0;
+
+}
+
+if(typeof data.gameReward !== "number"){
+
+update.gameReward = 0;
+
+}
+
+if(typeof data.gameCoin !== "number"){
+
+update.gameCoin = 0;
+
+}
+
+if(typeof data.gamesUnlockedAt !== "number"){
+
+update.gamesUnlockedAt = 0;
+
+}
+
+if(typeof data.gameDate !== "string"){
+
+update.gameDate = "";
+
+}
+
+
+// ---------- DAILY TASK ----------
+
+if(typeof data.dailyTaskProgress !== "object" || data.dailyTaskProgress===null){
+
+update.dailyTaskProgress = {};
+
+}
+
+if(!Array.isArray(data.completedDailyTasks)){
+
+update.completedDailyTasks = [];
+
+}
+
+if(!Array.isArray(data.claimedDailyTasks)){
+
+update.claimedDailyTasks = [];
+
+}
+
+
+// ---------- SOCIAL ----------
+
+if(!Array.isArray(data.completedSocialTasks)){
+
+update.completedSocialTasks = [];
+
+}
+
+if(!Array.isArray(data.claimedSocialTasks)){
+
+update.claimedSocialTasks = [];
+
+}
+
+if(!Array.isArray(data.pendingSocialTasks)){
+
+update.pendingSocialTasks = [];
+
+}
+
+if(typeof data.socialTaskVersions!=="object" || data.socialTaskVersions===null){
+
+update.socialTaskVersions={};
+
+}
+
+
+// ---------- DELETE OLD ----------
+
+update.oldGameReward = deleteField();
+
+update.oldGameLimit = deleteField();
+
+update.playReward = deleteField();
+
+update.playLimit = deleteField();
+
+update.rewardClaimedOld = deleteField();
+
+update.gameRewardOld = deleteField();
+
+update.gameStatusOld = deleteField();
+
+update.playEngine = deleteField();
+
+update.playEngineV1 = deleteField();
+
+update.gameLimitOld = deleteField();
+
+if(Object.keys(update).length){
+
+await updateDoc(d.ref,update);
+
+fixed++;
+
+}
+
+}
+
+alert("Migration Complete\nFixed Users : "+fixed);
 
 };
