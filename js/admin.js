@@ -2358,170 +2358,212 @@ doc(db,"logs",id)
 };
 
 
-window.migrateUsers = async()=>{
+/* migration */
 
-if(!confirm("Run User Migration?")) return;
+window.migrateGameSystem = async()=>{
 
-const snap = await getDocs(collection(db,"users"));
+if(!confirm(
+"Run Game Migration?"
+)){
+return;
+}
 
-let fixed = 0;
+const usersSnap =
+await getDocs(collection(db,"users"));
 
-for(const d of snap.docs){
+let fixedUsers = 0;
 
-const data = d.data();
+for(const userDoc of usersSnap){
+
+const d = userDoc.data();
 
 const update = {};
 
+// ---------- TYPE FIX ----------
 
-// ---------- GAME ----------
-
-if(typeof data.gameDailyCount !== "object" || data.gameDailyCount===null){
-
+if(
+typeof d.gameDailyCount !== "object" ||
+d.gameDailyCount===null
+){
 update.gameDailyCount = {};
-
 }
 
-if(typeof data.gameRewarded !== "object" || data.gameRewarded===null){
-
+if(
+typeof d.gameRewarded !== "object" ||
+d.gameRewarded===null
+){
 update.gameRewarded = {};
-
 }
 
-if(typeof data.gamePopup !== "object" || data.gamePopup===null){
-
-update.gamePopup = {};
-
-}
-
-if(typeof data.gameRewards !== "object" || data.gameRewards===null){
-
+if(
+typeof d.gameRewards !== "object" ||
+d.gameRewards===null
+){
 update.gameRewards = {};
+}
+
+if(
+typeof d.gamePopup !== "object" ||
+d.gamePopup===null
+){
+update.gamePopup = {};
+}
+
+// ---------- DEFAULT ----------
+
+if(
+typeof d.gamesUnlocked!=="boolean"
+){
+
+update.gamesUnlocked =
+d.gameUnlocked || false;
 
 }
 
-if(typeof data.gamesUnlocked !== "boolean"){
-
-update.gamesUnlocked = false;
-
-}
-
-if(typeof data.gameUnlocked !== "boolean"){
-
-update.gameUnlocked = false;
-
-}
-
-if(typeof data.gamePlayed !== "number"){
-
-update.gamePlayed = 0;
-
-}
-
-if(typeof data.gameReward !== "number"){
-
-update.gameReward = 0;
-
-}
-
-if(typeof data.gameCoin !== "number"){
-
-update.gameCoin = 0;
-
-}
-
-if(typeof data.gamesUnlockedAt !== "number"){
+if(
+typeof d.gamesUnlockedAt!=="number"
+){
 
 update.gamesUnlockedAt = 0;
 
 }
 
-if(typeof data.gameDate !== "string"){
+if(
+typeof d.gamePlayed!=="number"
+){
+
+update.gamePlayed = 0;
+
+}
+
+if(
+typeof d.gameDate!=="string"
+){
 
 update.gameDate = "";
 
 }
 
+// ---------- DELETE OLD ENGINE ----------
 
-// ---------- DAILY TASK ----------
+update.gameUnlocked =
+deleteField();
 
-if(typeof data.dailyTaskProgress !== "object" || data.dailyTaskProgress===null){
+update.gameCoin =
+deleteField();
 
-update.dailyTaskProgress = {};
+update.gameReward =
+deleteField();
 
-}
+update.playCoin =
+deleteField();
 
-if(!Array.isArray(data.completedDailyTasks)){
+update.pendingGameCoin =
+deleteField();
 
-update.completedDailyTasks = [];
+update.pendingGamePlayed =
+deleteField();
 
-}
+update.pendingGameRewards =
+deleteField();
 
-if(!Array.isArray(data.claimedDailyTasks)){
+update.lastGameDate =
+deleteField();
 
-update.claimedDailyTasks = [];
+update.todayGamePlayed =
+deleteField();
 
-}
+update.totalGamePlayed =
+deleteField();
 
+if(
+Object.keys(update).length
+){
 
-// ---------- SOCIAL ----------
+await updateDoc(
+userDoc.ref,
+update
+);
 
-if(!Array.isArray(data.completedSocialTasks)){
-
-update.completedSocialTasks = [];
-
-}
-
-if(!Array.isArray(data.claimedSocialTasks)){
-
-update.claimedSocialTasks = [];
-
-}
-
-if(!Array.isArray(data.pendingSocialTasks)){
-
-update.pendingSocialTasks = [];
-
-}
-
-if(typeof data.socialTaskVersions!=="object" || data.socialTaskVersions===null){
-
-update.socialTaskVersions={};
-
-}
-
-
-// ---------- DELETE OLD ----------
-
-update.oldGameReward = deleteField();
-
-update.oldGameLimit = deleteField();
-
-update.playReward = deleteField();
-
-update.playLimit = deleteField();
-
-update.rewardClaimedOld = deleteField();
-
-update.gameRewardOld = deleteField();
-
-update.gameStatusOld = deleteField();
-
-update.playEngine = deleteField();
-
-update.playEngineV1 = deleteField();
-
-update.gameLimitOld = deleteField();
-
-if(Object.keys(update).length){
-
-await updateDoc(d.ref,update);
-
-fixed++;
+fixedUsers++;
 
 }
 
 }
 
-alert("Migration Complete\nFixed Users : "+fixed);
+// ---------- GAME COLLECTION ----------
+
+const gamesSnap =
+await getDocs(
+collection(db,"games")
+);
+
+let fixedGames = 0;
+
+for(const gameDoc of gamesSnap){
+
+const g =
+gameDoc.data();
+
+const update = {};
+
+if(
+typeof g.players!=="number"
+){
+
+update.players = 0;
+
+}
+
+if(
+typeof g.reward!=="number"
+){
+
+update.reward = 0;
+
+}
+
+if(
+typeof g.dailyLimit!=="number"
+){
+
+update.dailyLimit = 1;
+
+}
+
+if(
+typeof g.sort!=="number"
+){
+
+update.sort = 1;
+
+}
+
+if(
+Object.keys(update).length
+){
+
+await updateDoc(
+gameDoc.ref,
+update
+);
+
+fixedGames++;
+
+}
+
+}
+
+alert(
+
+`Migration Complete
+
+Users : ${fixedUsers}
+
+Games : ${fixedGames}
+
+`
+
+);
 
 };
