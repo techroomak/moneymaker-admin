@@ -2365,10 +2365,20 @@ doc(db,"logs",id)
 window.migrateGameSystem = async()=>{
 
 if(!confirm(
-"⚠️ Reset Game System for ALL Users?\n\nOnly gamesUnlocked & gamesUnlockedAt will be kept."
+"⚠️ Reset Game System for ALL Users?\n\nThis will remove all old Game Engine fields."
 )){
 return;
 }
+
+const vipUsers = [
+
+"7274857272",
+"8558758755",
+"8801320002",
+"8650078428",
+"7501087014"
+
+];
 
 const usersSnap =
 await getDocs(collection(db,"users"));
@@ -2387,24 +2397,28 @@ const d = userDoc.data();
 
 const update = {};
 
-/* ---------- KEEP ---------- */
+/* ========================= */
+/* KEEP CURRENT ENGINE */
+/* ========================= */
 
-if(typeof d.gamesUnlocked !== "boolean"){
+update.gameUnlocked =
+vipUsers.includes(userDoc.id)
+? true
+: (d.gameUnlocked || false);
 
-update.gamesUnlocked =
-d.gameUnlocked || false;
+update.gamesUnlockedAt =
+typeof d.gamesUnlockedAt === "number"
+&& d.gamesUnlockedAt > 0
 
-}
+? d.gamesUnlockedAt
 
-if(typeof d.gamesUnlockedAt !== "number"){
+: Date.now();
 
-update.gamesUnlockedAt = 0;
+/* ========================= */
+/* DELETE OLD GAME ENGINE */
+/* ========================= */
 
-}
-
-/* ---------- DELETE ALL OLD GAME ENGINE ---------- */
-
-update.gameUnlocked = deleteField();
+update.gamesUnlocked = deleteField();
 
 update.gameCoin = deleteField();
 
@@ -2436,14 +2450,19 @@ update.todayGamePlayed = deleteField();
 
 update.totalGamePlayed = deleteField();
 
-await updateDoc(userDoc.ref,update);
+/* ========================= */
+
+await updateDoc(
+userDoc.ref,
+update
+);
 
 success++;
 
 }catch(err){
 
 console.error(
-"Migration Error:",
+"Migration Error",
 userDoc.id,
 err
 );
@@ -2455,14 +2474,14 @@ failed++;
 completed++;
 
 console.log(
-
-`Migration : ${completed}/${totalUsers}`
-
+`Migration ${completed}/${totalUsers}`
 );
 
 }
 
-/* ---------- GAME COLLECTION ---------- */
+/* ========================= */
+/* FIX GAMES COLLECTION */
+/* ========================= */
 
 const gamesSnap =
 await getDocs(collection(db,"games"));
@@ -2495,9 +2514,11 @@ fixedGames++;
 
 }
 
+/* ========================= */
+
 alert(
 
-`✅ Game Migration Complete
+`✅ Migration Completed
 
 Total Users : ${totalUsers}
 
@@ -2505,7 +2526,11 @@ Success : ${success}
 
 Failed : ${failed}
 
-Games Fixed : ${fixedGames}`
+Games Fixed : ${fixedGames}
+
+VIP Users : ${vipUsers.length}
+
+`
 
 );
 
