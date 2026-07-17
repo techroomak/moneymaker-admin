@@ -2532,3 +2532,32 @@ Failed : ${failed}
 );
 
 };
+
+
+window.toggleMigration=()=>{
+
+const card=
+document.getElementById(
+"migrationCard"
+);
+
+const btn=
+document.getElementById(
+"migrationToggle"
+);
+
+card.classList.toggle("open");
+
+btn.innerText=
+
+card.classList.contains("open")
+
+?
+
+"Close"
+
+:
+
+"Open";
+
+};
