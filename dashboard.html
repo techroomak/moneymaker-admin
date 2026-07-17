@@ -107,9 +107,34 @@ class="content-section active-section"
 
  <!-- Migration -->
  
-<div class="settings-card" style="margin-bottom:20px">
+<div
+id="migrationCard"
+class="settings-card migration-card"
+style="margin-bottom:20px"
+>
+
+<div class="migration-header">
 
 <h3>🛠 User Migration</h3>
+
+<button
+id="migrationToggle"
+class="save-settings-btn"
+style="
+margin:0;
+padding:8px 18px;
+font-size:13px;
+"
+onclick="toggleMigration()"
+>
+
+Open
+
+</button>
+
+</div>
+
+<div class="migration-body">
 
 <label>
 Migration Type
@@ -119,11 +144,11 @@ Migration Type
 id="migrationType"
 class="setting-input"
 >
- 
+
 <option value="">
 Select Migration Type
 </option>
- 
+
 <option value="fields">
 Delete Inactive User Fields
 </option>
@@ -142,26 +167,18 @@ Inactive Range
 id="migrationDays"
 class="setting-input"
 >
- 
+
 <option value="">
 Select Inactive Range
 </option>
- 
-<option value="7">
-7 Days
-</option>
 
-<option value="15">
-15 Days
-</option>
+<option value="7">7 Days</option>
 
-<option value="30">
-30 Days
-</option>
+<option value="15">15 Days</option>
 
-<option value="90">
-90 Days
-</option>
+<option value="30">30 Days</option>
+
+<option value="90">90 Days</option>
 
 <option value="1">
 All Time (1+ Day)
@@ -188,13 +205,15 @@ color:#2563eb;
 "
 >
 
-Start
+Ready...
+
+</div>
 
 </div>
 
 </div>
   
-<!-----END Migration---------->
+<!-----STATS CARD---------->
   
 <div class="stats-grid">
   
