@@ -105,10 +105,84 @@ class="content-section active-section"
 🏠︎ Dashboard Overview
 </h1>
  
+<div class="settings-card" style="margin-bottom:20px">
+
+<h3>🛠 User Migration</h3>
+
+<label>
+Migration Type
+</label>
+
+<select
+id="migrationType"
+class="setting-input"
+>
+
+<option value="fields">
+Delete Inactive User Fields
+</option>
+
+<option value="users">
+Delete Inactive Users
+</option>
+
+</select>
+
+<label>
+Inactive Range
+</label>
+
+<select
+id="migrationDays"
+class="setting-input"
+>
+
+<option value="7">
+7 Days
+</option>
+
+<option value="15">
+15 Days
+</option>
+
+<option value="30" selected>
+30 Days
+</option>
+
+<option value="90">
+90 Days
+</option>
+
+<option value="1">
+All Time (1+ Day)
+</option>
+
+</select>
+
 <button
-onclick="migrateGameSystem()">
-Run Game Migration
+class="save-settings-btn"
+onclick="migrateUserSystem()"
+>
+
+Run Migration
+
 </button>
+
+<div
+id="migrationProgress"
+style="
+margin-top:15px;
+font-size:14px;
+font-weight:bold;
+color:#2563eb;
+"
+>
+
+Ready...
+
+</div>
+
+</div>
  
 <div class="stats-grid">
   
