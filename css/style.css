@@ -1204,3 +1204,47 @@ color:rgba(255,255,255,.85);
 .stats-card p{
 color:#fff;
 }
+
+/* ========================= */
+/* MIGRATION CARD */
+/* ========================= */
+
+.migration-card{
+
+height:72px;
+
+overflow:hidden;
+
+transition:.3s;
+
+}
+
+.migration-card.open{
+
+height:320px;
+
+}
+
+.migration-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.migration-body{
+
+display:none;
+
+margin-top:15px;
+
+}
+
+.migration-card.open .migration-body{
+
+display:block;
+
+}
