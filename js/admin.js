@@ -2359,113 +2359,137 @@ doc(db,"logs",id)
 
 
 /* ========================= */
-/* GAME SYSTEM RESET MIGRATION */
+/* USER MIGRATION */
 /* ========================= */
 
-window.migrateGameSystem = async()=>{
+window.migrateUserSystem = async()=>{
+
+const type =
+document.getElementById("migrationType").value;
+
+const days =
+Number(
+document.getElementById("migrationDays").value
+);
+
+const progress =
+document.getElementById("migrationProgress");
 
 if(!confirm(
-"⚠️ Reset Game System for ALL Users?\n\nThis will remove all old Game Engine fields."
+`⚠️ ${type==="fields"
+? "Delete Inactive User Fields"
+: "Delete Inactive Users"
+}
+
+Inactive :
+${days==1 ? "All Time (1+ Day)" : days+" Days"}
+
+Continue ?`
 )){
 return;
 }
 
-const vipUsers = [
-
-"7274857272",
-"8558758755",
-"8801320002",
-"8650078428",
-"7501087014"
-
-];
-
 const usersSnap =
-await getDocs(collection(db,"users"));
+await getDocs(
+collection(db,"users")
+);
 
-const totalUsers = usersSnap.size;
+const totalUsers =
+usersSnap.size;
 
 let success = 0;
 let failed = 0;
+let skipped = 0;
 let completed = 0;
+
+const inactiveTime =
+days * 24 * 60 * 60 * 1000;
 
 for(const userDoc of usersSnap.docs){
 
 try{
 
-const d = userDoc.data();
+const data =
+userDoc.data();
 
-const update = {};
+const lastActive =
+data.lastActive || 0;
 
-/* ========================= */
-/* KEEP CURRENT ENGINE */
-/* ========================= */
+if(
+Date.now() - lastActive <
+inactiveTime
+){
 
-update.gameUnlocked =
-vipUsers.includes(userDoc.id)
-? true
-: (d.gameUnlocked || false);
+skipped++;
+completed++;
 
-update.gamesUnlockedAt =
-typeof d.gamesUnlockedAt === "number"
-&& d.gamesUnlockedAt > 0
+if(progress){
 
-? d.gamesUnlockedAt
+progress.innerText =
+`Migration ${completed}/${totalUsers}`;
 
-: Date.now();
+}
 
-/* ========================= */
-/* DELETE OLD GAME ENGINE */
-/* ========================= */
+continue;
 
-update.gamesUnlocked = deleteField();
-
-update.gameCoin = deleteField();
-
-update.gameReward = deleteField();
-
-update.gameRewards = deleteField();
-
-update.gameRewarded = deleteField();
-
-update.gameDailyCount = deleteField();
-
-update.gamePopup = deleteField();
-
-update.gamePlayed = deleteField();
-
-update.gameDate = deleteField();
-
-update.playCoin = deleteField();
-
-update.pendingGameCoin = deleteField();
-
-update.pendingGamePlayed = deleteField();
-
-update.pendingGameRewards = deleteField();
-
-update.lastGameDate = deleteField();
-
-update.todayGamePlayed = deleteField();
-
-update.totalGamePlayed = deleteField();
+}
 
 /* ========================= */
+/* DELETE USER */
+/* ========================= */
+
+if(type==="users"){
+
+await deleteDoc(
+userDoc.ref
+);
+
+}
+
+/* ========================= */
+/* DELETE FIELDS */
+/* ========================= */
+
+else{
+
+const update={};
+
+/* keep these fields */
+
+const keep=[
+"username",
+"photo",
+"deviceId",
+"joinDate",
+"totalEarn",
+"lastActive",
+"totalAds"
+];
+
+Object.keys(data).forEach(key=>{
+
+if(
+!keep.includes(key)
+){
+
+update[key]=deleteField();
+
+}
+
+});
 
 await updateDoc(
 userDoc.ref,
 update
 );
 
+}
+
 success++;
 
 }catch(err){
 
-console.error(
-"Migration Error",
-userDoc.id,
-err
-);
+console.log(err);
 
 failed++;
 
@@ -2473,48 +2497,23 @@ failed++;
 
 completed++;
 
-console.log(
-`Migration ${completed}/${totalUsers}`
-);
+if(progress){
 
-}
-
-/* ========================= */
-/* FIX GAMES COLLECTION */
-/* ========================= */
-
-const gamesSnap =
-await getDocs(collection(db,"games"));
-
-let fixedGames = 0;
-
-for(const gameDoc of gamesSnap.docs){
-
-const g =
-gameDoc.data();
-
-const update = {};
-
-if(typeof g.players !== "number"){
-
-update.players = 0;
-
-}
-
-if(Object.keys(update).length){
-
-await updateDoc(
-gameDoc.ref,
-update
-);
-
-fixedGames++;
+progress.innerText =
+`Migration ${completed}/${totalUsers}`;
 
 }
 
 }
 
 /* ========================= */
+
+if(progress){
+
+progress.innerText =
+"Migration Completed ✅";
+
+}
 
 alert(
 
@@ -2524,11 +2523,9 @@ Total Users : ${totalUsers}
 
 Success : ${success}
 
+Skipped : ${skipped}
+
 Failed : ${failed}
-
-Games Fixed : ${fixedGames}
-
-VIP Users : ${vipUsers.length}
 
 `
 
