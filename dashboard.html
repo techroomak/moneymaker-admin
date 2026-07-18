@@ -147,18 +147,18 @@ Migration Type
 
 <select
 id="migrationType"
-class="mgrn-setting-input"
+class="setting-input"
 >
 
 <option value="">
 Select Migration Type
 </option>
 
-<option value="fields" required="">
+<option value="fields" >
 Delete Inactive User Fields
 </option>
 
-<option value="users" required="">
+<option value="users" >
 Delete Inactive Users
 </option>
 
@@ -196,6 +196,7 @@ class="migration-settings-btn"
 onclick="migrateUserSystem()"
 
  style="
+    display:block;
     padding: 10px;
     border: none;
     border-radius: 5px;
