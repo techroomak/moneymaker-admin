@@ -2368,12 +2368,30 @@ const type =
 document.getElementById("migrationType").value;
 
 const days =
-Number(
-document.getElementById("migrationDays").value
-);
+document.getElementById("migrationDays").value;
 
 const progress =
 document.getElementById("migrationProgress");
+
+/* VALIDATION */
+
+if(!type){
+
+alert("Please select Migration Type.");
+
+return;
+
+}
+
+if(!days){
+
+alert("Please select Inactive Range.");
+
+return;
+
+}
+
+const daysNumber = Number(days);
 
 if(!confirm(
 `⚠️ ${type==="fields"
@@ -2382,7 +2400,9 @@ if(!confirm(
 }
 
 Inactive :
-${days==1 ? "All Time (1+ Day)" : days+" Days"}
+${daysNumber==1
+? "All Time (1+ Day)"
+: daysNumber+" Days"}
 
 Continue ?`
 )){
@@ -2403,7 +2423,7 @@ let skipped = 0;
 let completed = 0;
 
 const inactiveTime =
-days * 24 * 60 * 60 * 1000;
+daysNumber * 24 * 60 * 60 * 1000;
 
 for(const userDoc of usersSnap.docs){
 
@@ -2434,9 +2454,7 @@ continue;
 
 }
 
-/* ========================= */
 /* DELETE USER */
-/* ========================= */
 
 if(type==="users"){
 
@@ -2446,15 +2464,11 @@ userDoc.ref
 
 }
 
-/* ========================= */
 /* DELETE FIELDS */
-/* ========================= */
 
 else{
 
 const update={};
-
-/* keep these fields */
 
 const keep=[
 "username",
@@ -2468,9 +2482,7 @@ const keep=[
 
 Object.keys(data).forEach(key=>{
 
-if(
-!keep.includes(key)
-){
+if(!keep.includes(key)){
 
 update[key]=deleteField();
 
@@ -2506,8 +2518,6 @@ progress.innerText =
 
 }
 
-/* ========================= */
-
 if(progress){
 
 progress.innerText =
@@ -2525,14 +2535,11 @@ Success : ${success}
 
 Skipped : ${skipped}
 
-Failed : ${failed}
-
-`
+Failed : ${failed}`
 
 );
 
 };
-
 
 window.toggleMigration=()=>{
 
