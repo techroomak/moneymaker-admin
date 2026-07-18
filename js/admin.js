@@ -246,9 +246,29 @@ if(!aOnline && bOnline) return 1;
 if(!aInactive && bInactive) return -1;
 if(aInactive && !bInactive) return 1;
 
+/* Online */
+
+if(aOnline && !bOnline) return -1;
+if(!aOnline && bOnline) return 1;
+
+/* Offline */
+
+if(!aInactive && bInactive) return -1;
+if(aInactive && !bInactive) return 1;
+
+/* Offline Users */
+
 if(!aOnline && !bOnline && !aInactive && !bInactive){
 return bLast - aLast;
 }
+
+/* Inactive Users */
+
+if(aInactive && bInactive){
+return aLast - bLast;
+}
+
+return 0;
 });
   
 userDocs.forEach((docSnap)=>{
@@ -274,6 +294,15 @@ if(data.dailyEarnDate === today){
   
 const lastActive =
 data.lastActive || 0;
+
+const inactiveDays =
+lastActive
+?
+Math.floor(
+(Date.now() - lastActive) /
+(1000 * 60 * 60 * 24)
+)
+:0;
 
 const isInactive =
 (Date.now() - lastActive)
@@ -322,6 +351,13 @@ isInactive
 :
 "Offline";
 
+const inactiveLabel =
+isInactive
+?
+`${inactiveDays}d`
+:
+"";
+
 html += `
 
 <div
@@ -363,6 +399,8 @@ ${data.withdraw || 0}
 ${data.refer || 0}
 </div>
 
+<div>
+
 <div class="live-status
 ${
 
@@ -387,7 +425,35 @@ isInactive
 
 }
 ">
+
 ${statusText}
+
+</div>
+
+${
+
+isInactive
+
+?
+
+`<div
+style="
+font-size:11px;
+color:#888;
+margin-top:4px;
+text-align:center;
+">
+
+${inactiveLabel}
+
+</div>`
+
+:
+
+""
+
+}
+
 </div>
 
 <div class="stat-box">
