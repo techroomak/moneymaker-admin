@@ -150,15 +150,15 @@ id="migrationType"
 class="setting-input"
 >
 
-<option>
+<option value="">
 Select Migration Type
 </option>
 
-<option value="fields">
+<option value="fields" required="">
 Delete Inactive User Fields
 </option>
 
-<option value="users">
+<option value="users" required="">
 Delete Inactive Users
 </option>
 
@@ -173,7 +173,7 @@ id="migrationDays"
 class="setting-input"
 >
 
-<option >
+<option value=""  >
 Select Inactive Range
 </option>
 
@@ -203,7 +203,6 @@ onclick="migrateUserSystem()"
     color: white;
     font-weight: 700;
     font-size: 15px;
-    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
@@ -217,7 +216,7 @@ Run Migration
 <div
 id="migrationProgress"
 style="
-margin-top:15px;
+margin-top:1px;
 font-size:14px;
 font-weight:bold;
 color:#2563eb;
