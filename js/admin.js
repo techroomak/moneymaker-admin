@@ -265,7 +265,7 @@ return bLast - aLast;
 /* Inactive Users */
 
 if(aInactive && bInactive){
-return aLast - bLast;
+return bLast - aLast;
 }
 
 return 0;
