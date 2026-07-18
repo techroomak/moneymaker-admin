@@ -1211,7 +1211,7 @@ color:#fff;
 
 .migration-card{
 
-height:72px;
+height:60px;
 
 overflow:hidden;
 
@@ -1221,7 +1221,7 @@ transition:.3s;
 
 .migration-card.open{
 
-height:320px;
+height:265px;
 
 }
 
@@ -1238,8 +1238,6 @@ align-items:center;
 .migration-body{
 
 display:none;
-
-margin-top:15px;
 
 }
 
