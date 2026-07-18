@@ -1148,12 +1148,13 @@ color:#fff;
 }
 
 .stats-grid .stats-card:nth-child(3){
-background:linear-gradient(135deg,#ef4444,#b91c1c);
+background:linear-gradient(135deg,#22c55e,#15803d);
+
 color:#fff;
 }
 
 .stats-grid .stats-card:nth-child(4){
-background:linear-gradient(135deg,#22c55e,#15803d);
+background:linear-gradient(135deg,#ef4444,#b91c1c);
 color:#fff;
 }
 
@@ -1259,4 +1260,11 @@ display:block;
     font-size: 14px;
     font-weight: 600;
     color: #475569;
+}
+.migration-header h3 {
+font-size: 15px;
+font-weight: 700;
+margin-bottom: 10px;
+color: #111827;
+margin-right:13px;
 }
