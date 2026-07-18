@@ -1246,7 +1246,7 @@ display:none;
 display:block;
 
 }
-.mgrn-setting-input{
+.migration-body .setting-input{
     border: 1px solid #d1d5db;
     border-radius: 12px;
     font-size: 13px;
