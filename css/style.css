@@ -1246,3 +1246,17 @@ display:none;
 display:block;
 
 }
+.mgrn-setting-input{
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.migration-body label{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
